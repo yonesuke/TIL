@@ -6,4 +6,5 @@ Isingモデルのシミューレーションとその理論的な背景
 
 ## Basel
 バーゼル問題(Basel problem)の導出
-<img src="https://latex.codecogs.com/gif.latex?\sum_{n=1}^{\infty}\frac{1}{n^{2}}=\frac{\pi^{2}}{6}" />
+
+<center><img src="https://latex.codecogs.com/gif.latex?\sum_{n=1}^{\infty}\frac{1}{n^{2}}=\frac{\pi^{2}}{6}" /></center>

@@ -1,0 +1,38 @@
+\documentclass{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage[dvipdfmx]{graphicx,color}
+\usepackage{url}
+
+\title{$\displaystyle\sum_{n=1}^{\infty}\frac{1}{n^{2}}=\frac{\pi^{2}}{6}$}
+
+\begin{document}
+\maketitle
+
+\abstract{バーゼル問題の証明をできる限り記していく。}
+
+\tableofcontents
+
+\newpage
+
+\section{Fourier級数展開を用いる方法}
+区間$[-\pi,\pi]$で
+\begin{equation}
+	f(t)=t^{2}
+\end{equation}
+となる周期関数$f$を考える。$f$を複素フーリ級数展開すると、
+\begin{equation}
+	t^{2}=\frac{\pi^{2}}{3}+\sum_{n\ne 0,n=-\infty}^{\infty}\frac{2(-1)^{n}}{n^{2}}e^{-int}
+\end{equation}
+と計算できる。ここに$t=\pi$を代入すると、
+\begin{align}
+	\pi^{2}&=\frac{\pi^{2}}{3}+\sum_{n\ne 0,n=-\infty}^{\infty}\frac{2(-1)^{n}}{n^{2}}e^{-in\pi}\\
+	&=\frac{\pi^{2}}{3}+\sum_{n\ne 0,n=-\infty}^{\infty}\frac{2(-1)^{n}}{n^{2}}(-1)^{n}\\
+	&=\frac{\pi^{2}}{3}+\sum_{n\ne 0,n=-\infty}^{\infty}\frac{2}{n^{2}}\\
+	&=\frac{\pi^{2}}{3}+4\sum_{n=1}^{\infty}\frac{1}{n^{2}}
+\end{align}
+となる。これより、
+\begin{equation}
+	\sum_{n=1}^{\infty}\frac{1}{n^{2}}=\frac{\pi^{2}}{6}
+\end{equation}
+であることが示された\footnote{\url{http://otaku-of-suri.hatenablog.com/entry/2016/06/17/130215}}。
+\end{document}

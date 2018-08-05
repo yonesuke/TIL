@@ -14,4 +14,6 @@ Isingモデルのシミューレーションとその理論的な背景
 
 ## pH曲線
 pH曲線を理論的に書く。
+
 <img src="pH/ph.jpg">
+<img src="pH/ph1.jpg">

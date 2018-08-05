@@ -22,6 +22,7 @@
 となる周期関数$f$を考える。$f$を複素フーリ級数展開すると、
 \begin{equation}
 	t^{2}=\frac{\pi^{2}}{3}+\sum_{n\ne 0,n=-\infty}^{\infty}\frac{2(-1)^{n}}{n^{2}}e^{-int}
+	\label{eq:t^2-fourier}
 \end{equation}
 と計算できる。ここに$t=\pi$を代入すると、
 \begin{align}
@@ -35,4 +36,40 @@
 	\sum_{n=1}^{\infty}\frac{1}{n^{2}}=\frac{\pi^{2}}{6}
 \end{equation}
 であることが示された\footnote{\url{http://otaku-of-suri.hatenablog.com/entry/2016/06/17/130215}}。
+
+\newpage
+
+\section{Fourier級数展開を用いる方法}
+式~\eqref{eq:t^2-fourier}において$t=0$を代入すると、
+\begin{equation}
+	0=\frac{\pi^{2}}{3}+4\sum_{n=1}^{\infty}\frac{(-1)^{n}}{n^{2}}
+\end{equation}
+が得られる。この式を整理すると、
+\begin{equation}
+	\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n^{2}}=\frac{\pi^{2}}{12}
+\end{equation}
+となる。
+
+一方で、$\sum\frac{1}{n^2}$を求めたいが、これは$n\geq 2$において、
+\begin{equation}
+	\frac{1}{n^{2}}<\frac{1}{n(n-1)}=\frac{1}{n-1}-\frac{1}{n}
+\end{equation}
+となることを用いると、$\sum\frac{1}{n^2}<2$が示される。
+よって、この級数は正項級数で上に有界であるから収束する。
+この収束値を$\alpha$とおく。このとき、
+
+\begin{align}
+	\alpha-\frac{\pi^{2}}{12}
+	&=\sum_{n=1}^{\infty}\frac{1}{n^2}-\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n^{2}}\\
+	&=\sum_{n=1}^{\infty}\left\{\frac{1}{n^{2}}-\frac{(-1)^{n+1}}{n^{2}}\right\}\\
+	&=\sum_{n:偶数}\frac{2}{n^{2}}\\
+	&=\sum_{m=1}^{\infty}\frac{2}{(2m)^{2}}\\
+	&=\frac{1}{2}\sum_{n=1}^{\infty}\frac{1}{n^{2}}=\frac{\alpha}{2}
+\end{align}
+これより、
+\begin{equation}
+	\alpha=\sum_{n=1}^{\infty}\frac{1}{n^{2}}=\frac{\pi^{2}}{6}
+\end{equation}
+が示された\footnote{\url{http://otaku-of-suri.hatenablog.com/entry/2016/06/17/130215}}。
+
 \end{document}

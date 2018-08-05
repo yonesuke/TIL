@@ -1,5 +1,6 @@
 \documentclass{jsarticle}
 \usepackage{amsmath,amssymb}
+\usepackage{ascmac}
 \usepackage[dvipdfmx]{graphicx,color}
 \usepackage{url}
 
@@ -71,5 +72,75 @@
 	\alpha=\sum_{n=1}^{\infty}\frac{1}{n^{2}}=\frac{\pi^{2}}{6}
 \end{equation}
 が示された\footnote{\url{http://otaku-of-suri.hatenablog.com/entry/2016/06/17/130215}}。
+
+\newpage
+
+\section{中間値の定理を用いる方法}
+
+この証明のアイデアは、$n\geq 0$で成り立つ次の恒等式
+\footnote{恒等式~\eqref{eq:identity}は$x=2m\pi,m\in\mathbb{Z}$で値を持たないが、
+その場合は極限値を考える。}
+\begin{equation}
+	\frac{1}{2}+\sum_{k=1}^{n}\cos(kx)=\frac{\sin\left(n+\frac{1}{2}\right)x}{2\sin\frac{x}{2}}
+	\label{eq:identity}
+\end{equation}
+と中間値の定理を用いるものである。具体的には次の命題を用いる。
+\begin{screen}
+	$f:[a,b]\to\mathbb{R}$を$[a,b]$上で連続とし、
+	$g:[a,b]\to\mathbb{R}$を$[a,b]$上で非負関数で積分可能($g\in\mathrm{L}^{1}[a,b]$)とする。
+	このとき、ある$\xi\in[a,b]$が存在して、次が成立する。
+	\begin{equation}
+		\int_{a}^{b}f(x)g(x)dx=f(\xi)\int_{a}^{b}g(x)dx
+	\end{equation}
+\end{screen}
+
+このとき、式~\eqref{eq:identity}の両辺に$x^{2}-2x$を掛けて$[0,\pi]$上で積分すると、
+左辺は、
+\begin{align}
+	&\int_{0}^{\pi}\left\{\frac{1}{2}+\sum_{k=1}^{n}\cos(kx)\right\}(x^{2}-2\pi x)dx\\
+	=&\frac{1}{2}\int_{0}^{\pi}(x^{2}-2\pi x)dx+\sum_{k=1}^{n}\int_{0}^{\pi}\cos(kx)(x^2-2\pi x)dx\\
+	=&\frac{1}{2}\left[\frac{1}{6}x^{3}-\frac{\pi}{2}x^{2}\right]_{0}^{\pi}
+	+\sum_{k=1}^{n}\int_{0}^{\pi}\left(\frac{1}{k}\sin(kx)\right)'(x^{2}-2\pi x)dx\\
+	=&-\frac{\pi^{3}}{3}
+	+\sum_{k=1}^{n}\left\{\left[\frac{1}{k}\sin(kx)(x^2-2\pi x)\right]_{0}^{\pi}
+	-\frac{2}{k}\int_{0}^{\pi}\sin(kx)(x-\pi)dx\right\}\\
+	=&-\frac{\pi^{3}}{3}
+	-\sum_{k=1}^{n}\frac{2}{k}\int_{0}^{\pi}\left(-\frac{1}{k}\cos(kx)\right)'(x-\pi)dx\\
+	=&-\frac{\pi^{3}}{3}+\sum_{k=1}^{n}\frac{2}{k^{2}}
+	\left\{\left[\cos(kx)(x-\pi)\right]_{0}^{\pi}
+	-\int_{0}^{\pi}\cos(kx)dx
+	\right\}\\
+	=&-\frac{\pi^{3}}{3}+\sum_{k=1}^{n}\frac{2\pi}{k^{2}}
+\end{align}
+となる。右辺については、
+\begin{align}
+	&\int_{0}^{\pi}(x-2\pi)\frac{\frac{x}{2}}{\sin\frac{x}{2}}\sin\left(\left(n+\frac{1}{2}\right)x\right)dx\\
+	=&\int_{0}^{\pi}(x-2\pi)\frac{\frac{x}{2}}{\sin\frac{x}{2}}\left\{-\frac{1}{n+\frac{1}{2}}\cos\left(\left(n+\frac{1}{2}\right)x\right)\right\}'dx\\
+	=&-\left[(x-2\pi)\frac{\frac{x}{2}}{\sin\frac{x}{2}}\frac{1}{n+\frac{1}{2}}\cos\left(\left(n+\frac{1}{2}\right)x\right)\right]_{0}^{\pi}
+	+\frac{1}{n+\frac{1}{2}}\int_{0}^{\pi}\left\{(x-2\pi)\frac{\frac{x}{2}}{\sin\frac{x}{2}}\right\}'\cos\left(\left(n+\frac{1}{2}\right)x\right)dx\\
+	=&\frac{-2\pi}{n+\frac{1}{2}}
+	+\frac{\cos\left(\left(n+\frac{1}{2}\right)\xi_{n}\right)}{n+\frac{1}{2}}
+	\int_{0}^{\pi}\left\{(x-2\pi)\frac{\frac{x}{2}}{\sin\frac{x}{2}}\right\}'dx\\
+	=&\frac{-2\pi}{n+\frac{1}{2}}
+	+\frac{\cos\left(\left(n+\frac{1}{2}\right)\xi_{n}\right)}{n+\frac{1}{2}}\left(2\pi-\frac{\pi^{2}}{2}\right)\to0
+\end{align}
+となることがわかる。
+よって、両辺の極限$n\to\infty$を取ると、
+\begin{equation}
+	-\frac{\pi^{3}}{3}+\sum_{k=1}^{\infty}\frac{2\pi}{k^{2}}=0
+\end{equation}
+となり、これを整理すると、
+\begin{equation}
+	\sum_{k=1}^{\infty}\frac{1}{k^{2}}=\frac{\pi^{2}}{6}
+\end{equation}
+となり、Basel問題が示された。
+
+
+\begin{thebibliography}{9}
+\bibitem{hoge}
+	Samuel G. Moreno,
+	A One-Sentence and Truly Elementary Proof of the Basel Problem,
+	arXiv:1502.07667.
+\end{thebibliography}
 
 \end{document}

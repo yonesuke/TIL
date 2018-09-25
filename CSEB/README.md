@@ -1,4 +1,4 @@
-# 計算科学演習B
+# [Computational Science, Excercise B(計算科学演習B)](http://ais.sys.i.kyoto-u.ac.jp/~fukazawa/CSEB_2018/)
 
 スパコンを使って拡散方程式の初期値境界値問題を解かせる授業。
 具体的には逐次計算、OpenMP、MPIを用いて高速計算を行わせた。

@@ -2,6 +2,10 @@
 \usepackage{amsmath,amssymb}
 \usepackage{ascmac}
 \usepackage[dvipdfmx]{graphicx,color}
+\usepackage{theorem}
+\newtheorem{theorem}{定理}
+\newtheorem{proof}{証明}
+\def\qed{\hfill $\Box$}
 
 \begin{document}
 \title{中間値の定理}
@@ -9,13 +13,92 @@
 \maketitle	
 
 \begin{abstract}
-中間値の定理は微分積分学で学ぶ中心的な定理の一つで、
+\textbf{中間値の定理(Intermidiate value theorem)}は微分積分学で学ぶ中心的な定理の一つで、
 様々な証明方法が知られている。
 ここでは中間値の定理の証明方法をできる限り紹介したい。
 \end{abstract}
 
-\section{中間値の定理}
-\begin{itembox}[l]{中間値の定理}
-連続な関数$f\colon\mathbb{R}\to[a,b]$
-\end{itembox}
+\begin{theorem}[中間値の定理]
+有界閉区間$I=[a,b]$上の連続関数$f$は両端での値$f(a),f(b)$の間の
+任意の値を取る。
+\end{theorem}
+
+\begin{proof}[区間縮小法を用いた証明]
+簡単のため、$f(a)\leq 0,f(b)\geq 0$とする。このとき、
+ある$c\in[a,b]$が存在して、$f(c)=0$となることを示せば良い。
+
+$a_{1}=a,b_{1}=b$として数列$\{a_{n}\}_{n=1}^{\infty},\{b_{n}\}_{n=1}^{\infty}$を次のように再帰的に定める。
+\begin{itemize}
+\item　$f\left(\frac{a_{n}+b_{n}}{2}\right)\leq0$
+ならば、\[
+a_{n+1}=\frac{a_{n}+b_{n}}{2},b_{n+1}=b_{n}
+\]
+に更新する。
+\item $f\left(\frac{a_{n}+b_{n}}{2}\right)>0$
+ならば、\[
+a_{n+1}=a_{n},b_{n+1}=\frac{a_{n}+b_{n}}{2}
+\]
+に更新する。
+\end{itemize}
+このとき、$a_{n},b_{n}$の構成の仕方から
+\[
+a_{1}\leq a_{2}\leq\cdots a_{n}\leq\cdots\leq b_{n}\leq\cdots\leq b_{2}\leq b_{1}
+\]
+が成り立つ。これより、$\{a_{n}\},\{b_{n}\}$それぞれは上に単調増加、下に単調減少で有界であるから
+ある収束値$c_{a},c_{b}$を持つ。
+また、
+\begin{align*}
+b_{n}-a_{n}&=\frac{1}{2}(b_{n-1}-a_{n-1})\\
+&=\frac{1}{2^{n-1}}(b-a)
+\end{align*}
+であるので、
+\begin{align*}
+c_{b}-c_{a}&=\lim_{n\to\infty}b_{n}-\lim_{n\to\infty}a_{n}\\
+&=\lim_{n\to\infty}(b_{n}-a_{n})\\
+&=\lim_{n\to\infty}\frac{b-a}{2^{n-1}}=0
+\end{align*}
+となる。ゆえに、数列$\{a_{n}\},\{b_{n}\}$は同じ値$c$に収束する。
+
+最後に、$a_{n},b_{n}$の構成の仕方から\[
+f(a_{n})\leq0\leq f(b_{n})
+\]
+が成立する。$f$の連続性と合わせると、
+$a_{n}$については、
+\begin{align*}
+f(c)=f\left(\lim_{n\to\infty}a_{n}\right)=\lim_{n\to\infty}f(a_{n})\leq0
+\end{align*}
+である。$b_{n}$については、
+\begin{align*}
+f(c)=f\left(\lim_{n\to\infty}b_{n}\right)=\lim_{n\to\infty}f(b_{n})\geq0
+\end{align*}
+となる。これより\[
+f(c)=0
+\]
+が示された。
+\qed\end{proof}
+
+\appendix
+\section{補足}
+中間値の定理を証明する中で用いたいくつかの定理をここでは証明する。
+\begin{theorem}
+上に有界な単調増加数列は収束する。
+\end{theorem}
+\begin{proof}
+上に有界な単調増加な数列を$\{a_{n}\}_{n=1}^{\infty}$とおく。
+このとき、上に有界であることから$A=\{a_{n}\mid n\in\mathbb{N}\}$の上限$\alpha$
+が存在する。
+任意の$\varepsilon>0$について、$\alpha-\varepsilon<\alpha$であるから、
+ある$n_{0}\in\mathbb{N}$が存在して、
+\[
+\alpha-\varepsilon<a_{n_{0}}\leq\alpha<\alpha+\varepsilon
+\]
+が成り立つ。
+$\{a_{n}\}$は単調増加であることを用いると、任意の$\varepsilon>0$に対して
+ある$n_{0}\in\mathbb{N}$が存在して、$n\geq n_{0}$で\[
+\left|a_{n}-\alpha\right|<\varepsilon
+\]
+である。よって$\{a_{n}\}$は$\alpha$に収束する。
+以上より、上に有界な単調増加数列は収束することが示された。
+\qed\end{proof}
+
 \end{document}

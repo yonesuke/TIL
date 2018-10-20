@@ -74,7 +74,22 @@ z=\int_{-\infty}^{\infty}\int_{-\pi}^{\pi} F(\theta,\omega,t)e^{i\theta}d\theta 
 
 \section{Ott--Antonsen縮約}
 連続の式は無限次元の偏微分方程式になっている。
-そのため、
+そのため、無限次元を有限次元に縮約する方法がいくつか存在する。
+偏微分方程式を縮約する代表的なものとしては中心多様体縮約がある。
+ただ、この手法は定常状態からの摂動を考えるので定常状態から"離れた"ところでの解析
+は非常に難しい。
+蔵本モデルに限定して考えると、Ott--Antonsen縮約がある。
+Ott--Antonsen縮約は求めたい確率密度関数$F(\theta,\omega,t)$をある関数$a(\omega,t)$を用いて
+\begin{align}
+F(\theta,\omega,t)=\frac{g(\omega)}{2\pi}\left[1+\left(\sum_{k\in\mathbb{N}}a(\omega,t)^{k}e^{ik\theta}+\mathrm{c.c.}\right)\right]
+\end{align}
+と書ける、としたものである。彼らの主張は蔵本モデルの集団的な運動(ここでいう秩序変数)を
+知る限りにおいては確率密度関数$F(\theta,\omega,t)$は上の形に制限しても変わらない、
+というものである。
+なので、蔵本モデルを解析するときには、$F$を上の形に制限したものを連続の式に代入し、
+それによって得られる$a(\omega,t)$に関する偏微分方程式を解けば良い、ということになる。
+
+$F(\theta,\omega,t)$を上の形に制限したものを連続の式に代入する。
 
 \bibliography{oa}
 \bibliographystyle{junsrt}

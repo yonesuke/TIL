@@ -5,6 +5,7 @@
 \usepackage{theorem}
 \newtheorem{theorem}{定理}
 \newtheorem{proof}{証明}
+\newtheorem{eg}{例}
 \def\qed{\hfill $\Box$}
 
 \begin{document}
@@ -89,7 +90,40 @@ F(\theta,\omega,t)=\frac{g(\omega)}{2\pi}\left[1+\left(\sum_{k\in\mathbb{N}}a(\o
 なので、蔵本モデルを解析するときには、$F$を上の形に制限したものを連続の式に代入し、
 それによって得られる$a(\omega,t)$に関する偏微分方程式を解けば良い、ということになる。
 
-$F(\theta,\omega,t)$を上の形に制限したものを連続の式に代入する。
+$F(\theta,\omega,t)$を上の形に制限したものを連続の式に代入すると、
+\begin{align}
+\begin{split}
+&\frac{\partial a}{\partial t}+i\omega a+\frac{K}{2}(a^{2}z-z^{*})=0,\\
+&z=\int_{-\infty}^{\infty}g(\omega)a(\omega,t)^{*}d\omega
+\end{split}
+\end{align}
+という$a$に関する偏微分方程式が得られる。
+
+\begin{eg}[Cauchy分布]
+$g(\omega)$がCauchy分布
+\begin{align}
+g(\omega)=\frac{\gamma}{\pi}\frac{1}{\omega^{2}+\gamma^{2}}
+\end{align}
+の場合を考える。
+このとき、秩序変数は留数定理を用いて計算することができて、
+$z(t)=a(i\gamma,t)^{*}$となるから、$a$に関する偏微分方程式を$\omega=i\gamma$
+に制限したものを考えれば良い。
+このとき、
+\begin{align}
+\frac{dz}{dt}=\left[\left(\frac{K}{2}-\gamma\right)-\frac{K}{2}r^{2}\right]z
+\end{align}
+が得られる。
+右辺のゼロ点を見ることで$t\to\infty$における$r$の$K$依存性がわかる。
+$K_{\rm c}:=2\gamma$を用いると、$K<K_{\rm c}$においては、
+\begin{align}
+r=0
+\end{align}
+が得られ、$K\geq K_{\rm c}$においては、
+\begin{align}
+r=0,\sqrt{1-\frac{K_{\rm c}}{K}}
+\end{align}
+が得られる。
+\end{eg}
 
 \bibliography{oa}
 \bibliographystyle{junsrt}

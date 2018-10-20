@@ -8,7 +8,7 @@
 \def\qed{\hfill $\Box$}
 
 \begin{document}
-\title{Ott--Antonsen縮約\cite{ott2008low,ott2009long}による蔵本モデルの解析}
+\title{Ott--Antonsen縮約による蔵本モデルの解析}
 \author{米田亮介}
 \maketitle	
 
@@ -20,10 +20,63 @@
 \end{abstract}
 
 \section{蔵本モデル}
+自然界の興味深い現象のひとつに\textbf{集団同期現象}がある。
+集団同期現象とは、注目する物体の一群が集団で揃った動きをするものである。
+代表的な例としては、アマゾンの木々で暮らすホタルたちが一斉に同じタイミングでピカピカと
+光りだす、というものである。
+その他にも、概日リズムも神経系の集団同期現象として捉えて解析することができることも知られている。
 
+集団同期現象を記述するモデルは様々に研究されてきたが、
+特にその単純さと数学的な奥深さから特に知られてるのが、\textbf{蔵本モデル}である。
+蔵本モデルは$\mathbb{S}^{1}$上を運動する$N$個の振動子に関するモデルであり、
+$i$番目の振動子の位相を$\theta_{i}$として、
+\begin{align}
+\frac{d\theta_{i}}{dt}=\omega_{i}+\frac{K}{N}\sum_{j=1}^{N}\sin(\theta_{j}-\theta_{i}),\quad i=1,\cdots,N
+\end{align}
+という$N$次元の微分方程式系で表される。
+ここで$\omega_{i}$は$i$番目の振動子の自然振動数で、ある確率密度関数$g(\omega)$
+から独立に選ばれる。また、$K$は結合定数である。
 
+$N$個の振動子たちがどれだけ揃っているのか、を表す物理量として、\textbf{秩序変数}を導入する。
+秩序変数は
+\begin{align}
+z=re^{i\psi}=\frac{1}{N}\sum_{j=1}^{N}e^{i\theta_{j}}
+\end{align}
+で表され、$\mathbb{S}^{1}$を複素平面上の単位円とみなしたときの重心に相当する。
+$r\sim0$のときは、重心が原点近辺にあることから、振動子たちは$\mathbb{S}^{1}$上に
+まんべんなく存在することになり、これは非同期状態に対応している。
+一方で、$r\sim1$のときには、重心が$\mathbb{S}^{1}$のある箇所に局在しており、
+これは振動子たちがその箇所に集中的に集まっていることを表している。
+よって、$r\sim1$のときが同期状態に対応する。
 
-\bibliography{oa} %hoge.bibから拡張子を外した名前
-\bibliographystyle{junsrt} %参考文献出力スタイル
+蔵本モデルの自然振動数は確率密度関数$g(\omega)$に従うため、
+$N$次元のモデルを考える限りは有限サイズゆらぎが避けられない。
+そのため、蔵本モデルを解析する際は無限次元に拡張することがしばしばある。
+蔵本モデルを無限次元に拡張すると、粒子数が保存することから連続の式で表されることが示されている。
+$F(\theta,\omega,t)$を時間$t$における$\theta,\omega$の確率密度関数として、
+\begin{align}
+\begin{split}
+&\frac{\partial F}{\partial t}+\frac{\partial}{\partial t}(V[F]F)=0,\\
+&V[F](\theta,\omega,t)=\omega+K\int_{-\infty}^{\infty}\int_{-\pi}^{\pi} F(\theta',\omega',t)\sin(\theta'-\theta)d\theta'd\omega'
+\end{split}
+\end{align}
+で表される。
+このとき、$\omega$が$g(\omega)$に従うことから、
+\begin{align}
+\int_{-\pi}^{\pi}F(\theta,\omega,t)d\theta=g(\omega)
+\end{align}
+が成立する。
+また、この連続極限において、秩序変数は
+\begin{align}
+z=\int_{-\infty}^{\infty}\int_{-\pi}^{\pi} F(\theta,\omega,t)e^{i\theta}d\theta d\omega
+\end{align}
+と書ける。
+
+\section{Ott--Antonsen縮約}
+連続の式は無限次元の偏微分方程式になっている。
+そのため、
+
+\bibliography{oa}
+\bibliographystyle{junsrt}
 
 \end{document}

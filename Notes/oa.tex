@@ -125,6 +125,23 @@ r=0,\sqrt{1-\frac{K_{\rm c}}{K}}
 が得られる。
 \end{eg}
 
+\section{外力の入った蔵本モデル}
+蔵本モデルに外力を入れたものを考える。
+\begin{align}
+\frac{d\theta_{i}}{dt}=\omega_{i}+\frac{K}{N}\sum_{j=1}^{N}\sin(\theta_{j}-\theta_{i})-h\sin\theta_{i},\quad i=1,\cdots,N
+\end{align}
+このモデルの連続極限は
+\begin{align}
+\begin{split}
+&\frac{\partial F}{\partial t}+\frac{\partial}{\partial t}(V[F]F)=0,\\
+&V[F](\theta,\omega,t)=\omega+K\int_{-\infty}^{\infty}\int_{-\pi}^{\pi} F(\theta',\omega',t)\sin(\theta'-\theta)d\theta'd\omega'-h\sin\theta
+\end{split}
+\end{align}
+である。上と同様にCauchy分布の場合に計算を行うと秩序変数に関する次の微分方程式が得られる。
+\begin{align}
+\frac{dz}{dt}=\frac{h}{2}+(\frac{K}{2}-\gamma)z-\frac{h}{2}z^{2}-\frac{K}{2}r^{2}z.
+\end{align}
+
 \bibliography{oa}
 \bibliographystyle{junsrt}
 

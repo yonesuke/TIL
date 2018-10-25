@@ -1,0 +1,83 @@
+\documentclass{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{ascmac}
+\usepackage[dvipdfmx]{graphicx,color}
+\usepackage{framed}
+\usepackage{theorem}
+\newtheorem{theorem}{定理}
+\newtheorem{proof}{証明}
+\newtheorem{eg}{例}
+\def\qed{\hfill $\Box$}
+
+\begin{document}
+\title{メモ}
+\author{米田亮介}
+\maketitle	
+
+\begin{abstract}
+論文\cite{terada2018role}のメモ。
+\end{abstract}
+
+\section{モデル}
+位相縮約の方法を使うと、広範囲の集団のリミットサイクル振動子を次の方程式に縮約できる。
+\begin{align}
+\frac{d\theta_{j}}{dt}=\omega_{j}+\sum_{k=1}^{N}\Gamma_{jk}(\theta_{j}-\theta_{k})+H_{j}(\theta,t).
+\end{align}
+ここで$\theta_{j},\omega_{j}$は$j$番目の振動子の位相と自然振動数で、
+ある確率密度関数$g(\omega)$に従う。
+$\Gamma_{jk}(\theta),H_{j}(\theta,t)$は$2\pi$周期の関数で、
+$j,k$番目の振動子の間の結合の強さと、$j$番目の振動子に働く外力の強さを表す。
+
+ここでは次のようなものを考える。
+\begin{framed}
+\begin{align}
+\frac{d\theta_{j}}{dt}=\omega_{j}-\frac{K}{N}\sum_{k=1}^{N}\sigma_{j}\rho_{k}\sin(\theta_{j}-\theta_{k}+\alpha)-h\sin(\theta_{j}-\omega_{\rm ex}t).
+\end{align}
+\end{framed}
+ここで、パラメーター$\alpha(|\alpha|<\pi/2)$はphase-lagを表す。
+$h$は外力の強さを表し、$\omega_{\rm ex}$は振動数である。
+
+このモデルをweighted-couplingモデルと言う。
+Sakaguchi-Kuramotoモデルは$\sigma=\rho=1$としたものであり、
+さらに$\alpha=0$としたものがKuramotoモデルになる。
+
+どれだけ同期したかを調べるために次の秩序変数を導入する。
+\begin{framed}
+\begin{align}
+z=\frac{1}{N}\sum_{j=1}^{N}e^{i\theta_{j}}.
+\end{align}
+\end{framed}
+さらに、次の秩序変数も導入する。
+\begin{framed}
+\begin{align}
+w=\frac{1}{N}\sum_{j=1}^{N}\rho_{j}e^{i\theta_{j}}.
+\end{align}
+\end{framed}
+このとき、weighted-couplingモデルの式は次のようなる。
+\begin{framed}
+\begin{align}
+\frac{d\theta_{j}}{dt}=\omega_{j}+\frac{1}{2i}\left(Ke^{-i\alpha}\sigma_{j}w+he^{i\omega_{\rm ex}t}\right)e^{-i\theta_{j}}
+-\frac{1}{2i}\left(Ke^{i\alpha}\sigma_{j}w^{*}+he^{-i\omega_{\rm ex}t}\right)e^{i\theta_{j}}
+\end{align}
+\end{framed}
+
+次に、$N\to\infty$を考える。
+連続極限は、粒子数保存の観点から連続の式で表されることが知られている。
+\begin{framed}
+\begin{align}
+\frac{\partial f}{\partial t}+\frac{\partial}{\partial \theta}(vf)=0.
+\end{align}
+\end{framed}
+ここで$f(\theta,\omega,\sigma,\rho,t)$は時刻$t$における確率密度関数である。
+$\omega$が$g(\omega)$に従うことから次が成り立つ。
+\begin{align}
+g(\omega)=\int_{-\pi}^{\pi}d\theta\int_{-\infty}^{\infty}d\sigma\int_{-\infty}^{\infty}d\rho f(\theta,\omega,\sigma,\rho,t).
+\end{align}
+
+
+
+
+\bibliography{km1}
+\bibliographystyle{junsrt}
+
+\end{document}

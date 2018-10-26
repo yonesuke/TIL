@@ -8,3 +8,6 @@
 
 ## [Ott-Antonsen縮約](./oa.pdf)
 蔵本モデルを解析するのに用いられるOtt-Antonsen縮約に関しての簡単なメモ。
+
+## [Cauchyの主値積分](./pv.pdf)
+Cauchyの主値積分をまとめる。

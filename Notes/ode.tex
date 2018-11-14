@@ -1,0 +1,90 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx,color}
+\usepackage{ulem}
+\usepackage{pgf,tikz}
+\usepackage{here}
+%\usepackage{subcaption}
+\usepackage{amsmath,amssymb}
+\usepackage{comment}
+\usepackage{theorem}
+\newtheorem{theorem}{定理}
+\newtheorem{proof}{証明}
+\newtheorem{remark}{Remark}
+\def\qed{\hfill $\Box$}
+
+\usepackage{showkeys}
+
+\begin{document}
+\title{微分方程式}
+\maketitle
+\section{11/14の微積続論II小テスト}
+\begin{itemize}
+\item 
+\begin{align}
+\frac{dx}{dt}=x\log t
+\end{align}
+$x=0$は解である。
+$x\ne 0$のとき両辺を変数分離すると、
+\begin{align}
+\frac{dx}{x}=\log tdt
+\end{align}
+であり、これを積分すると、
+\begin{align}
+\log x=t\log t-t+C'
+\end{align}
+である。ここで$C'$は積分定数である。
+これより、解は
+\begin{align}
+x(t)=Ce^{t\log t-t}=Ce^{-t}t^{t}
+\end{align}
+となる。ここで$C>0$は定数。
+$x=0$の解もまとめると、
+\begin{align}
+x(t)=Ce^{-t}t^{t},\quad C\geq 0
+\end{align}
+となる。
+\item
+\begin{align}
+\frac{dx}{dt}=x\log t+t^{t}
+\end{align}
+この問題には定数変化法を使う。
+つまり、解の形を
+\begin{align}
+x(t)=C(t)e^{-t}t^{t}
+\end{align}
+の形に決め打ちして、$C(t)$を求めるという算段である。
+このとき、
+\begin{align}
+\dot{C}(t)e^{-t}t^{t}+x\log t=x\log t+t^{t}
+\end{align}
+である。これより、$C(t)$に関しての微分方程式
+\begin{align}
+\dot{C}(t)=e^{t}
+\end{align}
+が得られる。故に
+\begin{align}
+C(t)=e^{t}+C
+\end{align}
+となる。ここで$C$は積分定数である。
+以上より、はじめの微分方程式の解は
+\begin{align}
+x(t)=(e^{t}+C)e^{-t}t^{t}=t^{t}+Ce^{-t}t^{t}
+\end{align}
+と求まった。
+
+\begin{remark}
+微分方程式を解くときに思考停止で変数分離法とか定数変化法を使ってるけど、
+解が本当にこれだけなのか？ということは常にしっかりと考えるべきことなのかもしれない。
+初期値を与えたときに、解の存在と一意性を提示してくれるものは
+ベクトル場のリプシッツ連続性であった。
+なので、ひとたびベクトル場のリプシッツ連続性を確認することができたならば、
+変数分離法や定数変化法は強力な手法になるのである。
+今回の問題では自励系の微分方程式ではないので、
+補助変数を用意して強引に自励系の多変数微分方程式系にする必要がある。
+このとき、高次元にベクトル場が与えられたときにも解の存在と一意性を決めるのは
+リプシッツ連続性になるのだろうか？
+このことについても少し調べてみる必要がありそうだ。
+\end{remark}
+
+\end{itemize}
+\end{document}

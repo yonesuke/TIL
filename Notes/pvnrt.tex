@@ -6,6 +6,7 @@
 \newtheorem{theorem}{定理}
 \newtheorem{proof}{証明}
 \newtheorem{eg}{例}
+\newtheorem{remark}{Remark}
 \def\qed{\hfill $\Box$}
 
 \begin{document}
@@ -60,4 +61,18 @@ S(E,N,V)=k\log\Omega_{0}=Nk\left[\log\frac{V}{N}+\frac{3}{2}\log\frac{2E}{3N}
 \Longleftrightarrow&pV=NkT
 \end{align}
 となり、理想気体の状態方程式が得られた。
+
+\begin{remark}
+今回、状態数の計算には久保亮五先生の本の定義に従って$h$で割ることをした。
+しかし、状態数としては別に$h$で割る必要はない。
+実際、エネルギーに関する式や、状態方程式においては$h$が登場してないことからわかる。	
+\end{remark}
+
+\begin{remark}
+半径$r$の$N$次元球の体積$C_{N}$はガンマ関数を用いて次のように書ける。
+\begin{align}
+C_{N}=\frac{\pi^{N/2}}{\Gamma\left(\frac{N}{2}+1\right)}r^{N}.
+\end{align}
+\end{remark}
+
 \end{document}

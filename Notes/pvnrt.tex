@@ -1,0 +1,63 @@
+\documentclass{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{ascmac}
+\usepackage[dvipdfmx]{graphicx,color}
+\usepackage{theorem}
+\newtheorem{theorem}{定理}
+\newtheorem{proof}{証明}
+\newtheorem{eg}{例}
+\def\qed{\hfill $\Box$}
+
+\begin{document}
+\title{理想気体の状態方程式の導出}
+\author{米田亮介}
+\maketitle	
+
+設定としては$N$個の質点からなる理想気体(質点同士の衝突を考えない気体)
+が体積$V$の箱のなかに閉じ込められるときの状態方程式を考える。
+
+この系のハミルトニアンは、相互作用項がないことを考慮して
+\begin{align}
+H=\sum_{i=1}^{3N}\frac{p_{i}^{2}}{2m}
+\end{align}
+と書ける。
+ここで、各質点は等質量で$m$とした。
+このとき、エネルギーが$E$であるときの状態数$\Omega_{0}(E,N,V)$は次のように計算できる。
+\begin{align}
+\Omega_{0}(E,N,V)=\frac{V^{N}}{h^{3N}N!}\int_{\sum p_{i}^{2}\leq2mE}\prod_{i} dp_{i}s.
+\end{align}
+この積分は半径$\sqrt{2mE}$の$3N$次元球の体積を表す。
+ゆえにこの積分は計算する事ができて、
+\begin{align}
+\Omega_{0}(E,N,V)=\frac{V^{N}}{h^{3N}N!}\frac{(2\pi mE)^{3N/2}}{\Gamma\left(\frac{3N}{2}+1\right)}
+\end{align}
+となる。
+Stirlingの公式
+\begin{align}
+N!\simeq\left(\frac{N}{e}\right)^{N}
+\end{align}
+を用いるとエントロピーは次のように計算できる。
+\begin{align}
+S(E,N,V)=k\log\Omega_{0}=Nk\left[\log\frac{V}{N}+\frac{3}{2}\log\frac{2E}{3N}
++\log\frac{(2\pi m)^{3/2}e^{5/2}}{h^{3}}\right].
+\label{eq:entorpy}
+\end{align}
+エントロピーに関する次の公式
+\begin{align}
+&\frac{1}{T}=\left(\frac{\partial S}{\partial E}\right)_{V,N},\\
+&\frac{p}{T}=\left(\frac{\partial S}{\partial V}\right)_{E,N}
+\end{align}
+を思い出す。
+式~\eqref{eq:entorpy}をエネルギーで偏微分すると、
+\begin{align}
+&\frac{1}{T}=Nk\frac{3}{2E}\\
+\Longleftrightarrow&kT=\frac{2}{3}\frac{E}{N}=\frac{2}{3}\overline{\varepsilon}
+\end{align}
+が得られる($\overline{\varepsilon}$はエネルギー密度)。
+式~\eqref{eq:entorpy}を体積で偏微分すると、
+\begin{align}
+&\frac{p}{T}=Nk\frac{1}{V}\\
+\Longleftrightarrow&pV=NkT
+\end{align}
+となり、理想気体の状態方程式が得られた。
+\end{document}

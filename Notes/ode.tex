@@ -5,6 +5,7 @@
 \usepackage{here}
 %\usepackage{subcaption}
 \usepackage{amsmath,amssymb}
+\usepackage{ascmac}
 \usepackage{comment}
 \usepackage{theorem}
 \newtheorem{theorem}{定理}
@@ -15,62 +16,70 @@
 \usepackage{showkeys}
 
 \begin{document}
-\title{微分方程式}
+\title{微分積分学俗論II}
 \maketitle
 \section{11/14の微積続論II小テスト}
-\begin{itemize}
+\begin{screen}
+次の微分方程式を解け。
+\begin{enumerate}
 \item 
-\begin{align}
+\begin{eqnarray}
 \frac{dx}{dt}=x\log t
-\end{align}
+\end{eqnarray}
+\item 
+\begin{eqnarray}
+\frac{dx}{dt}=x\log t+t^{t}
+\end{eqnarray}
+\end{enumerate}
+\end{screen}
+\begin{enumerate}
+\item 
 $x=0$は解である。
 $x\ne 0$のとき両辺を変数分離すると、
-\begin{align}
+\begin{eqnarray}
 \frac{dx}{x}=\log tdt
-\end{align}
+\end{eqnarray}
 であり、これを積分すると、
-\begin{align}
+\begin{eqnarray}
 \log |x|=t\log t-t+C'
-\end{align}
+\end{eqnarray}
 である。ここで$C'$は積分定数である。
 これより、解は
-\begin{align}
+\begin{eqnarray}
 |x(t)|=Ce^{t\log t-t}=Ce^{-t}t^{t}
-\end{align}
+\end{eqnarray}
 となる。ここで$C>0$は定数。
 $x=0$の解もまとめると、任意の$C\in\mathbb{R}$に対して
-\begin{align}
+\begin{eqnarray}
 x(t)=Ce^{-t}t^{t}
-\end{align}
+\end{eqnarray}
 となる。
 \item
-\begin{align}
-\frac{dx}{dt}=x\log t+t^{t}
-\end{align}
 この問題には定数変化法を使う。
 つまり、解の形を
-\begin{align}
+\begin{eqnarray}
 x(t)=C(t)e^{-t}t^{t}
-\end{align}
+\end{eqnarray}
 の形に決め打ちして、$C(t)$を求めるという算段である。
 このとき、
-\begin{align}
+\begin{eqnarray}
 \dot{C}(t)e^{-t}t^{t}+x\log t=x\log t+t^{t}
-\end{align}
+\end{eqnarray}
 である。これより、$C(t)$に関しての微分方程式
-\begin{align}
+\begin{eqnarray}
 \dot{C}(t)=e^{t}
-\end{align}
+\end{eqnarray}
 が得られる。故に
-\begin{align}
+\begin{eqnarray}
 C(t)=e^{t}+C
-\end{align}
+\end{eqnarray}
 となる。ここで$C$は積分定数である。
 以上より、はじめの微分方程式の解は
-\begin{align}
+\begin{eqnarray}
 x(t)=(e^{t}+C)e^{-t}t^{t}=t^{t}+Ce^{-t}t^{t}
-\end{align}
+\end{eqnarray}
 と求まった。
+\end{enumerate}
 
 \begin{remark}
 微分方程式を解くときに思考停止で変数分離法とか定数変化法を使ってるけど、
@@ -86,5 +95,17 @@ x(t)=(e^{t}+C)e^{-t}t^{t}=t^{t}+Ce^{-t}t^{t}
 このことについても少し調べてみる必要がありそうだ。
 \end{remark}
 
-\end{itemize}
+\section{テキスト第3章問5}
+\begin{screen}
+$a_{j}(t)(j=1,2)$と$q(t)$を$t$のある関数として2階非同次方程式
+\begin{eqnarray}
+x''+a_{1}(t)x'+a_{2}(t)x=q(t)
+\end{eqnarray}
+を考える。$x=t,t^{2},t^{3}$が解であるとき、次の問いに答えよ。
+\begin{enumerate}
+\item 関数$a_{j}(t)$と$q(t)$を定めよ。
+\item 一般解を求めよ。
+\end{enumerate}
+\end{screen}
+
 \end{document}

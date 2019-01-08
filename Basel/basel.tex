@@ -1,10 +1,12 @@
-\documentclass{jsarticle}
+\documentclass[fleqn]{jsarticle}
 \usepackage{euler}
 \usepackage{amsmath,amssymb}
 \usepackage{ascmac}
 \usepackage[dvipdfmx]{graphicx,color,hyperref}
 \usepackage{pxjahyper}
 \usepackage{url}
+\usepackage{framed}
+\definecolor{shadecolor}{gray}{0.80}
 
 \title{Basel問題}
 \author{米田亮介\footnote{yonedaryosuke@amp.i.kyoto-u.ac.jp}}
@@ -27,16 +29,25 @@ Basel問題の証明に関してはEuler以降様々に提唱されている。
 \newpage
 
 \section{Fourier級数展開を用いる方法}
+\begin{shaded}
+$f(t)$を$2\pi$周期の周期関数とする。
+$f$の\textbf{(複素)フーリエ級数展開}は、
+\begin{align}
+&f(t)\sim\sum_{n=-\infty}^{\infty}f_{n}e^{int},\\
+&f_{n}=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(t)e^{-int}dt
+\end{align}
+で定められる。
+\end{shaded}
 区間$[-\pi,\pi]$で
-\begin{equation}
+\begin{align}
 	f(t)=t^{2}
-\end{equation}
-となる周期関数$f$を考える。$f$を複素フーリ級数展開すると、
-\begin{equation}
+\end{align}
+となる$2\pi$周期の周期関数$f$を考える。$f$を複素フーリ級数展開することで次の恒等式を得る。
+\begin{align}
 	t^{2}=\frac{\pi^{2}}{3}+\sum_{n\ne 0,n=-\infty}^{\infty}\frac{2(-1)^{n}}{n^{2}}e^{-int}
 	\label{eq:t^2-fourier}
-\end{equation}
-と計算できる。ここに$t=\pi$を代入すると、
+\end{align}
+ここに$t=\pi$を代入すると、
 \begin{align}
 	\pi^{2}&=\frac{\pi^{2}}{3}+\sum_{n\ne 0,n=-\infty}^{\infty}\frac{2(-1)^{n}}{n^{2}}e^{-in\pi}\\
 	&=\frac{\pi^{2}}{3}+\sum_{n\ne 0,n=-\infty}^{\infty}\frac{2(-1)^{n}}{n^{2}}(-1)^{n}\\
@@ -44,28 +55,28 @@ Basel問題の証明に関してはEuler以降様々に提唱されている。
 	&=\frac{\pi^{2}}{3}+4\sum_{n=1}^{\infty}\frac{1}{n^{2}}
 \end{align}
 となる。これより、
-\begin{equation}
+\begin{align}
 	\sum_{n=1}^{\infty}\frac{1}{n^{2}}=\frac{\pi^{2}}{6}
-\end{equation}
+\end{align}
 であることが示された\footnote{\url{http://yonesuke1729.hatenablog.com/entry/2016/06/17/130215}}。
 
 \newpage
 
 \section{Fourier級数展開を用いる方法}
 式~\eqref{eq:t^2-fourier}において$t=0$を代入すると、
-\begin{equation}
+\begin{align}
 	0=\frac{\pi^{2}}{3}+4\sum_{n=1}^{\infty}\frac{(-1)^{n}}{n^{2}}
-\end{equation}
+\end{align}
 が得られる。この式を整理すると、
-\begin{equation}
+\begin{align}
 	\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n^{2}}=\frac{\pi^{2}}{12}
-\end{equation}
+\end{align}
 となる。
 
 一方で、$\sum\frac{1}{n^2}$を求めたいが、これは$n\geq 2$において、
-\begin{equation}
+\begin{align}
 	\frac{1}{n^{2}}<\frac{1}{n(n-1)}=\frac{1}{n-1}-\frac{1}{n}
-\end{equation}
+\end{align}
 となることを用いると、$\sum\frac{1}{n^2}<2$が示される。
 よって、この級数は正項級数で上に有界であるから収束する。
 この収束値を$\alpha$とおく。このとき、
@@ -79,9 +90,9 @@ Basel問題の証明に関してはEuler以降様々に提唱されている。
 	&=\frac{1}{2}\sum_{n=1}^{\infty}\frac{1}{n^{2}}=\frac{\alpha}{2}
 \end{align}
 これより、
-\begin{equation}
+\begin{align}
 	\alpha=\sum_{n=1}^{\infty}\frac{1}{n^{2}}=\frac{\pi^{2}}{6}
-\end{equation}
+\end{align}
 が示された\footnote{\url{http://yonesuke1729.hatenablog.com/entry/2016/06/17/130215}}。
 
 \newpage
@@ -91,19 +102,19 @@ Basel問題の証明に関してはEuler以降様々に提唱されている。
 この証明のアイデアは、$n\geq 0$で成り立つ次の恒等式
 \footnote{恒等式~\eqref{eq:identity}は$x=2m\pi,m\in\mathbb{Z}$で値を持たないが、
 その場合は極限値を考える。}
-\begin{equation}
+\begin{align}
 	\frac{1}{2}+\sum_{k=1}^{n}\cos(kx)=\frac{\sin\left(n+\frac{1}{2}\right)x}{2\sin\frac{x}{2}}
 	\label{eq:identity}
-\end{equation}
+\end{align}
 と中間値の定理を用いるものである。具体的には次の命題を用いる。
-\begin{screen}
+\begin{shaded}
 	$f:[a,b]\to\mathbb{R}$を$[a,b]$上で連続とし、
 	$g:[a,b]\to\mathbb{R}$を$[a,b]$上で非負関数で積分可能($g\in\mathrm{L}^{1}[a,b]$)とする。
 	このとき、ある$\xi\in[a,b]$が存在して、次が成立する。
-	\begin{equation}
+	\begin{align}
 		\int_{a}^{b}f(x)g(x)dx=f(\xi)\int_{a}^{b}g(x)dx
-	\end{equation}
-\end{screen}
+	\end{align}
+\end{shaded}
 
 このとき、式~\eqref{eq:identity}の両辺に$x^{2}-2x$を掛けて$[0,\pi]$上で積分すると、
 左辺は、
@@ -137,13 +148,13 @@ Basel問題の証明に関してはEuler以降様々に提唱されている。
 \end{align}
 となることがわかる。
 よって、両辺の極限$n\to\infty$を取ると、
-\begin{equation}
+\begin{align}
 	-\frac{\pi^{3}}{3}+\sum_{k=1}^{\infty}\frac{2\pi}{k^{2}}=0
-\end{equation}
+\end{align}
 となり、これを整理すると、
-\begin{equation}
+\begin{align}
 	\sum_{k=1}^{\infty}\frac{1}{k^{2}}=\frac{\pi^{2}}{6}
-\end{equation}
+\end{align}
 となり、Basel問題が示された\footnote{Samuel G. Moreno,
 	A One-Sentence and Truly Elementary Proof of the Basel Problem,
 	arXiv:\href{https://arxiv.org/abs/1502.07667}{1502.07667}.}。

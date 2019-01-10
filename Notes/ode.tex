@@ -2,7 +2,6 @@
 \usepackage[dvipdfmx]{graphicx,color}
 \usepackage{ulem}
 \usepackage{ascmac}
-\usepackage{pxjahyper}
 \usepackage{pgf,tikz}
 \usepackage{here}
 %\usepackage{subcaption}
@@ -17,7 +16,7 @@
 \def\qed{\hfill $\Box$}
 \definecolor{shadecolor}{gray}{0.80}
 
-\usepackage{showkeys}
+%\usepackage{showkeys}
 
 \begin{document}
 \title{微分積分学俗論II}
@@ -67,11 +66,11 @@ x(t)=C(t)e^{-t}t^{t}
 の形に決め打ちして、$C(t)$を求めるという算段である。
 このとき、
 \begin{eqnarray}
-\dot{C}(t)e^{-t}t^{t}+x\log t=x\log t+t^{t}
+C'(t)e^{-t}t^{t}+x\log t=x\log t+t^{t}
 \end{eqnarray}
 である。これより、$C(t)$に関しての微分方程式
 \begin{eqnarray}
-\dot{C}(t)=e^{t}
+C'(t)=e^{t}
 \end{eqnarray}
 が得られる。故に
 \begin{eqnarray}
@@ -103,7 +102,7 @@ x(t)=(e^{t}+C)e^{-t}t^{t}=t^{t}+Ce^{-t}t^{t}
 \begin{shaded}
 $a_{j}(t)(j=1,2)$と$q(t)$を$t$のある関数として2階非同次方程式
 \begin{eqnarray}
-x''+a_{1}(t)x'+a_{2}(t)x=q(t)
+x''+a_{1}(t)x'+a_{2}(t)x=q(t),\quad t\ne -1
 \end{eqnarray}
 を考える。$x=t,t^{2},t^{3}$が解であるとき、次の問いに答えよ。
 \begin{enumerate}
@@ -168,4 +167,143 @@ $t,t^{2}$でも良い。
 線形空間であれば、次元の数のぶんだけ解を用意すればよいが、
 今回は線形空間でもない、という点においても非常に面白い問題であると思う。
 \end{remark}
+
+\begin{remark}
+\sout{問題文のはじめにある$t\ne -1$が意味不明。}
+$t\ne 0,1$の間違い。$t=0,1$では与えられた特解が独立でなくなるからだめ。
+\end{remark}
+
+\section{テキスト第3章問6}
+\begin{shaded}
+2階同次方程式
+\begin{eqnarray}
+x''-\frac{1}{t+1}x'+\frac{1}{(t+1)^{2}}x=0,\quad t\ne -1
+\label{eq:toi6}
+\end{eqnarray}
+に対して次の問いに答えよ。
+\begin{enumerate}
+\item $x=t+1$が解であることを示せ。
+\item 定数変化法を用いて一般解を求めよ。
+\item 初期条件$x(0)=x_{0},x'(0)=v_{0}$を満足する解を求めよ。
+\end{enumerate}
+\end{shaded}
+\begin{enumerate}
+\item 代入するだけ。
+\item 与えられた微分方程式は$x$について線形だから、
+$x=t+1$が解であれば$x=C(t+1)$も解である。
+このとき、定数変化法を用いて一般解を求めたいので、
+\begin{eqnarray}
+x=C(t)(t+1)
+\end{eqnarray}
+として、$C(t)$を求める。
+式~\eqref{eq:toi6}に代入すると、$C(t)$に関する微分方程式
+\begin{eqnarray}
+(t+1)C''+C'=0
+\end{eqnarray}
+が得られる。まず、$C'$についての微分方程式だと思って、変数分離法で解くと、
+\begin{eqnarray}
+C'(t)=\frac{c_{2}}{t+1}
+\end{eqnarray}
+が得られる。$c_{2}$は任意定数。よって、
+\begin{eqnarray}
+C(t)=c_{1}+c_{2}\log |t+1|
+\end{eqnarray}
+が得られる。$c_{1}$も任意定数\footnote{積分定数の決め方がずいぶんと恣意的になってしまった。。。}。
+$t\ne-1$で$\log|t+1|$もきちんと定義されるので問題ない。
+以上より、一般解は、
+\begin{eqnarray}
+x=c_{1}(t+1)+c_{2}(t+1)\log|t+1|
+\end{eqnarray}
+である。
+\item $t=0$における$x,x'$の値を実際に計算して任意定数を求めればよい。
+\begin{eqnarray}
+x_{0}=x(0)=c_{1},\\
+v_{0}=x'(0)=C(0)+C'(0)=c_{1}+c_{2}
+\end{eqnarray}
+であるから、$c_{1}=x_{0},c_{2}=v_{0}-x_{0}$と求まる。
+以上より、初期条件$x(0)=x_{0},x'(0)=v_{0}$を満足する解は、
+\begin{eqnarray}
+x=x_{0}(t+1)+(v_{0}-x_{0})(t+1)\log|t+1|
+\end{eqnarray}
+である。
+\end{enumerate}
+
+\section{テキスト第3章問7}
+\begin{shaded}
+2階非同次方程式
+\begin{eqnarray}
+x''-\frac{2}{t+1}x'+\frac{2}{(t+1)^{2}}x=t+1,\quad t\ne -1
+\label{eq:toi7}
+\end{eqnarray}
+に対して次の問いに答えよ。
+\begin{enumerate}
+\item 定数変化法を用いて一般解を求めよ(問2を参照せよ)。
+\item 初期条件$x(0)=x_{0},x'(0)=v_{0}$を満足する解を求めよ。
+\end{enumerate}
+\end{shaded}
+\begin{enumerate}
+\item まず、同次方程式に対する解として$x=t+1,(t+1)^{2}$がある。
+次に、非同次方程式の一般解を求めるためには、非同次方程式の特殊解を
+ひとつ求めれば良い。そのために、$x=t+1$
+に対して定数変化法を用いることを考える。
+先程と同じように$x=C(t)(t+1)$として、式~\eqref{eq:toi7}に代入
+すると、$C(t)$に関する微分方程式
+\begin{eqnarray}
+C''=1
+\end{eqnarray}
+が得られる。この微分方程式の解のひとつは、$C(t)=\frac{1}{2}t^{2}$
+となるので、特殊解は
+\begin{eqnarray}
+x=\frac{1}{2}t^{2}(t+1)^{2}
+\end{eqnarray}
+である。以上より、式~\eqref{eq:toi7}の一般解は
+\begin{eqnarray}
+x=\frac{1}{2}t^{2}(t+1)+c_{1}(t+1)+c_{2}(t+1)^{2}
+\end{eqnarray}
+である。
+\item $t=0$における$x,x'$の値を実際に計算して任意定数を求めればよい。
+\begin{eqnarray}
+x_{0}=x(0)=c_{1}+c_{2},\\
+v_{0}=x'(0)=c_{1}+2c_{2}
+\end{eqnarray}
+なので、$c_{1}=2x_{0}-v_{0},c_{2}=v_{0}-x_{0}$が分かる。
+よって、初期条件$x(0)=x_{0},x'(0)=v_{0}$を満足する解は
+\begin{eqnarray}
+x=\frac{1}{2}t^{2}(t+1)+(2x_{0}-v_{0})(t+1)+(v_{0}-x_{0})(t+1)^{2}
+\end{eqnarray}
+である。
+\end{enumerate}
+
+\section{テキスト第3章問12}
+\begin{shaded}
+次の微分方程式の一般解を求めよ。
+\begin{enumerate}
+\item $x''+x=1$
+\item $x''-x'-2x=t^{2}$
+\item $x''+x'-2x=(3t^{4}+4t^{3})e^{t}$
+\item $x''+x'+x=te^{-t}$
+\end{enumerate}
+\end{shaded}
+\begin{enumerate}
+\item 対応する同次方程式の特性方程式は
+\begin{eqnarray}
+\lambda^{2}+1=0
+\end{eqnarray}
+である。これを解くと、$\lambda=\pm i$であり、基本解は
+\begin{eqnarray}
+x=\cos t,\sin t
+\end{eqnarray}
+である。また、特性解は$x=1$である。
+よって、一般解は
+\begin{eqnarray}
+x=c_{1}\cos t+c_{2}\sin t+1
+\end{eqnarray}
+である。$c_{1},c_{2}$は任意定数である。
+\item 対応する同次方程式の特性方程式の特性指数は
+$\lambda=2,-1$なので、基本解は
+\begin{eqnarray}
+x=e^{2t},e^{-t}
+\end{eqnarray}
+である。
+\end{enumerate}
 \end{document}

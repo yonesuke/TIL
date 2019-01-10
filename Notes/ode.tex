@@ -1,6 +1,8 @@
-\documentclass{jsarticle}
+\documentclass[fleqn]{jsarticle}
 \usepackage[dvipdfmx]{graphicx,color}
 \usepackage{ulem}
+\usepackage{ascmac}
+\usepackage{pxjahyper}
 \usepackage{pgf,tikz}
 \usepackage{here}
 %\usepackage{subcaption}
@@ -11,7 +13,9 @@
 \newtheorem{theorem}{定理}
 \newtheorem{proof}{証明}
 \newtheorem{remark}{Remark}
+\usepackage{framed}
 \def\qed{\hfill $\Box$}
+\definecolor{shadecolor}{gray}{0.80}
 
 \usepackage{showkeys}
 
@@ -19,7 +23,7 @@
 \title{微分積分学俗論II}
 \maketitle
 \section{11/14の微積続論II小テスト}
-\begin{screen}
+\begin{shaded}
 次の微分方程式を解け。
 \begin{enumerate}
 \item 
@@ -31,7 +35,7 @@
 \frac{dx}{dt}=x\log t+t^{t}
 \end{eqnarray}
 \end{enumerate}
-\end{screen}
+\end{shaded}
 \begin{enumerate}
 \item 
 $x=0$は解である。
@@ -96,7 +100,7 @@ x(t)=(e^{t}+C)e^{-t}t^{t}=t^{t}+Ce^{-t}t^{t}
 \end{remark}
 
 \section{テキスト第3章問5}
-\begin{screen}
+\begin{shaded}
 $a_{j}(t)(j=1,2)$と$q(t)$を$t$のある関数として2階非同次方程式
 \begin{eqnarray}
 x''+a_{1}(t)x'+a_{2}(t)x=q(t)
@@ -106,9 +110,14 @@ x''+a_{1}(t)x'+a_{2}(t)x=q(t)
 \item 関数$a_{j}(t)$と$q(t)$を定めよ。
 \item 一般解を求めよ。
 \end{enumerate}
-\end{screen}
+\end{shaded}
 \begin{enumerate}
-\item 
+\item $x=t,t^{2},t^{3}$を代入して連立方程式を解くだけ。
+\begin{eqnarray}
+a_{1}(t)=-\frac{2(2t-1)}{t(t-1)},\\
+a_{2}(t)=\frac{2(3t^{2}-3t+1)}{t^{2}(t-1)^{2}},\\
+q(t)=\frac{2t}{(t-1)^{2}}
+\end{eqnarray}
 \item 非同時方程式の一般解は、同次方程式の一般解と特殊解の和になる。
 そのために同次方程式
 \begin{eqnarray}
@@ -142,6 +151,12 @@ c_{1}(t-t^{2})+c_{2}(t-t^{3})+t^{3}
 \end{eqnarray}
 になる。
 \end{enumerate}
+\begin{remark}
+最後の答えを書くところで非同次方程式の特殊解として、$t^{3}$を選んだが、
+$t,t^{2}$でも良い。
+どれを選んでも結局$c_{1},c_{2}$の任意性から解空間はおなじになる。
+\end{remark}
+
 \begin{remark}
 よくある問題は特殊解を一つ与えた上で、
 非同次方程式の一般解を求めさせる問題だが、

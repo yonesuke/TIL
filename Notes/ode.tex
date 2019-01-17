@@ -389,4 +389,258 @@ x=e^{-\frac{t}{2}}\left[c_{1}\cos\left(\frac{\sqrt{3}}{2}t\right)
 \end{eqnarray}
 である。
 \end{enumerate}
+
+\section{テキスト第4章問2}
+\begin{shaded}
+$t>0$において
+\begin{eqnarray}
+\boldsymbol{x}'=A(t)\boldsymbol{x}+\boldsymbol{f}(t)
+\end{eqnarray}
+の形の2元連立非同次方程式を考える。
+ただし、
+\begin{eqnarray}
+\boldsymbol{f}(t)=\left(
+\begin{array}{c}
+t\\
+1/t
+\end{array}
+\right)
+\end{eqnarray}
+とする。行列
+\begin{eqnarray}
+V(t)=\left(
+\begin{array}{cc}
+1/t & t\\
+1/t & -t
+\end{array}
+\right)
+\end{eqnarray}
+が対応する同次方程式の基本行列であるとき、以下の問に答えよ。
+ただし、$t,s>0$とする。
+\begin{enumerate}
+\item 係数行列$A(t)$を求めよ。
+\item 対応する同次方程式の解核行列$R(t,s)$を求めよ。
+\item 初期条件
+\begin{eqnarray}
+\boldsymbol{x}(1)=\left(
+\begin{array}{c}
+1\\
+1
+\end{array}
+\right)
+\end{eqnarray}
+を満たす、この非同次方程式の解を求めよ。
+\end{enumerate}
+\end{shaded}
+\begin{enumerate}
+\item 係数行列の各成分を
+\begin{eqnarray}
+A(t)=\left(
+\begin{array}{cc}
+a_{11}(t) & a_{12}(t)\\
+a_{21}(t) & a_{22}(t)
+\end{array}\right)
+\end{eqnarray}
+として、これらを求める。
+基本行列の定義から、
+\begin{eqnarray}
+\boldsymbol{v}_{1}(t)=\left(
+\begin{array}{c}
+1/t\\
+1/t
+\end{array}
+\right),\quad
+\boldsymbol{v}_{2}(t)=\left(
+\begin{array}{c}
+t\\
+-t
+\end{array}
+\right)
+\end{eqnarray}
+は同次方程式の解であるから、それぞれ代入すれば良い。
+$\boldsymbol{v}_{1}(t)$を同次方程式に代入すると、
+\begin{eqnarray}
+\left(
+\begin{array}{c}
+-1/t^{2}\\
+-1/t^{2}
+\end{array}\right)=
+\left(
+\begin{array}{cc}
+a_{11}(t) & a_{12}(t)\\
+a_{21}(t) & a_{22}(t)
+\end{array}\right)
+\left(
+\begin{array}{c}
+1/t\\
+1/t
+\end{array}\right)
+\end{eqnarray}
+であり、
+$\boldsymbol{v}_{2}(t)$を代入すると、
+\begin{eqnarray}
+\left(
+\begin{array}{c}
+1\\
+-1
+\end{array}\right)=
+\left(
+\begin{array}{cc}
+a_{11}(t) & a_{12}(t)\\
+a_{21}(t) & a_{22}(t)
+\end{array}\right)
+\left(
+\begin{array}{c}
+t\\
+-t
+\end{array}\right)
+\end{eqnarray}
+である。この2つ(式としては4つ)を連立させて解くと、
+\begin{eqnarray}
+A(t)=\left(
+\begin{array}{cc}
+0 & -1/t\\
+-1/t & 0
+\end{array}\right)
+\end{eqnarray}
+が得られる。
+\item 解核行列$R(t,s)$は基本行列$V(t)$を用いると、
+\begin{eqnarray}
+R(t,s)=V(t)V(s)^{-1}
+\end{eqnarray}
+となる(教科書の定理4.3)。計算すると、
+\begin{eqnarray}
+R(t,s)=\frac{1}{2}\left(
+\begin{array}{cc}
+s/t+t/s & s/t-t/s\\
+s/t-t/s & s/t+t/s
+\end{array}\right)
+\end{eqnarray}
+である。
+\item 教科書の定理4.5から、初期条件$\boldsymbol{x}(1)$を満たす
+解は次で与えられる。
+\begin{eqnarray}
+\boldsymbol{x}(t)=R(t,1)\boldsymbol{x}(1)
++\int_{1}^{t}R(t,r)\boldsymbol{f}(r)dr.
+\end{eqnarray}
+あとはこれを計算すれば良い。答えは、
+\begin{eqnarray}
+\boldsymbol{x}(t)=\frac{1}{3}\left(
+\begin{array}{c}
+2t^{2}-3t+3+1/t\\
+-t^{2}+3t+1/t
+\end{array}\right)
+\end{eqnarray}
+である。
+\end{enumerate}
+
+\section{テキスト第4章問4}
+\begin{shaded}
+定数係数微分方程式
+\begin{eqnarray}
+\boldsymbol{x}'=\left(
+\begin{array}{cc}
+1 & 1\\
+-1 & 1
+\end{array}\right)\boldsymbol{x}
++\left(
+\begin{array}{c}
+0\\
+\cos\omega t
+\end{array}\right)
+\end{eqnarray}
+に対して次の問に答えよ。
+\begin{enumerate}
+\item 対応する同次方程式の解核行列を求めよ。
+\item 初期条件$\boldsymbol{x}(0)=\boldsymbol{x}_{0}\in\mathbb{R}^{2}$
+を満たす非同次方程式の解を求めよ。
+\end{enumerate}
+\end{shaded}
+\begin{enumerate}
+\item 同次方程式は定数係数の微分方程式になるので、教科書の定理4.9により、
+解核行列は次で与えられる。
+\begin{eqnarray}
+R(t,s)=\exp(A(t-s)).
+\end{eqnarray}
+ここで、
+\begin{eqnarray}
+A=\left(
+\begin{array}{cc}
+1 & 1\\
+-1 & 1
+\end{array}
+\right)
+\end{eqnarray}
+である。行列$A$は行列
+\begin{eqnarray}
+T=\left(
+\begin{array}{cc}
+1 & -1\\
+i & i\\
+\end{array}
+\right)
+\end{eqnarray}
+を用いて、
+\begin{eqnarray}
+T^{-1}AT=\left(
+\begin{array}{cc}
+1+i & 0\\
+0 & 1-i
+\end{array}
+\right)
+\end{eqnarray}
+と表される。よって、
+\begin{eqnarray}
+\exp(A(t-s))=
+\frac{1}{2i}\left(
+\begin{array}{cc}
+1 & -1\\
+i & i\\
+\end{array}
+\right)\left(
+\begin{array}{cc}
+e^{(1+i)(t-s)} & 0\\
+0 & e^{(1-i)(t-s)}
+\end{array}
+\right)\left(
+\begin{array}{cc}
+i & 1\\
+-i & 1
+\end{array}
+\right)\\
+=e^{t-s}\left(
+\begin{array}{cc}
+\cos(t-s) & \sin(t-s)\\
+-\sin(t-s) & \cos(t-s)
+\end{array}
+\right)
+\end{eqnarray}
+となる。
+\begin{remark}
+対角化するための行列$T$は基底のとり方によって、いくらでも値が取り替わることに注意。
+ただ、行列$T$のとり方が違えども、答えは必ず一致するはずなので、
+この解答と違う$T$を選んでいたとしても、答えは同じである必要がある。
+\end{remark}
+
+\item 解核行列が得られたので、初期条件$\boldsymbol{x}(0)=\boldsymbol{x}_{0}$
+を満たす解は、
+\begin{eqnarray}
+\boldsymbol{x}(t)=R(t,0)\boldsymbol{x}(0)
++\int_{0}^{t}R(t,r)\boldsymbol{f}(r)dr
+\end{eqnarray}
+となる。あとはこれを計算すれば良い。答えは、
+\begin{eqnarray}
+\boldsymbol{x}(t)=e^{t}\left(
+\begin{array}{cc}
+\cos t & \sin t\\
+\sin t & \cos t
+\end{array}\right)\boldsymbol{x}_{0}
++\frac{e^{t}}{\omega}\left(
+\begin{array}{c}
+\sin t\sin\omega t\\
+\cos t\sin\omega t
+\end{array}\right)
+\end{eqnarray}
+である。
+\end{enumerate}
 \end{document}

@@ -178,6 +178,57 @@ $t,t^{2}$でも良い。
 $t\ne 0,1$の間違い。$t=0,1$では与えられた特解が独立でなくなるからだめ。
 \end{remark}
 
+\begin{remark}
+同次方程式を直接求める方法もまとめておく。
+同次方程式は、
+\begin{eqnarray}
+x''+a_{1}x'+a_{2}x=x''-\frac{2(2t-1)}{t(t-1)}x'+\frac{2(3t^{2}-3t+1)}{t^{2}(t-1)^{2}}=0
+\end{eqnarray}
+である。線形の2階常微分方程式に対するチルンハウス変換\footnote{3次方程式$ax^{3}+bx^{2}+cx+d=0$を$x^{3}+px+q=0$という形に変換することをチルンハウス変換という。今回はその類似でチルンハウス変換という言い方をした。}を施そう。
+方程式を$x=e^{-\frac{1}{2}\int^{t} a_{1}(t)dt}\eta$で変数変換すると、
+\begin{eqnarray}
+\eta''=r\eta
+\end{eqnarray}
+に変換されることが知られている(確認せよ。)。ここで、
+\begin{eqnarray}
+r=\frac{1}{4}a_{1}^{2}+\frac{1}{2}a_{1}'-a_{2}
+\end{eqnarray}
+である。
+今の場合、$r$を具体的に計算すると、$r=0$となる。
+よって、変数変換された同次方程式は
+\begin{eqnarray}
+\eta''=0
+\end{eqnarray}
+を満たす。
+これは簡単に解くことが出来て、任意定数$c_{1},c_{2}$を用いて、
+$\eta=c_{1}t+c_{2}$となる。
+今度、逆変換を行うと、
+\begin{eqnarray}
+x=c_{1}te^{-\frac{1}{2}\int^{t} a_{1}(t)dt}+c_{2}e^{-\frac{1}{2}\int^{t} a_{1}(t)dt}
+\end{eqnarray}
+である。ここで、
+\begin{eqnarray}
+e^{-\frac{1}{2}\int^{t} a_{1}(t)dt}=
+\begin{cases}
+t(t-1) & \text{$t>1$または$t<0$}\\
+-t(t-1) & \text{$0<t<1$}
+\end{cases}
+\end{eqnarray}
+となるが、符号は$c_{1},c_{2}$の任意性の方に吸収出来るので無視すると、
+\begin{eqnarray}
+x=c_{1}t^{2}(t-t)+c_{2}t(t-1)
+\end{eqnarray}
+である。
+ここで、$(c_{1},c_{2})=(1,0),(0,1)$という風にとると、
+$x=t^{2}(t-1),t(t-1)$はそれぞれ同次方程式の解であり、しかも独立である。
+以上から、同次方程式の一般解は、
+\begin{eqnarray}
+x=c_{1}t^{2}(t-t)+c_{2}t(t-1)
+\end{eqnarray}
+となる。
+\end{remark}
+
+
 \section{テキスト第3章問6}
 \begin{shaded}
 2階同次方程式

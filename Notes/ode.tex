@@ -1,4 +1,4 @@
-\documentclass[fleqn]{jsarticle}
+\documentclass{jsarticle}
 \usepackage[dvipdfmx]{graphicx,color}
 \usepackage{ulem}
 \usepackage{ascmac}
@@ -19,7 +19,7 @@
 %\usepackage{showkeys}
 
 \begin{document}
-\title{微分積分学俗論II}
+\title{微分積分学続論II}
 \author{米田亮介}
 \maketitle
 \section{11/14の微積続論II小テスト}
@@ -642,7 +642,7 @@ T^{-1}AT=\left(
 \end{eqnarray}
 と表される。よって、
 \begin{eqnarray}
-\exp(A(t-s))=
+\exp(A(t-s))&=
 \frac{1}{2i}\left(
 \begin{array}{cc}
 1 & -1\\
@@ -659,7 +659,7 @@ i & 1\\
 -i & 1
 \end{array}
 \right)\\
-=e^{t-s}\left(
+&=e^{t-s}\left(
 \begin{array}{cc}
 \cos(t-s) & \sin(t-s)\\
 -\sin(t-s) & \cos(t-s)
@@ -685,11 +685,18 @@ i & 1\\
 \begin{array}{cc}
 \cos t & \sin t\\
 -\sin t & \cos t
-\end{array}\right)\boldsymbol{x}_{0}
-+\frac{e^{t}}{\omega}\left(
+\end{array}\right)
+\left(\boldsymbol{x}_{0}
++\frac{1}{\omega^{4}+4}
+\left(\begin{array}{c}
+\omega^{2}-2\\
+\omega^{2}+2
+\end{array}\right)
+\right)\\
+-\frac{1}{\omega^{4}+4}\left(
 \begin{array}{c}
-\sin t\sin\omega t\\
-\cos t\sin\omega t
+(\omega^{2}-2)\cos\omega t+2\omega\sin\omega t\\
+(\omega^{2}+2)\cos\omega t-\omega^{3}\sin\omega t
 \end{array}\right)
 \end{eqnarray}
 である。

@@ -1,0 +1,49 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx,color}
+\usepackage{ulem}
+\usepackage{ascmac}
+\usepackage{pgf,tikz}
+\usepackage{here}
+%\usepackage{subcaption}
+\usepackage{amsmath,amssymb}
+\usepackage{ascmac}
+\usepackage{comment}
+\usepackage{theorem}
+\newtheorem{theorem}{定理}
+\newtheorem{proof}{証明}
+\newtheorem{remark}{Remark}
+\usepackage{framed}
+\def\qed{\hfill $\Box$}
+\definecolor{shadecolor}{gray}{0.80}
+
+%\usepackage{showkeys}
+
+\begin{document}
+\title{数理解析特論レポート}
+\author{米田亮介}
+\maketitle
+\section{Darboux変換}
+\begin{shaded}
+\begin{enumerate}
+\item 差分演算子$L,B$をそれぞれ
+$L=e^{\partial/\partial n}+u_{n}e^{-\partial/\partial n},
+B=-u_{n}u_{n-1}e^{-2\partial/\partial n}$で定める。
+このとき、関数$\varphi_{n}(t)$に対する線形方程式
+\begin{eqnarray}
+L\varphi_{n}(t)=(\lambda+1/\lambda)\varphi_{n}(t),\quad
+\frac{d}{dt}\varphi_{n}(t)=B\varphi_{n}(t)
+\end{eqnarray}
+の両立条件から、無限格子上の連続時間発展方程式であるLotka--Voltera(LV)方程式
+\begin{eqnarray}
+\frac{d}{dt}u_{n}=u_{n}(u_{n+1}-u_{n-1})
+\end{eqnarray}
+が導かれることを示せ。
+ここで、$\lambda+1/\lambda$は$L$の固有値を与える定数。
+\item LV方程式の自明な解$u=1$をseed(種)として、
+Darboux変換を$k$回適用することで得られる差分作用素を
+$L^{(k)}=e^{\partial/\partial n}+u_{n}^{(k)}e^{-\partial/\partial n}$
+で表す。
+このとき、$u_{n}^{(1)}$および$u_{n}^{(2)}$を求めよ。
+\end{enumerate}
+\end{shaded}
+\end{document}

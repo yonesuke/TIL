@@ -27,61 +27,61 @@
 次の微分方程式を解け。
 \begin{enumerate}
 \item 
-\begin{eqnarray}
+\begin{align}
 \frac{dx}{dt}=x\log t
-\end{eqnarray}
+\end{align}
 \item 
-\begin{eqnarray}
+\begin{align}
 \frac{dx}{dt}=x\log t+t^{t}
-\end{eqnarray}
+\end{align}
 \end{enumerate}
 \end{shaded}
 \begin{enumerate}
 \item 
 $x=0$は解である。
 $x\ne 0$のとき両辺を変数分離すると、
-\begin{eqnarray}
+\begin{align}
 \frac{dx}{x}=\log tdt
-\end{eqnarray}
+\end{align}
 であり、これを積分すると、
-\begin{eqnarray}
+\begin{align}
 \log |x|=t\log t-t+C'
-\end{eqnarray}
+\end{align}
 である。ここで$C'$は積分定数である。
 これより、解は
-\begin{eqnarray}
+\begin{align}
 |x(t)|=Ce^{t\log t-t}=Ce^{-t}t^{t}
-\end{eqnarray}
+\end{align}
 となる。ここで$C>0$は定数。
 $x=0$の解もまとめると、任意の$C\in\mathbb{R}$に対して
-\begin{eqnarray}
+\begin{align}
 x(t)=Ce^{-t}t^{t}
-\end{eqnarray}
+\end{align}
 となる。
 \item
 この問題には定数変化法を使う。
 つまり、解の形を
-\begin{eqnarray}
+\begin{align}
 x(t)=C(t)e^{-t}t^{t}
-\end{eqnarray}
+\end{align}
 の形に決め打ちして、$C(t)$を求めるという算段である。
 このとき、
-\begin{eqnarray}
+\begin{align}
 C'(t)e^{-t}t^{t}+x\log t=x\log t+t^{t}
-\end{eqnarray}
+\end{align}
 である。これより、$C(t)$に関しての微分方程式
-\begin{eqnarray}
+\begin{align}
 C'(t)=e^{t}
-\end{eqnarray}
+\end{align}
 が得られる。故に
-\begin{eqnarray}
+\begin{align}
 C(t)=e^{t}+C
-\end{eqnarray}
+\end{align}
 となる。ここで$C$は積分定数である。
 以上より、はじめの微分方程式の解は
-\begin{eqnarray}
+\begin{align}
 x(t)=(e^{t}+C)e^{-t}t^{t}=t^{t}+Ce^{-t}t^{t}
-\end{eqnarray}
+\end{align}
 と求まった。
 \end{enumerate}
 
@@ -104,9 +104,9 @@ x(t)=(e^{t}+C)e^{-t}t^{t}=t^{t}+Ce^{-t}t^{t}
 \section{テキスト第3章問5}
 \begin{shaded}
 $a_{j}(t)(j=1,2)$と$q(t)$を$t$のある関数として2階非同次方程式
-\begin{eqnarray}
+\begin{align}
 x''+a_{1}(t)x'+a_{2}(t)x=q(t),\quad t\ne -1
-\end{eqnarray}
+\end{align}
 を考える。$x=t,t^{2},t^{3}$が解であるとき、次の問いに答えよ。
 \begin{enumerate}
 \item 関数$a_{j}(t)$と$q(t)$を定めよ。
@@ -115,31 +115,31 @@ x''+a_{1}(t)x'+a_{2}(t)x=q(t),\quad t\ne -1
 \end{shaded}
 \begin{enumerate}
 \item $x=t,t^{2},t^{3}$を代入して連立方程式を解くだけ。
-\begin{eqnarray}
+\begin{align}
 a_{1}(t)=-\frac{2(2t-1)}{t(t-1)},\\
 a_{2}(t)=\frac{2(3t^{2}-3t+1)}{t^{2}(t-1)^{2}},\\
 q(t)=\frac{2t}{(t-1)^{2}}
-\end{eqnarray}
+\end{align}
 \item 非同時方程式の一般解は、同次方程式の一般解と特殊解の和になる。
 そのために同次方程式
-\begin{eqnarray}
+\begin{align}
 x''+a_{1}(t)x'+a_{2}(t)x=0
-\end{eqnarray}
+\end{align}
 を解きたいが、そのまま解くのは難しい。
 そこで次のように考える。
 非同次方程式の解$t,t^{2}$を同次方程式の基本解$x_{1},x_{2}$
 を用いて表してみる。
 特殊解は$t^{3}$であるから、
-\begin{eqnarray}
+\begin{align}
 &t=c_{1}x_{1}+c_{2}x_{2}+t^{3},\\
 &t^{2}=c_{1}'x_{1}+c_{2}'x_{2}+t^{3}
-\end{eqnarray}
+\end{align}
 とかける。
 ここで$c_{1},c_{2},c_{1}',c_{2}'$は適当な定数である。
 両辺を引くと、
-\begin{eqnarray}
+\begin{align}
 t-t^{2}=(c_{1}-c_{1}')x_{1}+(c_{2}-c_{2}')x_{2}
-\end{eqnarray}
+\end{align}
 となる。
 これより、$t-t^{2}$は基本解の線形和で表せることがわかった。
 よって、$t-t^{2}$も同次方程式の解である。
@@ -148,9 +148,9 @@ t-t^{2}=(c_{1}-c_{1}')x_{1}+(c_{2}-c_{2}')x_{2}
 $t-t^{2},t-t^{3}$はそれぞれ独立であるから、
 同次方程式の基本解になる。
 非同次方程式の特殊解として$t^{3}$を選ぶと、一般解は
-\begin{eqnarray}
+\begin{align}
 c_{1}(t-t^{2})+c_{2}(t-t^{3})+t^{3}
-\end{eqnarray}
+\end{align}
 になる。
 \end{enumerate}
 \begin{remark}
@@ -181,50 +181,50 @@ $t\ne 0,1$の間違い。$t=0,1$では与えられた特解が独立でなくな
 \begin{remark}
 同次方程式を直接求める方法もまとめておく。
 同次方程式は、
-\begin{eqnarray}
+\begin{align}
 x''+a_{1}x'+a_{2}x=x''-\frac{2(2t-1)}{t(t-1)}x'+\frac{2(3t^{2}-3t+1)}{t^{2}(t-1)^{2}}=0
-\end{eqnarray}
+\end{align}
 である。線形の2階常微分方程式に対するチルンハウス変換\footnote{3次方程式$ax^{3}+bx^{2}+cx+d=0$を$x^{3}+px+q=0$という形に変換することをチルンハウス変換という。今回はその類似でチルンハウス変換という言い方をした。}を施そう。
 方程式を$x=e^{-\frac{1}{2}\int^{t} a_{1}(t)dt}\eta$で変数変換すると、
-\begin{eqnarray}
+\begin{align}
 \eta''=r\eta
-\end{eqnarray}
+\end{align}
 に変換されることが知られている(確認せよ。)。ここで、
-\begin{eqnarray}
+\begin{align}
 r=\frac{1}{4}a_{1}^{2}+\frac{1}{2}a_{1}'-a_{2}
-\end{eqnarray}
+\end{align}
 である。
 今の場合、$r$を具体的に計算すると、$r=0$となる。
 よって、変数変換された同次方程式は
-\begin{eqnarray}
+\begin{align}
 \eta''=0
-\end{eqnarray}
+\end{align}
 を満たす。
 これは簡単に解くことが出来て、任意定数$c_{1},c_{2}$を用いて、
 $\eta=c_{1}t+c_{2}$となる。
 今度、逆変換を行うと、
-\begin{eqnarray}
+\begin{align}
 x=c_{1}te^{-\frac{1}{2}\int^{t} a_{1}(t)dt}+c_{2}e^{-\frac{1}{2}\int^{t} a_{1}(t)dt}
-\end{eqnarray}
+\end{align}
 である。ここで、
-\begin{eqnarray}
+\begin{align}
 e^{-\frac{1}{2}\int^{t} a_{1}(t)dt}=
 \begin{cases}
 t(t-1) & \text{$t>1$または$t<0$}\\
 -t(t-1) & \text{$0<t<1$}
 \end{cases}
-\end{eqnarray}
+\end{align}
 となるが、符号は$c_{1},c_{2}$の任意性の方に吸収出来るので無視すると、
-\begin{eqnarray}
+\begin{align}
 x=c_{1}t^{2}(t-t)+c_{2}t(t-1)
-\end{eqnarray}
+\end{align}
 である。
 ここで、$(c_{1},c_{2})=(1,0),(0,1)$という風にとると、
 $x=t^{2}(t-1),t(t-1)$はそれぞれ同次方程式の解であり、しかも独立である。
 以上から、同次方程式の一般解は、
-\begin{eqnarray}
+\begin{align}
 x=c_{1}t^{2}(t-t)+c_{2}t(t-1)
-\end{eqnarray}
+\end{align}
 となる。
 \end{remark}
 
@@ -232,10 +232,10 @@ x=c_{1}t^{2}(t-t)+c_{2}t(t-1)
 \section{テキスト第3章問6}
 \begin{shaded}
 2階同次方程式
-\begin{eqnarray}
+\begin{align}
 x''-\frac{1}{t+1}x'+\frac{1}{(t+1)^{2}}x=0,\quad t\ne -1
 \label{eq:toi6}
-\end{eqnarray}
+\end{align}
 に対して次の問いに答えよ。
 \begin{enumerate}
 \item $x=t+1$が解であることを示せ。
@@ -248,49 +248,49 @@ x''-\frac{1}{t+1}x'+\frac{1}{(t+1)^{2}}x=0,\quad t\ne -1
 \item 与えられた微分方程式は$x$について線形だから、
 $x=t+1$が解であれば$x=C(t+1)$も解である。
 このとき、定数変化法を用いて一般解を求めたいので、
-\begin{eqnarray}
+\begin{align}
 x=C(t)(t+1)
-\end{eqnarray}
+\end{align}
 として、$C(t)$を求める。
 式~\eqref{eq:toi6}に代入すると、$C(t)$に関する微分方程式
-\begin{eqnarray}
+\begin{align}
 (t+1)C''+C'=0
-\end{eqnarray}
+\end{align}
 が得られる。まず、$C'$についての微分方程式だと思って、変数分離法で解くと、
-\begin{eqnarray}
+\begin{align}
 C'(t)=\frac{c_{2}}{t+1}
-\end{eqnarray}
+\end{align}
 が得られる。$c_{2}$は任意定数。よって、
-\begin{eqnarray}
+\begin{align}
 C(t)=c_{1}+c_{2}\log |t+1|
-\end{eqnarray}
+\end{align}
 が得られる。$c_{1}$も任意定数\footnote{積分定数の決め方がずいぶんと恣意的になってしまった。。。}。
 $t\ne-1$で$\log|t+1|$もきちんと定義されるので問題ない。
 以上より、一般解は、
-\begin{eqnarray}
+\begin{align}
 x=c_{1}(t+1)+c_{2}(t+1)\log|t+1|
-\end{eqnarray}
+\end{align}
 である。
 \item $t=0$における$x,x'$の値を実際に計算して任意定数を求めればよい。
-\begin{eqnarray}
+\begin{align}
 x_{0}=x(0)=c_{1},\\
 v_{0}=x'(0)=C(0)+C'(0)=c_{1}+c_{2}
-\end{eqnarray}
+\end{align}
 であるから、$c_{1}=x_{0},c_{2}=v_{0}-x_{0}$と求まる。
 以上より、初期条件$x(0)=x_{0},x'(0)=v_{0}$を満足する解は、
-\begin{eqnarray}
+\begin{align}
 x=x_{0}(t+1)+(v_{0}-x_{0})(t+1)\log|t+1|
-\end{eqnarray}
+\end{align}
 である。
 \end{enumerate}
 
 \section{テキスト第3章問7}
 \begin{shaded}
 2階非同次方程式
-\begin{eqnarray}
+\begin{align}
 x''-\frac{2}{t+1}x'+\frac{2}{(t+1)^{2}}x=t+1,\quad t\ne -1
 \label{eq:toi7}
-\end{eqnarray}
+\end{align}
 に対して次の問いに答えよ。
 \begin{enumerate}
 \item 定数変化法を用いて一般解を求めよ(問2を参照せよ)。
@@ -304,29 +304,29 @@ x''-\frac{2}{t+1}x'+\frac{2}{(t+1)^{2}}x=t+1,\quad t\ne -1
 に対して定数変化法を用いることを考える。
 先程と同じように$x=C(t)(t+1)$として、式~\eqref{eq:toi7}に代入
 すると、$C(t)$に関する微分方程式
-\begin{eqnarray}
+\begin{align}
 C''=1
-\end{eqnarray}
+\end{align}
 が得られる。この微分方程式の解のひとつは、$C(t)=\frac{1}{2}t^{2}$
 となるので、特殊解は
-\begin{eqnarray}
+\begin{align}
 x=\frac{1}{2}t^{2}(t+1)^{2}
-\end{eqnarray}
+\end{align}
 である。以上より、式~\eqref{eq:toi7}の一般解は
-\begin{eqnarray}
+\begin{align}
 x=\frac{1}{2}t^{2}(t+1)+c_{1}(t+1)+c_{2}(t+1)^{2}
-\end{eqnarray}
+\end{align}
 である。
 \item $t=0$における$x,x'$の値を実際に計算して任意定数を求めればよい。
-\begin{eqnarray}
+\begin{align}
 x_{0}=x(0)=c_{1}+c_{2},\\
 v_{0}=x'(0)=c_{1}+2c_{2}
-\end{eqnarray}
+\end{align}
 なので、$c_{1}=2x_{0}-v_{0},c_{2}=v_{0}-x_{0}$が分かる。
 よって、初期条件$x(0)=x_{0},x'(0)=v_{0}$を満足する解は
-\begin{eqnarray}
+\begin{align}
 x=\frac{1}{2}t^{2}(t+1)+(2x_{0}-v_{0})(t+1)+(v_{0}-x_{0})(t+1)^{2}
-\end{eqnarray}
+\end{align}
 である。
 \end{enumerate}
 
@@ -342,159 +342,159 @@ x=\frac{1}{2}t^{2}(t+1)+(2x_{0}-v_{0})(t+1)+(v_{0}-x_{0})(t+1)^{2}
 \end{shaded}
 \begin{enumerate}
 \item 対応する同次方程式の特性方程式は
-\begin{eqnarray}
+\begin{align}
 \lambda^{2}+1=0
-\end{eqnarray}
+\end{align}
 である。これを解くと、$\lambda=\pm i$であり、基本解は
-\begin{eqnarray}
+\begin{align}
 x=\cos t,\sin t
-\end{eqnarray}
+\end{align}
 である。また、特性解は$x=1$である。
 よって、一般解は
-\begin{eqnarray}
+\begin{align}
 x=c_{1}\cos t+c_{2}\sin t+1
-\end{eqnarray}
+\end{align}
 である。$c_{1},c_{2}$は任意定数である。
 \item 対応する同次方程式の特性方程式の特性指数は
 $\lambda=2,-1$なので、基本解は
-\begin{eqnarray}
+\begin{align}
 x=e^{2t},e^{-t}
-\end{eqnarray}
+\end{align}
 である。特性解として$c_{1}t^{2}+c_{2}t+c_{3}$の形のものを考える。
 微分方程式に特性解を代入すると、
-\begin{eqnarray}
+\begin{align}
 -2c_{1}t^{2}+(-2c_{1}+-2c_{2})t+(2c_{1}-c_{2}-2c_{3})
 =t^{2}
-\end{eqnarray}
+\end{align}
 となるので、係数比較をして連立方程式を解くと、
-\begin{eqnarray}
+\begin{align}
 c_{1}=-\frac{1}{2},c_{2}=\frac{1}{2},c_{3}=-\frac{3}{4}
-\end{eqnarray}
+\end{align}
 である。以上より、一般解は
-\begin{eqnarray}
+\begin{align}
 x=c_{1}e^{2t}+c_{2}e^{-t}
 -\frac{1}{2}t^{2}+\frac{1}{2}t-\frac{3}{4}
-\end{eqnarray}
+\end{align}
 である。
 \item 対応する同次方程式の特性方程式の特性指数は
 $\lambda=-2,1$なので、基本解は
-\begin{eqnarray}
+\begin{align}
 x=e^{-2t},e^{t}
-\end{eqnarray}
+\end{align}
 である。次に非同次方程式の解を
-\begin{eqnarray}
+\begin{align}
 x=u_{1}e^{-2t}+u_{2}e^{t}
-\end{eqnarray}
+\end{align}
 と置いてみる。また、
-\begin{eqnarray}
+\begin{align}
 u_{1}'e^{-2t}+u_{2}'e^{t}=0
-\end{eqnarray}
+\end{align}
 を仮定する。微分方程式にこれを代入すると、$u_{1}',u_{2}'$について、
-\begin{eqnarray}
+\begin{align}
 u_{1}'e^{-2t}+u_{2}'e^{t}=0,\\
 -2u_{1}'e^{-2t}+u_{2}'e^{t}=(3t^{4}+4t^{3})e^{t}
-\end{eqnarray}
+\end{align}
 となるから、
-\begin{eqnarray}
+\begin{align}
 u_{1}'=-\left(t^{4}+\frac{4}{3}t^{3}\right)e^{3t},\\
 u_{2}'=t^{4}+\frac{4}{3}t^{3}
-\end{eqnarray}
+\end{align}
 それぞれを積分すると、
-\begin{eqnarray}
+\begin{align}
 u_{1}=-\frac{1}{3}e^{3t}t^{4},\\
 u_{2}=\frac{1}{5}t^{5}+\frac{1}{3}t^{4}
-\end{eqnarray}
+\end{align}
 である。よって、特殊解は
-\begin{eqnarray}
+\begin{align}
 x=\frac{1}{5}t^{5}e^{t}
-\end{eqnarray}
+\end{align}
 である。以上より一般解は、
-\begin{eqnarray}
+\begin{align}
 x=c_{1}e^{-2t}+\left(c_{2}+\frac{1}{5}t^{5}\right)e^{t}
-\end{eqnarray}
+\end{align}
 である。
 \item 対応する同次方程式の特性方程式の特性指数は
 $\lambda=-\frac{1}{2}\pm\frac{\sqrt{3}}{2}i$なので、基本解は
-\begin{eqnarray}
+\begin{align}
 x=e^{-\frac{t}{2}}\cos\left(\frac{\sqrt{3}}{2}t\right),
 e^{-\frac{t}{2}}\sin\left(\frac{\sqrt{3}}{2}t\right)
-\end{eqnarray}
+\end{align}
 である。次に非同次方程式の解を
-\begin{eqnarray}
+\begin{align}
 x=(c_{1}t+c_{2})e^{-t}
-\end{eqnarray}
+\end{align}
 と仮定する。非同次方程式に代入して係数比較すると、
-\begin{eqnarray}
+\begin{align}
 c_{1}=1,\\
 -c_{1}+c_{2}=0
-\end{eqnarray}
+\end{align}
 となる。これより$c_{1}=c_{2}=1$なので、特殊解は
-\begin{eqnarray}
+\begin{align}
 x=(t+1)e^{-t}
-\end{eqnarray}
+\end{align}
 である。以上より一般解は
-\begin{eqnarray}
+\begin{align}
 x=e^{-\frac{t}{2}}\left[c_{1}\cos\left(\frac{\sqrt{3}}{2}t\right)
 +c_{2}\sin\left(\frac{\sqrt{3}}{2}t\right)\right]
 +(t+1)e^{-t}
-\end{eqnarray}
+\end{align}
 である。
 \end{enumerate}
 
 \section{テキスト第4章問2}
 \begin{shaded}
 $t>0$において
-\begin{eqnarray}
+\begin{align}
 \boldsymbol{x}'=A(t)\boldsymbol{x}+\boldsymbol{f}(t)
-\end{eqnarray}
+\end{align}
 の形の2元連立非同次方程式を考える。
 ただし、
-\begin{eqnarray}
+\begin{align}
 \boldsymbol{f}(t)=\left(
 \begin{array}{c}
 t\\
 1/t
 \end{array}
 \right)
-\end{eqnarray}
+\end{align}
 とする。行列
-\begin{eqnarray}
+\begin{align}
 V(t)=\left(
 \begin{array}{cc}
 1/t & t\\
 1/t & -t
 \end{array}
 \right)
-\end{eqnarray}
+\end{align}
 が対応する同次方程式の基本行列であるとき、以下の問に答えよ。
 ただし、$t,s>0$とする。
 \begin{enumerate}
 \item 係数行列$A(t)$を求めよ。
 \item 対応する同次方程式の解核行列$R(t,s)$を求めよ。
 \item 初期条件
-\begin{eqnarray}
+\begin{align}
 \boldsymbol{x}(1)=\left(
 \begin{array}{c}
 1\\
 1
 \end{array}
 \right)
-\end{eqnarray}
+\end{align}
 を満たす、この非同次方程式の解を求めよ。
 \end{enumerate}
 \end{shaded}
 \begin{enumerate}
 \item 係数行列の各成分を
-\begin{eqnarray}
+\begin{align}
 A(t)=\left(
 \begin{array}{cc}
 a_{11}(t) & a_{12}(t)\\
 a_{21}(t) & a_{22}(t)
 \end{array}\right)
-\end{eqnarray}
+\end{align}
 として、これらを求める。
 基本行列の定義から、
-\begin{eqnarray}
+\begin{align}
 \boldsymbol{v}_{1}(t)=\left(
 \begin{array}{c}
 1/t\\
@@ -507,10 +507,10 @@ t\\
 -t
 \end{array}
 \right)
-\end{eqnarray}
+\end{align}
 は同次方程式の解であるから、それぞれ代入すれば良い。
 $\boldsymbol{v}_{1}(t)$を同次方程式に代入すると、
-\begin{eqnarray}
+\begin{align}
 \left(
 \begin{array}{c}
 -1/t^{2}\\
@@ -526,10 +526,10 @@ a_{21}(t) & a_{22}(t)
 1/t\\
 1/t
 \end{array}\right)
-\end{eqnarray}
+\end{align}
 であり、
 $\boldsymbol{v}_{2}(t)$を代入すると、
-\begin{eqnarray}
+\begin{align}
 \left(
 \begin{array}{c}
 1\\
@@ -545,50 +545,50 @@ a_{21}(t) & a_{22}(t)
 t\\
 -t
 \end{array}\right)
-\end{eqnarray}
+\end{align}
 である。この2つ(式としては4つ)を連立させて解くと、
-\begin{eqnarray}
+\begin{align}
 A(t)=\left(
 \begin{array}{cc}
 0 & -1/t\\
 -1/t & 0
 \end{array}\right)
-\end{eqnarray}
+\end{align}
 が得られる。
 \item 解核行列$R(t,s)$は基本行列$V(t)$を用いると、
-\begin{eqnarray}
+\begin{align}
 R(t,s)=V(t)V(s)^{-1}
-\end{eqnarray}
+\end{align}
 となる(教科書の定理4.3)。計算すると、
-\begin{eqnarray}
+\begin{align}
 R(t,s)=\frac{1}{2}\left(
 \begin{array}{cc}
 s/t+t/s & s/t-t/s\\
 s/t-t/s & s/t+t/s
 \end{array}\right)
-\end{eqnarray}
+\end{align}
 である。
 \item 教科書の定理4.5から、初期条件$\boldsymbol{x}(1)$を満たす
 解は次で与えられる。
-\begin{eqnarray}
+\begin{align}
 \boldsymbol{x}(t)=R(t,1)\boldsymbol{x}(1)
 +\int_{1}^{t}R(t,r)\boldsymbol{f}(r)dr.
-\end{eqnarray}
+\end{align}
 あとはこれを計算すれば良い。答えは、
-\begin{eqnarray}
+\begin{align}
 \boldsymbol{x}(t)=\frac{1}{3}\left(
 \begin{array}{c}
 2t^{2}-3t+3+1/t\\
 -t^{2}+3t+1/t
 \end{array}\right)
-\end{eqnarray}
+\end{align}
 である。
 \end{enumerate}
 
 \section{テキスト第4章問4}
 \begin{shaded}
 定数係数微分方程式
-\begin{eqnarray}
+\begin{align}
 \boldsymbol{x}'=\left(
 \begin{array}{cc}
 1 & 1\\
@@ -599,7 +599,7 @@ s/t-t/s & s/t+t/s
 0\\
 \cos\omega t
 \end{array}\right)
-\end{eqnarray}
+\end{align}
 に対して次の問に答えよ。
 \begin{enumerate}
 \item 対応する同次方程式の解核行列を求めよ。
@@ -610,38 +610,38 @@ s/t-t/s & s/t+t/s
 \begin{enumerate}
 \item 同次方程式は定数係数の微分方程式になるので、教科書の定理4.9により、
 解核行列は次で与えられる。
-\begin{eqnarray}
+\begin{align}
 R(t,s)=\exp(A(t-s)).
-\end{eqnarray}
+\end{align}
 ここで、
-\begin{eqnarray}
+\begin{align}
 A=\left(
 \begin{array}{cc}
 1 & 1\\
 -1 & 1
 \end{array}
 \right)
-\end{eqnarray}
+\end{align}
 である。行列$A$は行列
-\begin{eqnarray}
+\begin{align}
 T=\left(
 \begin{array}{cc}
 1 & -1\\
 i & i\\
 \end{array}
 \right)
-\end{eqnarray}
+\end{align}
 を用いて、
-\begin{eqnarray}
+\begin{align}
 T^{-1}AT=\left(
 \begin{array}{cc}
 1+i & 0\\
 0 & 1-i
 \end{array}
 \right)
-\end{eqnarray}
+\end{align}
 と表される。よって、
-\begin{eqnarray}
+\begin{align}
 \exp(A(t-s))&=
 \frac{1}{2i}\left(
 \begin{array}{cc}
@@ -665,22 +665,17 @@ i & 1\\
 -\sin(t-s) & \cos(t-s)
 \end{array}
 \right)
-\end{eqnarray}
+\end{align}
 となる。
-\begin{remark}
-対角化するための行列$T$は基底のとり方によって、いくらでも値が取り替わることに注意。
-ただ、行列$T$のとり方が違えども、答えは必ず一致するはずなので、
-この解答と違う$T$を選んでいたとしても、答えは同じである必要がある。
-\end{remark}
 
 \item 解核行列が得られたので、初期条件$\boldsymbol{x}(0)=\boldsymbol{x}_{0}$
 を満たす解は、
-\begin{eqnarray}
+\begin{align}
 \boldsymbol{x}(t)=R(t,0)\boldsymbol{x}(0)
 +\int_{0}^{t}R(t,r)\boldsymbol{f}(r)dr
-\end{eqnarray}
+\end{align}
 となる。あとはこれを計算すれば良い。答えは、
-\begin{eqnarray}
+\begin{align}
 \boldsymbol{x}(t)=e^{t}\left(
 \begin{array}{cc}
 \cos t & \sin t\\
@@ -698,7 +693,296 @@ i & 1\\
 (\omega^{2}-2)\cos\omega t+2\omega\sin\omega t\\
 (\omega^{2}+2)\cos\omega t-\omega^{3}\sin\omega t
 \end{array}\right)
-\end{eqnarray}
+\end{align}
 である。
 \end{enumerate}
+\begin{remark}
+対角化するための行列$T$は基底のとり方によって、いくらでも値が取り替わることに注意。
+ただ、行列$T$のとり方が違えども、答えは必ず一致するはずなので、
+この解答と違う$T$を選んでいたとしても、答えは同じである必要がある。
+\end{remark}
+\begin{remark}
+答えだけを書くと不親切らしいので、計算の過程も書くことにする。
+\begin{align}
+\boldsymbol{x}(t)&=R(t,0)\boldsymbol{x}(0)
++\int_{0}^{t}R(t,r)\boldsymbol{f}(r)dr\\
+&=e^{t}\left(
+\begin{array}{cc}
+\cos t & \sin t\\
+-\sin t & \cos t
+\end{array}\right)
+\boldsymbol{x}_{0}
++\int_{0}^{t}e^{t-r}\left(
+\begin{array}{cc}
+\cos(t-r) & \sin(t-r)\\
+-\sin(t-r) & \cos(t-r)
+\end{array}
+\right)
+\left(
+\begin{array}{c}
+0\\
+\cos\omega r
+\end{array}\right)dr\\
+&=e^{t}\left(
+\begin{array}{cc}
+\cos t & \sin t\\
+-\sin t & \cos t
+\end{array}\right)
+\boldsymbol{x}_{0}
++e^{t}\int_{0}^{t}e^{-r}
+\left(
+\begin{array}{c}
+\sin(t-r)\cos\omega r\\
+\cos(t-r)\cos\omega r
+\end{array}
+\right)dr\\
+&=e^{t}\left(
+\begin{array}{cc}
+\cos t & \sin t\\
+-\sin t & \cos t
+\end{array}\right)
+\boldsymbol{x}_{0}
++e^{t}\left(
+\begin{array}{cc}
+\sin t & -\cos t\\
+\cos t & \sin t
+\end{array}
+\right)
+\left(
+\begin{array}{c}
+\int_{0}^{t}e^{-r}\cos r\cos\omega rdr\\
+\int_{0}^{t}e^{-r}\sin r\cos\omega rdr
+\end{array}\right)
+\end{align}
+となる。よって、次の2つの積分
+\begin{align}
+I_{1}=\int_{0}^{t}e^{-r}\cos r\cos\omega rdr,\quad
+I_{2}=\int_{0}^{t}e^{-r}\sin r\cos\omega rdr
+\end{align}
+を計算すれば良い。
+$I_{1}$を詳しく計算すると、
+\begin{align}
+I_{1}&=\int_{0}^{t}e^{-r}\cos r\left(\frac{\sin\omega r}{\omega}\right)'dr\\
+&=\left[e^{-r}\cos r\frac{\sin\omega r}{\omega}\right]_{0}^{t}
+-\frac{1}{\omega}\int_{0}^{t}\left(e^{-r}\cos r\right)'\sin\omega rdr\\
+&=\frac{1}{\omega}e^{-t}\cos t\sin\omega t
++\frac{1}{\omega}\int_{0}^{t}e^{-r}\cos r\sin\omega rdr
++\frac{1}{\omega}\int_{0}^{t}e^{-r}\sin r\sin\omega rdr\\
+&=\frac{1}{\omega}e^{-t}\cos t\sin\omega t
++\frac{1}{\omega}\int_{0}^{t}e^{-r}\cos r\left(-\frac{\cos\omega r}{\omega}\right)'dr
++\frac{1}{\omega}\int_{0}^{t}e^{-r}\sin r\left(-\frac{\cos\omega r}{\omega}\right)'dr\\
+&=\frac{1}{\omega}e^{-t}\cos t\sin\omega t
+-\frac{1}{\omega^{2}}\left[e^{-r}\cos r\cos\omega r\right]_{0}^{t}
++\frac{1}{\omega^{2}}\int_{0}^{t}\left(e^{-r}\cos r\right)'\cos\omega rdr\\
+&\quad-\frac{1}{\omega^{2}}\left[e^{-r}\sin r\cos\omega r\right]_{0}^{t}
++\frac{1}{\omega^{2}}\int_{0}^{t}\left(e^{-r}\sin r\right)'\cos\omega rdr\\
+&=\frac{1}{\omega}e^{-t}\cos t\sin\omega t
+-\frac{1}{\omega^{2}}e^{-t}\cos t\cos\omega t
++\frac{1}{\omega^{2}}
+-\frac{1}{\omega^{2}}e^{-t}\sin t\cos\omega t
+-\frac{2}{\omega^{2}}I_{2}
+\end{align}
+となる。$I_{2}$も同様に計算すると、
+\begin{align}
+I_{2}&=\int_{0}^{t}e^{-r}\sin r\left(\frac{\sin\omega r}{\omega}\right)'dr\\
+&=\left[e^{-r}\sin r\frac{\sin\omega r}{\omega}\right]_{0}^{t}
+-\frac{1}{\omega}\int_{0}^{t}\left(e^{-r}\sin r\right)'\sin\omega rdr\\
+&=\frac{1}{\omega}e^{-t}\sin t\sin\omega t
++\frac{1}{\omega}\int e^{-r}\sin r\sin\omega rdr
+-\frac{1}{\omega}\int e^{-r}\cos r\sin\omega rdr\\
+&=\frac{1}{\omega}e^{-t}\sin t\sin\omega t
++\frac{1}{\omega}\int e^{-r}\sin r\left(-\frac{\cos\omega r}{\omega}\right)'dr
+-\frac{1}{\omega}\int e^{-r}\cos r\left(-\frac{\cos\omega r}{\omega}\right)'dr\\
+&=\frac{1}{\omega}e^{-t}\sin t\sin\omega t
+-\frac{1}{\omega^{2}}\left[e^{-r}\sin r\cos\omega r\right]_{0}^{t}
++\frac{1}{\omega^{2}}\int_{0}^{t}\left(e^{-r}\sin r\right)'\cos\omega rdr\\
+&\quad
++\frac{1}{\omega^{2}}\left[e^{-r}\cos r\cos\omega r\right]_{0}^{t}
+-\frac{1}{\omega^{2}}\int_{0}^{t}\left(e^{-r}\cos r\right)'\cos\omega rdr\\
+&=\frac{1}{\omega}e^{-t}\sin t\sin\omega t
+-\frac{1}{\omega^{2}}e^{-t}\sin t\cos\omega t
++\frac{1}{\omega^{2}}e^{-t}\cos t\cos\omega t
+-\frac{1}{\omega^{2}}
++\frac{2}{\omega^{2}}I_{1}
+\end{align}
+となる。この2つをまとめると、
+\begin{align}
+&\begin{pmatrix}
+1 & 2/\omega^{2}\\
+-2/\omega^{2} & 1
+\end{pmatrix}
+\begin{pmatrix}
+I_{1}\\
+I_{2}
+\end{pmatrix}
+=
+\begin{pmatrix}
+-\frac{1}{\omega^{2}}e^{-t}\cos t\cos\omega t
+-\frac{1}{\omega^{2}}e^{-t}\sin t\cos\omega t
++\frac{1}{\omega}e^{-t}\cos t\sin\omega t
++\frac{1}{\omega^{2}}\\
+\frac{1}{\omega^{2}}e^{-t}\cos t\cos\omega t
+-\frac{1}{\omega^{2}}e^{-t}\sin t\cos\omega t
++\frac{1}{\omega}e^{-t}\sin t\sin\omega t
+-\frac{1}{\omega^{2}}
+\end{pmatrix}
+\\
+\Leftrightarrow&
+\begin{pmatrix}
+I_{1}\\ I_{2}
+\end{pmatrix}
+=\frac{\omega^{4}}{\omega^{4}+4}
+\begin{pmatrix}
+1 & -2/\omega^{2}\\
+2/\omega^{2} & 1
+\end{pmatrix}
+\begin{pmatrix}
+-\frac{1}{\omega^{2}}e^{-t}\cos t\cos\omega t
+-\frac{1}{\omega^{2}}e^{-t}\sin t\cos\omega t
++\frac{1}{\omega}e^{-t}\cos t\sin\omega t
++\frac{1}{\omega^{2}}\\
+\frac{1}{\omega^{2}}e^{-t}\cos t\cos\omega t
+-\frac{1}{\omega^{2}}e^{-t}\sin t\cos\omega t
++\frac{1}{\omega}e^{-t}\sin t\sin\omega t
+-\frac{1}{\omega^{2}}
+\end{pmatrix}
+\end{align}
+であるので、あとはこれを代入すれば良い。
+\begin{align}
+\boldsymbol{x}(t)=&e^{t}
+\begin{pmatrix}
+\cos t & \sin t\\
+-\sin t & \cos t
+\end{pmatrix}
+\boldsymbol{x}_{0}\\
+&+\frac{e^{t}\omega^{4}}{\omega^{4}+4}
+\begin{pmatrix}
+\sin t & -\cos t\\
+\cos t & \sin t
+\end{pmatrix}
+\begin{pmatrix}
+1 & -2/\omega^{2}\\
+2/\omega^{2} & 1
+\end{pmatrix}
+\begin{pmatrix}
+-\frac{1}{\omega^{2}}e^{-t}\cos t\cos\omega t
+-\frac{1}{\omega^{2}}e^{-t}\sin t\cos\omega t
++\frac{1}{\omega}e^{-t}\cos t\sin\omega t
++\frac{1}{\omega^{2}}\\
+\frac{1}{\omega^{2}}e^{-t}\cos t\cos\omega t
+-\frac{1}{\omega^{2}}e^{-t}\sin t\cos\omega t
++\frac{1}{\omega}e^{-t}\sin t\sin\omega t
+-\frac{1}{\omega^{2}}
+\end{pmatrix}\\
+=&e^{t}
+\begin{pmatrix}
+\cos t & \sin t\\
+-\sin t & \cos t
+\end{pmatrix}
+\boldsymbol{x}_{0}\\
++&\frac{e^{t}\omega^{4}}{\omega^{4}+4}
+\begin{pmatrix}
+\sin t-2\cos t/\omega^{2} & -2\sin t/\omega^{2}-\cos t\\
+\cos t+2\sin t/\omega^{2} & -2\cos t/\omega^{2}+\sin t
+\end{pmatrix}
+\begin{pmatrix}
+-\frac{1}{\omega^{2}}e^{-t}\cos t\cos\omega t
+-\frac{1}{\omega^{2}}e^{-t}\sin t\cos\omega t
++\frac{1}{\omega}e^{-t}\cos t\sin\omega t
++\frac{1}{\omega^{2}}\\
+\frac{1}{\omega^{2}}e^{-t}\cos t\cos\omega t
+-\frac{1}{\omega^{2}}e^{-t}\sin t\cos\omega t
++\frac{1}{\omega}e^{-t}\sin t\sin\omega t
+-\frac{1}{\omega^{2}}
+\end{pmatrix}\\
+=&e^{t}
+\begin{pmatrix}
+\cos t & \sin t\\
+-\sin t & \cos t
+\end{pmatrix}
+\boldsymbol{x}_{0}\\
+&+\frac{e^{t}\omega^{4}}{\omega^{4}+4}
+\begin{pmatrix}
+\sin t & -\cos t\\
+\cos t & \sin t
+\end{pmatrix}
+\begin{pmatrix}
+-\frac{1}{\omega^{2}}e^{-t}\cos t\cos\omega t
+-\frac{1}{\omega^{2}}e^{-t}\sin t\cos\omega t
++\frac{1}{\omega}e^{-t}\cos t\sin\omega t
++\frac{1}{\omega^{2}}\\
+\frac{1}{\omega^{2}}e^{-t}\cos t\cos\omega t
+-\frac{1}{\omega^{2}}e^{-t}\sin t\cos\omega t
++\frac{1}{\omega}e^{-t}\sin t\sin\omega t
+-\frac{1}{\omega^{2}}
+\end{pmatrix}\\
+&-\frac{2e^{t}\omega^{2}}{\omega^{4}+4}
+\begin{pmatrix}
+\cos t & \sin t\\
+-\sin t & \cos t
+\end{pmatrix}
+\begin{pmatrix}
+-\frac{1}{\omega^{2}}e^{-t}\cos t\cos\omega t
+-\frac{1}{\omega^{2}}e^{-t}\sin t\cos\omega t
++\frac{1}{\omega}e^{-t}\cos t\sin\omega t
++\frac{1}{\omega^{2}}\\
+\frac{1}{\omega^{2}}e^{-t}\cos t\cos\omega t
+-\frac{1}{\omega^{2}}e^{-t}\sin t\cos\omega t
++\frac{1}{\omega}e^{-t}\sin t\sin\omega t
+-\frac{1}{\omega^{2}}
+\end{pmatrix}\\
+=&e^{t}
+\begin{pmatrix}
+\cos t & \sin t\\
+-\sin t & \cos t
+\end{pmatrix}
+\boldsymbol{x}_{0}\\
+&+\frac{e^{t}\omega^{4}}{\omega^{4}+4}
+\begin{pmatrix}
+-e^{-t}\cos\omega t/\omega^{2}+(\cos t+\sin t)/\omega^{2}\\
+-e^{-t}\cos\omega t/\omega^{2}+e^{-t}\sin\omega t/\omega
++(-\sin t+\cos t)/\omega^{2}
+\end{pmatrix}\\
+&-\frac{2e^{t}\omega^{2}}{\omega^{4}+4}
+\begin{pmatrix}
+-e^{-t}\cos\omega t/\omega^{2}+e^{-t}\sin\omega t/\omega
++(-\sin t+\cos t)/\omega^{2}\\
+e^{-t}\cos\omega t/\omega^{2}-(\cos t+\sin t)/\omega^{2}
+\end{pmatrix}\\
+=&e^{t}
+\begin{pmatrix}
+\cos t & \sin t\\
+-\sin t & \cos t
+\end{pmatrix}
+\boldsymbol{x}_{0}\\
+&+\frac{e^{t}}{\omega^{4}+4}
+\begin{pmatrix}
+(\omega^{2}-2)\cos t+(\omega^{2}+2)\sin t\\
+-(\omega^{2}-2)\sin t+(\omega^{2}+2)\cos t
+\end{pmatrix}
++\frac{1}{\omega^{4}+4}
+\begin{pmatrix}
+-\omega^{2}\cos\omega t+2\cos\omega t-2\omega\sin\omega t\\
+-\omega^{2}\cos\omega t+\omega^{3}\sin\omega t-2\cos\omega t
+\end{pmatrix}\\
+=&e^{t}
+\begin{pmatrix}
+\cos t & \sin t\\
+-\sin t & \cos t
+\end{pmatrix}\left(
+\boldsymbol{x}_{0}
++\frac{1}{\omega^{4}+4}
+\begin{pmatrix}
+\omega^{2}-2\\
+\omega^{2}+2
+\end{pmatrix}
+\right)
+-\frac{1}{\omega^{4}+4}
+\begin{pmatrix}
+(\omega^{2}-2)\cos\omega t+2\omega\sin\omega t\\
+(\omega^{2}+2)\cos\omega t-\omega^{3}\sin\omega t
+\end{pmatrix}
+\end{align}
+となる。
+\end{remark}
 \end{document}

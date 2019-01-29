@@ -21,6 +21,7 @@
 \begin{document}
 \title{数理解析特論レポート}
 \author{米田亮介}
+\date{}
 \maketitle
 \section{Darboux変換}
 \begin{shaded}
@@ -29,14 +30,14 @@
 $L=e^{\partial/\partial n}+u_{n}e^{-\partial/\partial n},
 B=-u_{n}u_{n-1}e^{-2\partial/\partial n}$で定める。
 このとき、関数$\varphi_{n}(t)$に対する線形方程式
-\begin{eqnarray}
+\begin{align}
 L\varphi_{n}(t)=(\lambda+1/\lambda)\varphi_{n}(t),\quad
 \frac{d}{dt}\varphi_{n}(t)=B\varphi_{n}(t)
-\end{eqnarray}
+\end{align}
 の両立条件から、無限格子上の連続時間発展方程式であるLotka--Voltera(LV)方程式
-\begin{eqnarray}
+\begin{align}
 \frac{d}{dt}u_{n}=u_{n}(u_{n+1}-u_{n-1})
-\end{eqnarray}
+\end{align}
 が導かれることを示せ。
 ここで、$\lambda+1/\lambda$は$L$の固有値を与える定数。
 \item LV方程式の自明な解$u=1$をseed(種)として、
@@ -44,6 +45,79 @@ Darboux変換を$k$回適用することで得られる差分作用素を
 $L^{(k)}=e^{\partial/\partial n}+u_{n}^{(k)}e^{-\partial/\partial n}$
 で表す。
 このとき、$u_{n}^{(1)}$および$u_{n}^{(2)}$を求めよ。
+\end{enumerate}
+\end{shaded}
+関数$f$のシフト演算子$e^{a\partial/\partial x}$は
+\begin{align}
+e^{a\partial/\partial x}f(x)=f(x+a)
+\end{align}
+で書けるのであった\footnote{
+	直観的にはテイラー展開によって説明できる。
+	$C^{\omega}$級の関数$f$について
+	\begin{align*}
+		e^{a\partial/\partial x}f(x)
+		=\sum_{n=0}^{\infty}\frac{a^{n}}{n!}\left(\frac{\partial}{\partial x}\right)^{n}f(x)
+		=\sum_{n=0}^{\infty}\frac{a^{n}}{n!}f^{(n)}(x)
+		=f(x+a)
+	\end{align*}
+	と形式的に書ける。
+}。
+本レポートでは関数のシフト演算子の類似として数列$u_{n}$に作用するシフト演算子$e^{k\partial/\partial n}$は
+\begin{align}
+e^{k\partial/\partial n}u_{n}=u_{n+k}
+\end{align}
+で作用するように決めることにする。
+\begin{enumerate}
+\item 線形方程式
+\begin{align}
+L\varphi_{n}(t)=(\lambda+1/\lambda)\varphi_{n}(t)
+\end{align}
+の両辺を$t$微分すると、
+\begin{align}
+L_{t}\varphi_{n}(t)
+&=(\lambda+1/\lambda)\frac{d}{dt}\varphi_{n}(t)
+-L\frac{d}{dt}\varphi_{n}(t)\\
+&=(\lambda+1/\lambda)B\varphi_{n}(t)-LB\varphi_{n}(t)\\
+&=B\left[(\lambda+1/\lambda)\varphi_{n}(t)\right]-LB\varphi_{n}(t)\\
+&=(BL-LB)\varphi_{n}(t)
+\end{align}
+が成り立つ必要がある。
+\end{enumerate}
+\section{離散系・超離散系}
+\begin{shaded}
+離散Lotka--Voltera(dLV)方程式
+\begin{align}
+\frac{V_{n}^{(t+1)}}{V_{n}^{(t)}}=\frac{1+\delta V_{n-1}^{(t)}}{1+\delta V_{n+1}^{t+1}}
+\end{align}
+について考える。
+\begin{enumerate}
+\item 双線形dLV方程式
+\begin{align}
+(1+\delta)\tau_{n-1}^{(t+1)}\tau_{n}^{(t)}=\tau_{n-1}^{(t)}\tau_{n}^{(t+1)}+\delta\tau_{n-2}^{(t)}\tau_{n+1}^{(t+1)}
+\end{align}
+に対して、従属変数変換
+\begin{align}
+V_{n}^{(t)}=\frac{\tau_{n-1}^{(t)}\tau_{n+2}^{(t+1)}}{\tau_{n}^{(t)}\tau_{n+1}^{(t+1)}}
+\end{align}
+を施すことで、dLV方程式を導出せよ。
+\item 双線形dLV方程式が1ソリトン解
+\begin{align}
+&\tau_{n}^{(t)}=1+\alpha p^{n}q^{t},\\
+&q=\frac{1+\delta(1+\delta)^{-1}p^{-1}}{1+\delta(1+\delta)^{-1}p}
+\end{align}
+を満たすことを確かめよ。
+\item dLV方程式から超離散Lotka--Voltera方程式を導出せよ。
+\item 双線形dLV方程式の1ソリトン解$\tau_{n}^{(t)}$の超離散化から
+超離散Lotka--Voltera方程式の1ソリトン解$T_{n}^{(t)}$を導出せよ。
+\item dLV方程式の1ソリトン解に対して次のパラメータ変換を導入する。
+\begin{align}
+p=\exp(P/\varepsilon),\quad
+\delta=\exp(-1/\varepsilon),\quad
+\alpha=\exp(A/\varepsilon).
+\end{align}
+このとき、$\varepsilon=0.1,0.05,0.001$などと$\varepsilon$を選び、
+離散Lotka--Voltera方程式の解を用いて$U_{n}^{(t)}=\varepsilon\log u_{n}^{(t)}$を
+プロットすることで、超離散系への移行の様子を観察せよ。
 \end{enumerate}
 \end{shaded}
 \end{document}

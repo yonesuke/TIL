@@ -61,6 +61,9 @@ e^{a\partial/\partial x}f(x)=f(x+a)
 		=f(x+a)
 	\end{align*}
 	と形式的に書ける。
+	有限回の微分操作では局所的な作用素にしかなりえないが、
+	無限回の微分操作まで含めると、こういった大域的な演算子を生成することが出来るようになる。
+	このことは有限と無限の違いを浮き彫りにする一つの面白い結果だと思う。
 }。
 本レポートでは関数のシフト演算子の類似として数列$u_{n}$に作用するシフト演算子$e^{k\partial/\partial n}$は
 \begin{align}
@@ -83,11 +86,12 @@ L_{t}\varphi_{n}(t)
 \end{align}
 が成り立つ必要がある。
 \end{enumerate}
+
 \section{離散系・超離散系}
 \begin{shaded}
 離散Lotka--Voltera(dLV)方程式
 \begin{align}
-\frac{V_{n}^{(t+1)}}{V_{n}^{(t)}}=\frac{1+\delta V_{n-1}^{(t)}}{1+\delta V_{n+1}^{t+1}}
+\frac{V_{n}^{(t+1)}}{V_{n}^{(t)}}=\frac{1+\delta V_{n-1}^{(t)}}{1+\delta V_{n+1}^{(t+1)}}
 \end{align}
 について考える。
 \begin{enumerate}
@@ -120,4 +124,90 @@ p=\exp(P/\varepsilon),\quad
 プロットすることで、超離散系への移行の様子を観察せよ。
 \end{enumerate}
 \end{shaded}
+\begin{enumerate}
+\item 双線形dLV方程式を$n\to n+1$にシフトして整理すると、
+\begin{align}
+\begin{split}
+&(1+\delta)\tau_{n}^{(t+1)}\tau_{n+1}^{(t)}=\tau_{n}^{(t)}\tau_{n+1}^{(t+1)}
++\delta\tau_{n-1}^{(t)}\tau_{n+2}^{(t+1)}
+\\
+\Leftrightarrow&
+V_{n}^{(t)}=\frac{\tau_{n-1}^{(t)}\tau_{n+2}^{(t+1)}}{\tau_{n}^{(t)}\tau_{n+1}^{(t+1)}}
+=\frac{1+\delta}{\delta}\frac{\tau_{n}^{(t+1)}\tau_{n+1}^{(t)}}{\tau_{n}^{(t)}\tau_{n+1}^{(t+1)}}-\frac{1}{\delta}\\
+\Leftrightarrow&
+1+\delta V_{n}^{(t)}=(1+\delta)\frac{\tau_{n}^{(t+1)}\tau_{n+1}^{(t)}}
+{\tau_{n}^{(t)}\tau_{n+1}^{(t+1)}}
+\end{split}
+\end{align}
+となるから、
+\begin{align}
+\begin{split}
+\frac{1+\delta V_{n-1}^{(t)}}{1+\delta V_{n+1}^{(t+1)}}
+&=\frac{\tau_{n-1}^{(t+1)}\tau_{n}^{(t)}}{\tau_{n-1}^{(t)}\tau_{n}^{(t+1)}}
+\frac{\tau_{n+1}^{(t+1)}\tau_{n+2}^{(t+2)}}{\tau_{n+1}^{(t+2)}\tau_{n+2}^{(t+1)}}
+=\frac{\tau_{n-1}^{(t+1)}\tau_{n+2}^{(t+2)}}{\tau_{n}^{(t+1)}\tau_{n+1}^{(t+2)}}
+\frac{\tau_{n}^{(t)}\tau_{n+1}^{(t+1)}}{\tau_{n-1}^{(t)}\tau_{n+2}^{(t+1)}}
+=\frac{V_{n}^{(t+1)}}{V_{n}^{(t)}}
+\end{split}
+\end{align}
+となり、dLV方程式が得られた。
+\item 
+双線形dLV方程式の左辺、右辺それぞれに1ソリトン解$\tau_{n}^{(t)}$を代入すると、
+\begin{align}
+\begin{split}
+(1+\delta)\tau_{n-1}^{(t+1)}\tau_{n}^{(t)}
+&=(1+\delta)(1+\alpha p^{n-1}q^{t+1})(1+\alpha p^{n}q^{t})\\
+&=(1+\delta)\left[1+\alpha p^{n-1}q^{t}(q+p)+\alpha^{2}p^{2n-1}q^{2t+1}\right],
+\end{split}\\
+\begin{split}
+\tau_{n-1}^{(t)}\tau_{n}^{(t+1)}+\delta\tau_{n-2}^{(t)}\tau_{n+1}^{(t+1)}
+&=(1+\alpha p^{n-1}q^{t})(1+\alpha p^{n}q^{t+1})
++\delta(1+\alpha p^{n-2}q^{t})(1+\alpha p^{n+1}q^{t+1})\\
+&=1+\alpha p^{n-1}q^{t}(1+pq)+\alpha^{2}p^{2n-1}q^{2t+1}\\
+&\qquad+\delta\left[1+\alpha p^{n-2}q^{t}(1+p^{3}q)+\alpha^{2}p^{2n-1}q^{2t+1}\right]
+\end{split}
+\end{align}
+である。左辺から右辺を引くと、
+\begin{align}
+\begin{split}
+&\alpha p^{n-2}q^{t}\left[(1+\delta)p(p+q)-p(1+pq)-\delta(1+p^{3}q)\right]\\
+=&\alpha p^{n-2}q^{t}(1-p)\left[p(q-1)+\delta(pq-1)(1+p)\right]\\
+=&\alpha p^{n-2}q^{t}(1-p)\left[p\frac{1+\delta+\delta p^{-1}-(1+\delta+\delta p)}{1+\delta+\delta p}-\delta\frac{p(1+\delta+\delta p^{-1})-(1+\delta+\delta p)}{1+\delta+\delta p}(1+p)\right]\\
+=&\alpha p^{n-2}q^{t}(1-p)\left[\frac{\delta(1-p)(1+p)}{1+\delta+\delta p}-\frac{\delta(1-p)(1+p)}{1+\delta+\delta p}\right]=0
+\end{split}
+\end{align}
+となる。
+以上より、$\tau_{n}^{(t)}$が双線形dLV方程式の解であることが確かめられた。
+\item 
+dLV方程式
+\begin{align}
+\frac{V_{n}^{(t+1)}}{V_{n}^{(t)}}=\frac{1+\delta V_{n-1}^{(t)}}{1+\delta V_{n+1}^{(t+1)}}
+\end{align}
+に対する超離散化を考える。$\delta,V_{n}^{(t)}$が正であるとして次の変数変換を施す。
+\begin{align}
+V_{n}^{(t)}=\exp\left(\frac{W_{n}^{(t)}}{\varepsilon}\right),\quad
+\delta=\exp\left(\frac{-L}{\varepsilon}\right).
+\end{align}
+これをdLV方程式に代入して両辺に$\varepsilon\log$を取ると、
+\begin{align}
+W_{n}^{(t+1)}-W_{n}^{(t)}=\varepsilon\log\left(1+\exp\left(\frac{W_{n-1}^{(t)}-L}{\varepsilon}\right)\right)
+-\varepsilon\log\left(1+\exp\left(\frac{W_{n+1}^{(t+1)}-L}{\varepsilon}\right)\right)
+\end{align}
+である。$\varepsilon\to+0$の極限操作を行うと、
+\begin{align}
+W_{n}^{(t+1)}-W_{n}^{(t)}
+=\max\{0,W_{n-1}^{(t)}-L\}-\max\{0,W_{n+1}^{(t+1)}-L\}
+\end{align}
+である\footnote{
+ここで用いたのは
+\begin{align*}
+\lim_{\varepsilon\to+0}\varepsilon\log\left(\exp\left(\frac{A}{\varepsilon}\right)+\exp\left(\frac{B}{\varepsilon}\right)\right)
+=\max\{A,B\}
+\end{align*}
+という非常に簡単な公式である。
+}。
+これが求める超離散Lotka--Voltera方程式である。
+\item 
+
+\end{enumerate}
 \end{document}

@@ -192,8 +192,61 @@ quadrapole approximationなんて言い方をしている。
 実際に数値シミュレーションを行うと、ある程度、変なものが出てきているので、
 そういった意味ではこの近似は良かったのかな、と思えるのだ。
 
-$l=2$だけを取り出したとき、ハミルトニアンをもう少しexplicitに書き下してみよう。
+$l=2$だけを取り出したとき、ハミルトニアンをもう少しexplicitに書き下してみよう。(以下ではハミルトニアンを$E$と書く。)
 \begin{align}
-H=-\frac{3J}{2}\sum_{i,j=1}^{N}\left[(\pmb{n}_{i}\cdot\pmb{n}_{j})^{2}-\frac{1}{3}\right]
+E=-\frac{J}{2}\sum_{i,j=1}^{N}\left[(\pmb{n}_{i}\cdot\pmb{n}_{j})^{2}-\frac{1}{3}\right]
 \end{align}
+これを$N\to\infty$の極限の形で表すと、
+\begin{align}
+E=-\frac{J}{2}\int\int f(\pmb{n})f(\tilde{\pmb{n}})g(\pmb{n},\tilde{\pmb{n}})d\Omega d\tilde{\Omega}
+\end{align}
+である。ここで、$d\Omega=\sin\theta d\theta d\phi$で、
+\begin{align}
+g(\pmb{n},\tilde{\pmb{n}})\equiv\left(\pmb{n}\cdot\tilde{\pmb{n}}\right)^{2}-\frac{1}{3}
+\end{align}
+で表される。次に、
+\begin{align}
+q_{\mu\nu}(\pmb{n})\equiv n_{\mu}n_{\nu}-\frac{1}{3}\delta_{\mu\nu}
+\end{align}
+を用いると、
+\begin{align}
+g(\pmb{n},\tilde{\pmb{n}})=q_{\mu\nu}(\pmb{n})q_{\mu\nu}(\tilde{\pmb{n}})
+\end{align}
+と書ける。
+\begin{align}
+Q_{\mu\nu}=\langle q_{\mu\nu}\rangle
+=\int f(\pmb{n})q_{\mu\nu}(\pmb{n})d\Omega
+\end{align}
+を定義すると、一体のエネルギーは
+\begin{align}
+\varepsilon(\pmb{n})
+=-Jq_{\mu\nu}(\pmb{n})Q_{\mu\nu}
+\end{align}
+であり、トータルのエネルギーは
+\begin{align}
+E=\frac{1}{2}\langle\varepsilon(\pmb{n})\rangle
+=-\frac{1}{2}Q_{\mu\nu}Q_{\mu\nu}
+\end{align}
+である。
+
+このとき、統計力学の平衡状態を求めよう。
+固定したエネルギー$E$、全角運動量$\pmb{L}$に対して、
+ボルツマンエントロピー
+\begin{align}
+S=-k\int f(\pmb{n})\log f(\pmb{n})d\Omega
+\end{align}
+を最大にする平衡状態の分布$f_{\text{eq}}$を求める。
+ラグランジュの未定乗数法を用いると、平衡状態は
+\begin{align}
+f_{\text{eq}}=\frac{e^{-\beta\varepsilon(\pmb{n})+l\gamma_{\mu}n_{\mu}}}{\int e^{-\beta\varepsilon(\pmb{n})+l\gamma_{\mu}n_{\mu}}}
+\end{align}
+となる。
+
+カノニカル集団は定温度の熱浴に浸かっている状況を考える。
+ミクロカノニカル集団は定エネルギーの孤立系を考える。
+粒子数無限の極限においては、"短距離系"においてはこの２つの系は同値であることが知られている。
+一方で、"長距離系"においてはこの２つは一般に異なることが知られているらしいので、
+本論文ではこの２つをそれぞれ考えることにする。
+
+
 \end{document}

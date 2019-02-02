@@ -120,7 +120,7 @@ p=\exp(P/\varepsilon),\quad
 \alpha=\exp(A/\varepsilon).
 \end{align}
 このとき、$\varepsilon=0.1,0.05,0.001$などと$\varepsilon$を選び、
-離散Lotka--Voltera方程式の解を用いて$U_{n}^{(t)}=\varepsilon\log u_{n}^{(t)}$を
+離散Lotka--Voltera方程式の解を用いて$U_{n}^{(t)}=\varepsilon\log V_{n}^{(t)}$を
 プロットすることで、超離散系への移行の様子を観察せよ。
 \end{enumerate}
 \end{shaded}
@@ -262,15 +262,15 @@ T_{n}^{(t)}=
 \end{align}
 となり、求める超離散化が得られた。
 \item 
-dLV方程式の1ソリトン解$u_{n}^{(t)}$を双線形dLV方程式の1ソリトン解$\tau_{n}^{(t)}$を用いて
+dLV方程式の1ソリトン解$V_{n}^{(t)}$は双線形dLV方程式の1ソリトン解$\tau_{n}^{(t)}$を用いて
 \begin{align}
-u_{n}^{(t)}=\frac{\tau_{n-1}^{(t)}\tau_{n+2}^{(t+1)}}{\tau_{n}^{(t)}\tau_{n+1}^{(t+1)}}
+V_{n}^{(t)}=\frac{\tau_{n-1}^{(t)}\tau_{n+2}^{(t+1)}}{\tau_{n}^{(t)}\tau_{n+1}^{(t+1)}}
 \end{align}
-と定める。
-すると、$u_{n}^{(t)}$の超離散化$U_{n}^{(t)}$は
+と書けた。
+すると、$V_{n}^{(t)}$の超離散化$U_{n}^{(t)}$は
 \begin{align}
 \begin{split}
-U_{n}^{(t)}=&\lim_{\varepsilon\to+0}\varepsilon\log u_{n}^{(t)}
+U_{n}^{(t)}=&\lim_{\varepsilon\to+0}\varepsilon\log V_{n}^{(t)}
 =\lim_{\varepsilon\to+0}\varepsilon\left(\log\tau_{n-1}^{(t)}+\log\tau_{n+2}^{(t+1)}-\log\tau_{n}^{(t)}-\log\tau_{n+1}^{(t+1)}\right)\\
 =&T_{n-1}^{(t)}+T_{n+2}^{(t+1)}-T_{n}^{(t)}-T_{n+1}^{(t+1)}
 \end{split}
@@ -282,7 +282,7 @@ p=\exp\left(P/\varepsilon\right),\quad
 \delta=\exp\left(-1/\varepsilon\right),\quad
 \alpha=\exp\left(A/\varepsilon\right).
 \end{align}
-を導入した$u_{n}^{(t)}$に対して、$\varepsilon\log u_{n}^{(t)}$と$U_{n}^{(t)}$
+を導入した$V_{n}^{(t)}$に対して、$\varepsilon\log V_{n}^{(t)}$と$U_{n}^{(t)}$
 を比較することで超離散系への移行の様子を観察する。
 \end{enumerate}
 \end{document}

@@ -84,7 +84,110 @@ L_{t}\varphi_{n}(t)
 &=B\left[(\lambda+1/\lambda)\varphi_{n}(t)\right]-LB\varphi_{n}(t)\\
 &=(BL-LB)\varphi_{n}(t)
 \end{align}
-が成り立つ必要がある。
+が成り立つ必要がある。これより、両立条件
+\begin{align}
+L_{t}=BL-LB
+\end{align}
+が必要となる。
+\begin{align}
+\begin{split}
+L_{t}&=\frac{du_{n}}{dt}e^{-\partial/\partial n},
+\end{split}\\
+\begin{split}
+BL-LB&=-u_{n}u_{n-1}e^{-2\partial/\partial n}\left(e^{\partial/\partial n}+u_{n}e^{-\partial n}\right)
++\left(e^{\partial/\partial n}+u_{n}e^{-\partial n}\right)\left(u_{n}u_{n-1}e^{-2\partial/\partial n}\right)\\
+&=-u_{n}u_{n-1}e^{-\partial/\partial n}-u_{n}u_{n-1}u_{n-2}e^{-3\partial/\partial n}
++u_{n+1}u_{n}e^{-\partial/\partial n}+u_{n}u_{n-1}u_{n-2}e^{-3\partial/\partial n}\\
+&=u_{n}(u_{n+1}-u_{n-1})e^{-\partial/\partial n}
+\end{split}
+\end{align}
+が計算によりわかるので、係数比較により
+\begin{align}
+\frac{du_{n}}{dt}=u_{n}(u_{n+1}-u_{n-1})
+\end{align}
+となり、LV方程式が得られた。
+
+\item 
+LV方程式におけるDarboux変換を簡単に復習する。
+$k$回目のDarboux変換により得られたLV方程式の解を$u^{(k)}_{n}$とおく。
+そのときの差分演算子を$L^{(k)}=e^{\partial/\partial n}+u^{(k)}_{n}e^{-\partial/\partial n},
+B^{(k)}=-u_{n}^{(k)}u_{n-1}^{(k)}e^{-2\partial/\partial n}$で表すことにする。
+この差分演算子で表された差分方程式を満たす固有関数を$\varphi_{n}^{(k)}$と書くことにする。
+このとき、
+\begin{align}
+F^{(k)}L^{(k)}=L^{(k+1)}F^{(k)}
+\end{align}
+を満足する作用素$L^{(k+1)},F^{(k)}$を見つけることができれば、
+$\varphi_{n}^{(k+1)}:=F^{(k)}\varphi_{n}^{(k)}$によって、
+\begin{align}
+L^{(k+1)}\varphi_{n}^{(k+1)}=L^{(k+1)}F^{(k)}\varphi_{n}^{(k)}
+=F^{(k)}L^{(k)}\varphi_{n}^{(k)}=\eta(\lambda)F^{(k)}\varphi_{n}^{(k)}
+=\eta(\lambda)\varphi_{n}^{(k+1)}
+\end{align}
+となり、新たな固有関数$\varphi_{n}^{(k+1)}$を生成することが出来る。
+このとき、作用素$F^{(k)}$の一つ(配布レポートの裏側による)として次が得られる。
+\begin{align}
+\left\{
+\begin{array}{l}
+F^{(k)}=e^{2\partial/\partial n}-A_{n}^{(k)}\\
+A_{n}^{(k)}=\dfrac{\varphi_{n+2}^{(k)}}{\varphi_{n}^{(k)}}
+\end{array}
+\right.
+\end{align}
+また、$u_{n}^{(k)}$は次の漸化式によって得られる。
+\begin{align}
+u_{n}^{(k+1)}=\frac{A_{n}}{A_{n-1}}u_{n}^{(k)}
+\end{align}
+
+以上を踏まえて$u^{(0)}_{n}=1$(自明解)として実際にDarboux変換を施していく。
+はじめに$\varphi_{n}^{(0)}$を求める。$L^{(0)}\varphi_{n}^{(0)}=\eta(\lambda)\varphi_{n}^{(0)}$より、
+\begin{align}
+\varphi_{n+1}^{(0)}-(\lambda+1/\lambda)\varphi_{n}^{(0)}+\varphi_{n-1}^{(0)}=0
+\end{align}
+となる。これを解くと、
+\begin{align}
+\varphi_{n}^{(0)}=\tilde{c_{1}}\lambda^{n}+\tilde{c_{2}}\lambda^{-n}
+\end{align}
+となる。次に$\varphi_{n}^{(0)}$の時間発展を考える。$\frac{d\varphi_{n}^{(0)}}{dt}=B^{(0)}\varphi_{n}^{(0)}$より、
+\begin{align}
+\frac{d\tilde{c_{1}}}{dt}\lambda^{n}+\frac{d\tilde{c_{2}}}{dt}\lambda^{-n}
+=-\tilde{c_{1}}\lambda^{n-2}-\tilde{c_{2}}\lambda^{-n+2}
+\end{align}
+である。これより、
+\begin{align}
+\frac{d\tilde{c_{1}}}{dt}=-\frac{1}{\lambda^{2}}\tilde{c_{1}},\quad
+\frac{d\tilde{c_{2}}}{dt}=-\lambda^{2}\tilde{c_{2}}
+\end{align}
+であるから、これを解くと、
+\begin{align}
+\varphi_{n}^{(0)}=c_{1}\lambda^{n}e^{-t/\lambda^{2}}+c_{2}\lambda^{-n}e^{-\lambda^{2}t}
+\end{align}
+がわかる。ここで$c_{1},c_{2}$は任意定数である。
+これより、$u_{n}^{(0)}$のDarboux変換$u_{n}^{(1)}$は、
+\begin{align}
+u_{n}^{(1)}=\frac{A_{n}}{A_{n-1}}u_{n}^{(0)}
+=\frac{\varphi_{n+2}^{(0)}\varphi_{n-1}^{(0)}}{\varphi_{n}^{(0)}\varphi_{n-1}^{(0)}}
+=\frac{(c_{1}\lambda^{n+2}e^{-t/\lambda^{2}}+c_{2}\lambda^{-n-2}e^{-\lambda^{2}t})(c_{1}\lambda^{n-1}e^{-t/\lambda^{2}}+c_{2}\lambda^{-n+1}e^{-\lambda^{2}t})}{(c_{1}\lambda^{n}e^{-t/\lambda^{2}}+c_{2}\lambda^{-n}e^{-\lambda^{2}t})(c_{1}\lambda^{n+1}e^{-t/\lambda^{2}}+c_{2}\lambda^{-n-1}e^{-\lambda^{2}t})}
+\end{align}
+である。$c_{1}$もしくは$c_{2}$を$0$とすると$u_{n}^{(1)}=1$となってしまうので、
+どちらも$0$ではない。
+これより、$c=c_{2}/c_{1}$とおくことで、
+\begin{align}
+u_{n}^{(1)}=\frac{(\lambda^{n+2}e^{-t/\lambda^{2}}+c\lambda^{-n-2}e^{-\lambda^{2}t})(\lambda^{n-1}e^{-t/\lambda^{2}}+c\lambda^{-n+1}e^{-\lambda^{2}t})}{(\lambda^{n}e^{-t/\lambda^{2}}+c\lambda^{-n}e^{-\lambda^{2}t})(\lambda^{n+1}e^{-t/\lambda^{2}}+c\lambda^{-n-1}e^{-\lambda^{2}t})}
+\end{align}
+が得られる。
+
+次に、$u_{n}^{(2)}$を求めるために、$\varphi_{n}^{(1)}$を求める。
+$\varphi_{n}^{(1)}$はLax pairを満たすことから、
+\begin{align}
+\left\{
+\begin{array}{l}
+\varphi_{n+1}^{(1)}-(\lambda+1/\lambda)\varphi_{n}^{(1)}+u_{n}^{(1)}\varphi_{n-1}^{(1)}=0\\
+\dfrac{d\varphi_{n}^{(1)}}{dt}=-u_{n}^{(1)}u_{n-1}^{(1)}\varphi_{n}^{(1)}
+\end{array}
+\right.
+\end{align}
+を解く必要がある。が、これ以上解くことが出来なかったため、$u_{n}^{(2)}$を求めることは出来なかった。
 \end{enumerate}
 
 \section{離散系・超離散系}
@@ -229,38 +332,24 @@ T_{n}^{(t)}=\varepsilon\log\left[
 \end{align}
 ここで、$t$乗されている部分に注目すると、十分小さな$\varepsilon>0$について、
 \begin{align}
-\left(
 \frac{1+\exp\left(\frac{-1}{\varepsilon}\right)+\exp\left(\frac{-1-P}{\varepsilon}\right)}
 {1+\exp\left(\frac{-1}{\varepsilon}\right)+\exp\left(\frac{-1+P}{\varepsilon}\right)}
-\right)^{t}\approx
-\begin{cases}
-\exp\left(\frac{t\max\{0,-1-P\}-t\min\{-1,-1+P\}}{\varepsilon}\right) & t\geq 0\\
-\exp\left(\frac{t\min\{-1,-1-P\}-t\max\{0,-1+P\}}{\varepsilon}\right) & t< 0\\
-\end{cases}
+\approx\exp\left(\frac{R}{\varepsilon}\right)
 \end{align}
-が分かる。はじめに$t\geq0$における式~\eqref{eq:ud-1soliton}の$\varepsilon\to+0$の極限を考えると、
+として、$R$がどうなるかを考える。両辺に$\varepsilon\log$をとると、
 \begin{align}
-T_{n}^{(t)}&=\lim_{\varepsilon\to+0}\varepsilon\log\left[
-1+\exp\left(\frac{A+nP+t\max\{0,-1-P\}-t\min\{-1,-1+P\}}{\varepsilon}\right)
-\right]\\
-&=\max\left\{0,A+nP+t\max\{0,-1-P\}-t\min\{-1,-1+P\}\right\}
+\begin{split}
+R&\approx\varepsilon\log\left\{\left[1+\exp\left(\frac{-1}{\varepsilon}\right)+\exp\left(\frac{-1-P}{\varepsilon}\right)\right]-\left[1+\exp\left(\frac{-1}{\varepsilon}\right)+\exp\left(\frac{-1+P}{\varepsilon}\right)\right]\right\}\\
+&\approx\max\{0,-1-P\}-\max\{0,-1+P\}
+\end{split}
 \end{align}
-である。$t<0$では、
+となる。これより、$\varepsilon\to+0$の極限で、
 \begin{align}
-T_{n}^{(t)}&=\lim_{\varepsilon\to+0}\varepsilon\log\left[
-1+\exp\left(\frac{A+nP+t\min\{-1,-1-P\}-t\max\{0,-1+P\}}{\varepsilon}\right)
-\right]\\
-&=\max\left\{0,A+nP+t\min\{-1,-1-P\}-t\max\{0,-1+P\}\right\}
+\begin{split}
+T_{n}^{(t)}=\max\left\{0,A+nP+t\max\{0,-1-P\}-t\max\{0,-1+P\}\right\}
+\end{split}
 \end{align}
-となる。$\min$で表されるものを$\max$に書き換え直すと、
-\begin{align}
-T_{n}^{(t)}=
-\begin{cases}
-\max\left\{0,A+nP+t\max\{0,-1-P\}+t\max\{1,1-P\}\right\} & t\geq0\\
-\max\left\{0,A+nP-t\max\{1,1+P\}-t\max\{0,-1+P\}\right\} & t<0
-\end{cases}
-\end{align}
-となり、求める超離散化が得られた。
+となることがわかる。
 \item 
 dLV方程式の1ソリトン解$V_{n}^{(t)}$は双線形dLV方程式の1ソリトン解$\tau_{n}^{(t)}$を用いて
 \begin{align}
@@ -284,5 +373,34 @@ p=\exp\left(P/\varepsilon\right),\quad
 \end{align}
 を導入した$V_{n}^{(t)}$に対して、$\varepsilon\log V_{n}^{(t)}$と$U_{n}^{(t)}$
 を比較することで超離散系への移行の様子を観察する。
+今回は$A=1,P=2$の場合について数値計算を行った。他のパラメーターでもソリトンの向きは変わるが、
+構造自体は変わらない(同じような形のグラフが得られる。)ので、
+他のパラメータについてはここでは結果を載せることはしない。
+超離散解$U(n,t)$と離散解の超離散系への移行を表す$\varepsilon\log V(n,t)$をプロットしたものを図~\ref{fig:ud_a1p2}に示す。
+$\varepsilon$の値を$0$に近づけるにつれて離散解のグラフが超離散解のグラフに近づいて行くことが
+確認できる。
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=16cm]{lv_a1p3.eps}
+\caption{$A=1,P=2$のときの$(a)$超離散解$U(n,t)$と$(b)$離散解$V(n,t)$の超離散系への移行を表す$\varepsilon\log V(n,t)$をプロットしたもの。
+$\varepsilon$を小さくするにつれて離散解が超離散解に近づいていることが確認できる。}
+\label{fig:ud_a1p2}
+\end{center}
+\end{figure}
+
+ただ、3次元のグラフだけでは見づらいので、
+特に$n=0$において離散解が超離散解に近づいている様子を図~\ref{fig:ud_a1p2_n0}にプロットした。
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=14cm]{lv_a1p2_n0.eps}
+\caption{$n=0$でスライスした、$A=1,P=2$のときの$(a)$超離散解$U(n,t)$と$(b)$離散解$V(n,t)$の超離散系への移行を表す$\varepsilon\log V(n,t)$をプロットしたもの。
+$\varepsilon$を小さくするにつれて離散解が超離散解に近づいていることが確認できる。}
+\label{fig:ud_a1p2_n0}
+\end{center}
+\end{figure}
+
+以上のように離散解が超離散解に収束していることが確認出来た。
 \end{enumerate}
 \end{document}

@@ -77,12 +77,14 @@ L\varphi_{n}(t)=(\lambda+1/\lambda)\varphi_{n}(t)
 \end{align}
 の両辺を$t$微分すると、
 \begin{align}
+\begin{split}
 L_{t}\varphi_{n}(t)
 &=(\lambda+1/\lambda)\frac{d}{dt}\varphi_{n}(t)
 -L\frac{d}{dt}\varphi_{n}(t)\\
 &=(\lambda+1/\lambda)B\varphi_{n}(t)-LB\varphi_{n}(t)\\
 &=B\left[(\lambda+1/\lambda)\varphi_{n}(t)\right]-LB\varphi_{n}(t)\\
 &=(BL-LB)\varphi_{n}(t)
+\end{split}
 \end{align}
 が成り立つ必要がある。これより、両立条件
 \begin{align}
@@ -376,6 +378,9 @@ p=\exp\left(P/\varepsilon\right),\quad
 今回は$A=1,P=2$の場合について数値計算を行った。他のパラメーターでもソリトンの向きは変わるが、
 構造自体は変わらない(同じような形のグラフが得られる。)ので、
 他のパラメータについてはここでは結果を載せることはしない。
+また、本来$n,t$は整数だが、$U,V$の定義から自然に実数に拡張出来るので、
+プロットの際には整数以外のところもプロットした。
+そうしたほうが離散解から超離散解への移行が確認しやすいからである。
 超離散解$U(n,t)$と離散解の超離散系への移行を表す$\varepsilon\log V(n,t)$をプロットしたものを図~\ref{fig:ud_a1p2}に示す。
 $\varepsilon$の値を$0$に近づけるにつれて離散解のグラフが超離散解のグラフに近づいて行くことが
 確認できる。
@@ -395,7 +400,7 @@ $\varepsilon$を小さくするにつれて離散解が超離散解に近づい�
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=14cm]{lv_a1p2_n0.eps}
-\caption{$n=0$でスライスした、$A=1,P=2$のときの$(a)$超離散解$U(n,t)$と$(b)$離散解$V(n,t)$の超離散系への移行を表す$\varepsilon\log V(n,t)$をプロットしたもの。
+\caption{$n=0$でスライスした、$A=1,P=2$のときの超離散解$U(n,t)$と離散解$V(n,t)$の超離散系への移行を表す$\varepsilon\log V(n,t)$をプロットしたもの。
 $\varepsilon$を小さくするにつれて離散解が超離散解に近づいていることが確認できる。}
 \label{fig:ud_a1p2_n0}
 \end{center}

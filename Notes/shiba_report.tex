@@ -48,7 +48,7 @@ $\pmb{q},\pmb{p}$の各成分を$q_{i},p_{i}(i=1,2,3)$
 H=\frac{1}{2m}\left(p_{j}p_{j}-\frac{2e}{c}p_{j}A_{j}+\frac{e^{2}}{c^{2}}A_{j}A_{j}\right)+e\phi
 \end{align}
 となる。ここで、同じ添字については和を取ることにする
-(上付き、下付きとかそういうことはここでは考えない。)。
+\footnote{上付き、下付きとかそういうことはここでは考えない。}。
 正準方程式は、
 \begin{align}
 \begin{split}
@@ -102,7 +102,23 @@ m\ddot{\pmb{q}}=e\pmb{E}(\pmb{q},t)+\frac{e}{c}\dot{\pmb{q}}\times\pmb{B}(\pmb{q
 $2^{n}$の上位$N$桁がその自然数と一致するような$n$が存在することを示せ。
 \end{shaded}
 
+$\theta\in\mathbb{R}/\mathbb{Z}$に対して
+\begin{align}
+P(\theta)=\theta+\log_{10}{2}\in\mathbb{R}/\mathbb{Z}
+\end{align}
+という写像を考える。
+このとき、$\log_{10}{2}$は無理数である\footnote{
+$\log_{10}{2}$が有理数$\frac{p}{q}$で書けるとしよう。$p,q$は$1$以上の自然数である。
+このとき、$2^{q}=2^{p}5^{p}$であるから、素因数分解の一意性から$p=q=0$となり矛盾。
+よって、$\log_{10}{2}$は無理数である。
+}
+から、任意の$\theta$について$\{P^{n}(\theta)\mid n\in\mathbb{N}\}$が
+$\mathbb{R}/\mathbb{Z}$上稠密であることがわかる。
+このことを用いて、問題を解いていく。
 
+$2^{n}$を10進法で表したときの最初の数字は$\log_{10}{2^{n}}=n\log_{10}{2}$
+の小数部分を計算することによってわかる。
+例えば
 
 \section*{問題11}
 \begin{shaded}

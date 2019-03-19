@@ -1,0 +1,148 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx,color}
+\usepackage{ulem}
+\usepackage{ascmac}
+\usepackage{pgf,tikz}
+\usepackage{here}
+%\usepackage{subcaption}
+\usepackage{amsmath,amssymb}
+\usepackage{ascmac}
+\usepackage{url}
+\usepackage{comment}
+\usepackage{theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proof}{Proof}
+\newtheorem{remark}{Remark}
+\newtheorem{lem}{Lemma}
+\usepackage{framed}
+\def\qed{\hfill $\Box$}
+\definecolor{shadecolor}{gray}{0.80}
+
+%\usepackage{showkeys}
+
+\begin{document}
+Quoraに投稿されていた次の問題\footnote{\url{https://qr.ae/TWRjF2}}を考えます。
+\begin{shaded}
+\begin{center}
+$5^{400}$の答えの下6桁を、計算機やソフトを使わずに導き出す方法を教えてください。
+\end{center}
+\end{shaded}
+この問題は数学的には
+\begin{align}
+5^{400}\mod 10^{6}
+\end{align}
+を計算する問題になります。
+この手の問題は\textbf{オイラーの公式}
+\begin{align}
+a^{\varphi(m)}\equiv 1\mod m\ \mathrm{for} \gcd(a,m)=1
+\end{align}
+を連想させますが、
+今回は$5$と$10^6$が互いに素ではないので用いることができません。
+そこで、$10^6$を$2^6$と$5^6$に分解する、という方針を考えてみます。
+そのために、次の補題を用意します。
+
+\begin{shaded}
+\begin{lem}
+任意の$n\geq 0$について、次が成り立つ。
+\begin{align}
+5^{2^{n}}\equiv 1 \mod 2^{n+2}.
+\label{eq:5}
+\end{align}
+\end{lem}
+\end{shaded}
+\begin{proof}
+数学的帰納法で示します。$n=0$のときは明らかです。
+ある$n$で	式\eqref{eq:5}が成り立つとすると、ある自然数$m$を用いて、
+\begin{align}
+5^{2^{n}}=2^{n+2}m+1
+\end{align}
+が成り立ちます。このとき、
+\begin{align}
+5^{2^{n+1}}=(2^{n+2}m+1)^2=2^{n+3}(2^{n+1}m^{2}+m)+1
+\end{align}
+なので、
+\begin{align}
+5^{2^{n+1}}\equiv 1 \mod 2^{n+3}
+\end{align}
+が成り立ちます。
+よって、$n+1$のときも式\eqref{eq:5}が成り立つことがわかりました。
+よって、数学的帰納法によって、任意の$n\geq 0$で式\eqref{eq:5}
+が成り立つことが示されました。\qed
+\end{proof}
+この補題で$n=4$とすると、
+\begin{align}
+5^{16}\equiv 1 \mod 2^{6}
+\end{align}
+となります。$5^{400}$とは離れてしまいますが、
+一旦$5^{16}$について考えてみましょう。
+すると、$10^{6}$のもう一つの片割れ$5^{6}$については明らかに
+\begin{align}
+5^{16}\equiv 0 \mod 5^{6}
+\end{align}
+が成り立ちます。
+まとめると、
+\begin{align}
+\left\{
+\begin{array}{l}
+5^{16}\equiv 1 \mod 2^{6},\\
+5^{16}\equiv 0 \mod 5^{6}
+\end{array}
+\right.
+\label{eq:5^16}
+\end{align}
+です。
+いま、本題は$5^{400}$でした。でも、$400=16\times25$なので、
+\begin{align}
+\left\{
+\begin{array}{l}
+5^{400}\equiv 1 \mod 2^{6},\\
+5^{400}\equiv 0 \mod 5^{6}
+\end{array}
+\right.
+\label{eq:5^400}
+\end{align}
+がわかります。
+ここで、次の定理を思い出しましょう。
+\begin{shaded}
+\begin{theorem}{(\textbf{中国の剰余定理})}
+$\gcd(m,n)=1$とする。任意の整数$b,c$について、連立合同式
+\begin{align}
+x\equiv b\mod m,\quad x\equiv c\mod n
+\end{align}
+は$0\leq x<mn$を満たす唯一の解を持つ。
+\end{theorem}
+\end{shaded}
+いま、$5^{16}$と$5^{400}$はともに
+\begin{align}
+\left\{
+\begin{array}{l}
+x\equiv 1 \mod 2^{6},\\
+x\equiv 0 \mod 5^{6}
+\end{array}
+\right.
+\label{eq:x}
+\end{align}
+の解になっていることが式\eqref{eq:5^16}と式\eqref{eq:5^400}
+からわかります。
+中国の剰余定理によると、式\eqref{eq:x}を満たす解は$0\leq x<10^{6}$
+の中に一つしかありません。
+これより、
+\begin{align}
+5^{400}\equiv 5^{16}\mod 10^{6}
+\end{align}
+がわかります。なので、$5^{400}$を計算する代わりに$5^{16}$を計算すればよいのです。
+これでだいぶ計算コストが落ちました。あとは根気強く計算すれば\footnote{
+まだまだ楽をしたい人は次のように計算するのも良いかもしれません。
+$5^{4}=625$なので(これくらいは計算して!)、
+\begin{align*}
+5^{16}=625^{4}\equiv(600+25)^4
+\equiv 4\cdot 600\cdot25^{3}+25^{4}
+\equiv 5\cdot 10^{5}+360625=890625
+\end{align*}
+という風にも解が得られます。
+}、
+\begin{align}
+5^{400}\equiv 5^{16}\equiv 890625 \mod 10^{6}
+\end{align}
+となり、答えが得られました!
+\end{document}

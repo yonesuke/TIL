@@ -1,0 +1,161 @@
+\documentclass{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage[T1]{fontenc}
+\usepackage{newpxtext, newpxmath}
+\usepackage{ascmac}
+\usepackage{fancybox}
+\usepackage[dvipdfmx]{graphicx,color}
+\usepackage{theorem}
+\newtheorem{theorem}{定理}
+\newtheorem{proof}{証明}
+\newtheorem{eg}{例}
+\def\qed{\hfill $\Box$}
+\def\d{\textrm{d}}
+
+\begin{document}
+\title{Sommerfeld expansion}
+%\author{米田亮介}
+\maketitle	
+
+\section{Introduction}
+1粒子状態の粒子数$n_{\tau}$の取りうる値は量子力学によると次の2つの場合しかない:
+\begin{itemize}
+\item $n_{\tau}=0,1$ in \textbf{Fermi--Dirac ensembles},
+\item $n_{\tau}=0,1,2,\cdots,\infty$ in \textbf{Bose--Einstein ensembles}.
+\end{itemize}
+Fermi統計に従う粒子を\textbf{Fermi粒子}、
+Bose統計に従う粒子を\textbf{Bose粒子}という。
+
+Fermi粒子が独立に運動している場合、一つのエネルギー準位$\varepsilon$にある粒子の数は
+\begin{align*}
+f(\varepsilon)=\frac{1}{e^{\beta(\varepsilon-\mu)}+1}
+\end{align*}
+で与えられる。ここで、$\mu$は化学ポテンシャルである。
+Fermi分布に従う物理量$g(\varepsilon)$の統計平均は
+\begin{align*}
+\int_{-\infty}^{\infty}g(\varepsilon)f(\varepsilon)\d\varepsilon
+\end{align*}
+であり、特に低温付近では、
+\begin{center}
+\shadowbox{$\displaystyle
+\int_{-\infty}^{\infty}g(\varepsilon)f(\varepsilon)\d\varepsilon
+=\int_{-\infty}^{\mu}g(\varepsilon)\d\varepsilon
++\frac{\pi^{2}g^{(1)(\mu)}}{6}(kT)^{2}
++\frac{7\pi^{4}g^{(3)}(\mu)}{360}(kT)^{4}+\cdots
+$}
+\end{center}
+となることが知られている。この展開を\textbf{低温展開}(\textbf{Sommerfeld expansion})
+といい、いろいろな応用が知られている。
+
+\section{Proof}
+はじめに、次の公式を証明する。
+\begin{center}
+\shadowbox{$\displaystyle-\int_{-\infty}^{\infty}\varphi(\varepsilon)\frac{\d f}{\d\varepsilon}\d\varepsilon
+=\varphi(\mu)+\frac{\pi^{2}\varphi^{(2)}(\mu)}{6}(kT)^{2}
++\frac{7\pi^{4}\varphi^{(4)}(\mu)}{360}(kT)^{4}+\cdots.$}
+\end{center}
+ただし、$\varphi(-\infty)=0$とする。
+
+$\varphi(\varepsilon)$を$\varepsilon=\mu$まわりで展開して、
+\begin{align*}
+\varphi(\varepsilon)=\varphi(\mu)+\sum_{k=1}^{\infty}\frac{\varphi^{(k)}(\mu)}{k!}(\varepsilon-\mu)^{k}
+\end{align*}
+代入すると、
+\begin{align*}
+-\int_{-\infty}^{\infty}\varphi(\varepsilon)\frac{\d f}{\d\varepsilon}\d\varepsilon
+=-\varphi(\mu)\int_{-\infty}^{\infty}\frac{\d f}{\d\varepsilon}\d\varepsilon
+-\sum_{k=1}^{\infty}\frac{\varphi^{(k)}(\mu)}{k!}\int_{-\infty}^{\infty}
+(\varepsilon-\mu)^{k}\frac{\d f}{\d\varepsilon}\d\varepsilon
+\end{align*}
+となる。ここで初項について、
+\begin{align*}
+\int_{-\infty}^{\infty}\frac{\d f}{\d\varepsilon}\d\varepsilon
+=\left[f\right]_{-\infty}^{\infty}=-1
+\end{align*}
+である。また、第2項の$k$が奇数の場合については$\frac{\d f}{\d\varepsilon}$が
+$\mu$周りで偶関数であることから、
+\begin{align*}
+\int_{-\infty}^{\infty}(\varepsilon-\mu)^{k}\frac{\d f}{\d\varepsilon}\d\varepsilon=0
+\end{align*}
+である。最後に、$k$が偶数のときは、
+\begin{align*}
+\int_{-\infty}^{\infty}(\varepsilon-\mu)^{k}\frac{\d f}{\d\varepsilon}\d\varepsilon
+&=-\frac{1}{k_{B}T}\int_{-\infty}^{\infty}\frac{(\varepsilon-\mu)^{k}e^{\beta(\varepsilon-\mu)}}{(e^{\beta(\varepsilon-\mu)}+1)^{2}}\d\varepsilon\\
+&=-(k_{B}T)^{k}\int_{-\infty}^{\infty}\frac{x^{k}e^{x}}{(e^{x}+1)^{2}}\d x\\
+&=-2k!(1-2^{-k+1})\zeta(k)(k_{B}T)^{k}
+\end{align*}
+である(\ref{sec:integrals}を見よ)。ここで、$\zeta(z)$は\textbf{Riemann zeta関数}
+\begin{align*}
+\zeta(z)=\sum_{n=1}^{\infty}\frac{1}{n^{z}}
+\end{align*}
+である。これより、
+\begin{align*}
+-\int_{-\infty}^{\infty}\varphi(\varepsilon)\frac{\d f}{\d\varepsilon}\d\varepsilon
+=\varphi(\mu)+\sum_{r=1}^{\infty}2(1-2^{1-2r})\zeta(2r)\varphi^{(2r)}(\mu)(k_{B}T)^{2r}
+\end{align*}
+となる。特に、$r=1,2$を考えると、
+\begin{align*}
+-\int_{-\infty}^{\infty}\varphi(\varepsilon)\frac{\d f}{\d\varepsilon}\d\varepsilon
+=\varphi(\mu)+\frac{\pi^{2}\varphi^{(2)}(\mu)}{6}(kT)^{2}
++\frac{7\pi^{4}\varphi^{(4)}(\mu)}{360}(kT)^{4}+\cdots
+\end{align*}
+となることが示された。
+
+次に、
+\begin{align*}
+g(\varepsilon)=\varphi'(\varepsilon)
+\end{align*}
+を代入すると、
+\begin{align*}
+&-\int_{-\infty}^{\infty}\varphi(\varepsilon)\frac{\d f}{\d\varepsilon}\d\varepsilon=-\left[\varphi(\varepsilon)f(\varepsilon)\right]_{-\infty}^{\infty}
++\int_{-\infty}^{\infty}\varphi'(\varepsilon)f(\varepsilon)\d\varepsilon
+=\int_{-\infty}^{\infty}g(\varepsilon)f(\varepsilon)\d\varepsilon,\\
+&\varphi(\mu)=\int_{-\infty}^{\mu}\varphi'(\varepsilon)\d\varepsilon
+=\int_{-\infty}^{\mu}g(\varepsilon)\d\varepsilon
+\end{align*}
+であるから、
+\begin{align*}
+\int_{-\infty}^{\infty}g(\varepsilon)f(\varepsilon)\d\varepsilon
+=\int_{-\infty}^{\mu}g(\varepsilon)\d\varepsilon
++\frac{\pi^{2}g^{(1)}(\mu)}{6}(kT)^{2}
++\frac{7\pi^{4}g^{(3)}(\mu)}{360}(kT)^{4}+\cdots
+\end{align*}
+となり、低温展開を示すことが出来た。
+
+\appendix
+\section{Integral formulas}
+\label{sec:integrals}
+低温展開の証明の中で出てきた積分公式をいくらか示しておく。
+\begin{itemize}
+\item 
+\shadowbox{
+	$\displaystyle
+\int_{0}^{\infty}\frac{x^{n}e^{x}}{(e^{x}+1)^{2}}\d x=n!(1-2^{1-n})\zeta(n)
+	$
+}
+\begin{align*}
+&\int_{0}^{\infty}\frac{x^{n}e^{x}}{(e^{x}+1)^{2}}\d x\\
+=&\int_{0}^{\infty}x^{n}\frac{\d}{\d x}\left(\frac{-1}{e^{x}+1}\right)\d x
+=n\int_{0}^{\infty}\frac{x^{n-1}}{e^{x}+1}\d x\\
+=&n\int_{0}^{\infty}\frac{x^{n-1}e^{-x}}{1+e^{-x}}\d x
+=n\int_{0}^{\infty}x^{n-1}e^{-x}\left[\sum_{k=0}^{\infty}(-1)^{k}e^{-kx}\right]\d x\\
+=&n\sum_{k=0}^{\infty}(-1)^{k}\int_{0}^{\infty}x^{n-1}e^{-(k+1)x}\d x
+=n\sum_{k=0}^{\infty}(-1)^{k}\int_{0}^{\infty}\frac{t^{n-1}}{(k+1)^{n-1}}e^{-t}\frac{\d t}{k+1}\\
+=&n\sum_{k=0}^{\infty}\frac{(-1)^{k}}{(k+1)^{n}}\int_{0}^{\infty}t^{n-1}e^{-t}\d t
+=n\Gamma(n)\sum_{k=0}^{\infty}\frac{(-1)^{k}}{(k+1)^{n}}\\
+=&n!\sum_{k=0}^{\infty}\frac{(-1)^{k}}{(k+1)^{n}}
+=n!\left(\sum_{l:{\rm odd}}\frac{1}{l^{n}}-\sum_{l:{\rm even}}\frac{1}{l^{n}}\right)\\
+=&n!\left(\sum_{l=1}^{\infty}\frac{1}{l^{n}}-2\sum_{l:{\rm even}}\frac{1}{l^{n}}\right)
+=n!(1-2^{1-n})\sum_{l=1}^{\infty}\frac{1}{l^{n}}
+=n!(1-2^{1-n})\zeta(n)
+\end{align*}
+\item
+\shadowbox{
+	$\displaystyle
+\zeta(2n)=(-1)^{n+1}\frac{B_{2n}(2\pi)^{2n}}{2(2n)!}
+	$
+}
+
+有名事実(?)なので気が向いたら証明するかも。
+\end{itemize}
+\end{document}

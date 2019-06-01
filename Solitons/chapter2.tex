@@ -1,0 +1,121 @@
+\documentclass{jsarticle}
+\usepackage{euler}
+\usepackage{amsmath,amssymb}
+\usepackage{ascmac}
+\usepackage[dvipdfmx]{graphicx,color,hyperref}
+\usepackage{pxjahyper}
+\usepackage{url}
+\usepackage{framed}
+\definecolor{shadecolor}{gray}{0.80}
+\begin{document}
+\setcounter{section}{2}
+
+\setcounter{subsection}{2}
+\subsection{}
+\begin{shaded}
+$(\partial+x)^{-1}$を計算せよ。
+\end{shaded}
+\begin{align}
+Y=\sum_{n=1}^{\infty}h_{n}\partial^{-n}
+\end{align}
+として$(\partial+x)Y$を計算すると
+\begin{align*}
+(\partial+x)\sum_{n=0}^{\infty}h_n\partial^{-n}
+&=\sum_{n=1}^{\infty}\left(\frac{\partial h_{n}}{\partial x}+xh_{n}\right)\partial^{-n}+h_n\partial^{-n+1}\\
+&=h_{1}+\sum_{n=1}^{\infty}\left(h_{n+1}+\frac{\partial h_{n}}{\partial x}+xh_{n}\right)\partial^{-n}
+\end{align*}
+である。
+$(\partial+x)Y=1$とすると、$h_{n}$に関する次の漸化式を得る。
+\begin{align}
+\begin{aligned}
+&h_{1}=1,\\
+&h_{n+1}=-\frac{\partial h_{n}}{\partial x}-xh_{n}.
+\end{aligned}
+\end{align}
+\setcounter{subsection}{5}
+\subsection{}
+\begin{shaded}
+$\dfrac{\partial u}{\partial x_{5}}$は何になるか。
+\end{shaded}
+(2.12)から
+\begin{align}
+\frac{\partial u}{\partial x_{5}}=K_{5}(u)=-[P,(P^{5/2})_{+}]
+\end{align}
+である。ここで、(2.5)をさらに低次まで計算すると、
+\begin{align*}
+(\partial^{2}+u)^{1/2}=\partial+\frac{1}{2}u\partial^{-1}-\frac{1}{4}u_{x}\partial^{-2}+\left(\frac{u_{xx}}{8}-\frac{u^{2}}{8}\right)\partial^{-3}+\left(\frac{3}{8}uu_{x}-\frac{1}{16}u_{xxx}\right)\partial^{-4}+\cdots
+\end{align*}
+である。これより、
+\begin{align*}
+\left(P^{5/2}\right)_{+}&=\left((\partial^{2}+u)^{2}\left[\partial+\frac{1}{2}u\partial^{-1}-\frac{1}{4}u_{x}\partial^{-2}+\left(\frac{u_{xx}}{8}-\frac{u^{2}}{8}\right)\partial^{-3}+\left(\frac{3}{8}uu_{x}-\frac{1}{16}u_{xxx}\right)\partial^{-4}+\cdots\right]\right)_{+}\\
+&=\partial^{5}+\frac{5}{2}u\partial^{3}+\frac{15}{4}u_{x}\partial^{2}+\left(\frac{25}{8}u_{xx}+\frac{15}{8}u^{2}\right)\partial+\left(\frac{15}{16}u_{xxx}+\frac{15}{8}uu_{x}\right)
+\end{align*}
+であるから、交換子積は
+\begin{align*}
+&\left[\partial^{2}+u,\partial^{5}+\frac{5}{2}u\partial^{3}+\frac{15}{4}u_{x}\partial^{2}+\left(\frac{25}{8}u_{xx}+\frac{15}{8}u^{2}\right)\partial+\left(\frac{15}{16}u_{xxx}+\frac{15}{8}uu_{x}\right)\right]\\
+=&\partial^{2}\left(\frac{15}{16}u_{xxx}+\frac{15}{8}uu_{x}\right)
+-\left[\partial^{5}+\frac{5}{2}u\partial^{3}+\frac{15}{4}u_{x}\partial^{2}+\left(\frac{25}{8}u_{xx}+\frac{15}{8}u^{2}\right)\partial\right]u\\
+=&-\frac{1}{16}(u_{5x}+10u_{3x}u+20u_{2x}u_{x}+30u_{x}u^{2})
+\end{align*}
+となる(交換子積の結果が関数になることを利用すると計算量が減らせる)。以上より、
+\begin{align}
+\frac{\partial u}{\partial x_{5}}=\frac{1}{16}(u_{5x}+10u_{3x}u+20u_{2x}u_{x}+30u_{x}u^{2})
+\end{align}
+である。
+
+\subsection{}
+\begin{shaded}
+(2.16)の$f_{1},f_{2}$と(2.18)の$w_{1},w_{2}$の間の関係を導け。
+\end{shaded}
+$L\circ M=M\circ\partial$を用いる。ここで、
+\begin{align}
+\begin{aligned}
+&L=\partial+f_{1}\partial^{-1}+f_{2}\partial^{-2}+\cdots,\\
+&M=1+w_{1}\partial^{-1}+w_{2}\partial^{-2}+w_{3}\partial^{-3}+\cdots
+\end{aligned}
+\end{align}
+である。負の階数の微分は消えることにすると、
+\begin{align*}
+L\circ M&=\partial+w_{1}+\left(\frac{\partial w_{1}}{\partial x}+w_{2}+f_{1}\right)\partial^{-1}+\left(\frac{\partial w_{2}}{\partial x}+w_{3}+f_{1}w_{1}+f_{2}\right)\partial^{-2}+\cdots,\\
+M\circ\partial&=\partial+w_{1}+w_{2}\partial^{-1}+w_{3}\partial^{-2}+\cdots
+\end{align*}
+となる。係数比較をすると、
+\begin{align}
+\begin{aligned}
+&\frac{\partial w_{1}}{\partial x}+f_{1}=0,\\
+&\frac{\partial w_{2}}{\partial x}+f_{1}w_{1}+f_{2}=0
+\end{aligned}
+\end{align}
+が得られる。
+
+\subsection{}
+\begin{shaded}
+$M^{-1}=1+v_{1}\partial^{-1}+v_{2}\partial^{-2}+\cdots$を求めよ。
+\end{shaded}
+$M\circ M^{-1}=1$より、
+\begin{align*}
+1=1+(w_{1}+v_{1})\partial^{-1}+\sum_{k=2}^{\infty}\left(w_{k}+v_{k}+\sum_{i=1}^{k-1}w_{i}v_{k-i}\right)\partial^{-k}
+\end{align*}
+なので係数比較すると、
+\begin{align}
+\begin{aligned}
+&v_{1}=-w_{1},\\
+&v_{k}=-w_{k}-\sum_{i=1}^{k-i}w_{i}v_{k-i}\ (k\ge2)
+\end{aligned}
+\end{align}
+となる。
+
+\subsection{}
+\begin{shaded}
+(2.25),(2.26)は
+\begin{align*}
+&\frac{\partial \log\tau}{\partial x_{1}}=-w_{1},\\
+&\frac{\partial \log\tau}{\partial x_{2}}=-2w_{2}+w_{1}^{2}-\frac{\partial w_{1}}{\partial x_{1}}
+\end{align*}
+と書き直せる。この2つの関係式が両立していることを示せ。
+\end{shaded}
+\subsection{}
+\begin{shaded}
+(2.28)を導け。
+\end{shaded}
+\end{document}

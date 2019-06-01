@@ -1,0 +1,104 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\usepackage[T1]{fontenc}
+\usepackage{newpxtext, newpxmath}
+\usepackage{ascmac}
+\usepackage{fancybox}
+\usepackage[dvipdfmx]{graphicx,color}
+
+\def\d{\textrm{d}}
+
+\begin{document}
+\title{Critical Exponent on the Generalized Kuramoto Model}
+\author{Ryosuke Yoneda}
+\maketitle	
+
+We consider the \textbf{generalized Kuramoto model}
+\begin{align}
+&\frac{\d\theta_{j}}{\d t}=\omega_{j}+\frac{K}{N}\sum_{k=1}^{N}\Gamma(\theta_{k}-\theta_{j})-a\sin\theta_{j},\\
+&\Gamma(\theta)=\sin\theta+h\sin2\theta,
+\end{align}
+where $\omega_{j}$ is the natural frequency,
+each of which is obeyed by a distribution $g(\omega)$, say \textbf{Lorentz distribution}
+\begin{align}
+g(\omega)=\frac{\gamma}{\pi}\frac{1}{\omega^{2}+\gamma^{2}},
+\end{align}
+and $K$ is the coupling strength.
+$\Gamma(\theta)$ is the coupling function and $a$ represents the strength
+of the external force.
+
+Our main motivation is to observe the $K$-dependency of $r$,
+where $r$ is the magnitude of the order parameter $z$:
+\begin{align}
+z_{n}=re^{i\varphi}=\frac{1}{N}\sum_{k=1}^{N}e^{ni\theta_{k}}.
+\end{align}
+For $n=1$, $z_{1}$ describes the center of the oscillators:
+If $r\sim 0$, the center is close to the origin and
+the oscillators is expected to be distributed uniformly
+on the circle.
+If $r$ is close to $1$, the center is nearly on the circle,
+hence the oscillators are close to each other.
+Therefore, computing the $K$-dependency of $r$
+allows us to capture the relationship between
+the coupling strength of the oscillators
+and the extent of the synchronization.
+
+The number of the oscillators are conserved throughout
+the time evolution in the Kuramoto model.
+Therefore, in the limit of the population $N\to\infty$,
+we obtain the equation of continuity,
+\begin{align}
+&\frac{\partial F}{\partial t}+\frac{\partial}{\partial\theta}
+\left(v[F]F\right)=0,\\
+&v[F]=\omega+K\int_{\mathbb{S}^{1}}\int_{\mathbb{R}}
+\Gamma(\theta'-\theta)F(\theta',\omega',t)\d\theta'\d\omega'-a\sin\theta,
+\end{align}
+where $F(\theta,\omega,t)$ denotes the probability density function
+of $(\theta,\omega)$ at time $t$.
+Since $\omega$ is obeyed by the distribution function $g(\omega)$,
+we have
+\begin{align}
+g(\omega)=\int_{\mathbb{S}^{1}}F(\theta,\omega,t)\d\theta\d\omega.
+\end{align}
+The order parameter $z,w$ in the population limit reads
+\begin{align}
+&z_{n}=\int_{\mathbb{S}^{1}}\int_{\mathbb{R}}e^{ni\theta}F(\theta,\omega,t)\d\theta\d\omega.
+\end{align}
+Rewriting the vector field $v$ using the order parameter,
+we have
+\begin{align}
+v[F]=\omega+\frac{K}{2i}\left[z_{1}e^{-i\theta}-z_{1}^{*}e^{i\theta}
++h\left(z_{2}e^{-2i\theta}-z_{2}^{*}e^{2i\theta}\right)\right]
+-\frac{a}{2i}\left(e^{i\theta}-e^{-i\theta}\right).
+\end{align}
+
+When $a=0$, the Kuramoto model has the stationary state solution
+\begin{align}
+f^{0}(\omega)=\frac{g(\omega)}{2\pi}.
+\end{align}
+In this state, $r$ becomes zero,
+hence the oscillators are uniformly distributed on the circle.
+We take care of the perturbation from the stationary state,
+so we set 
+\begin{align}
+	F=f^{0}+f
+\end{align}
+and substitute it to the equation of continuity.
+Taking the linear part of $f$, we have
+\begin{align}
+&\frac{\partial f}{\partial t}
++\omega\frac{\partial f}{\partial\theta}
++f^{0}\frac{\partial}{\partial\theta}v_{1}[f]
+%+\frac{\partial}{\partial\theta}(v_{1}[f]f)
+=0,\\
+&v_{1}[f]=\frac{K}{2i}\left[ze^{-i\theta}-z^{*}e^{i\theta}
++h\left(we^{-2i\theta}-w^{*}e^{2i\theta}\right)\right]
+-\frac{a}{2i}\left(e^{i\theta}-e^{-i\theta}\right)
+\end{align}
+
+Let us introduce the Fourier series expansion
+\begin{align}
+f(\theta,\omega,t)=\sum_{n=-\infty}^{\infty}\tilde{f_{n}}(\omega,t)e^{ni\theta}.
+\end{align}
+
+\end{document}

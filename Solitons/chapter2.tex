@@ -7,6 +7,8 @@
 \usepackage{url}
 \usepackage{framed}
 \definecolor{shadecolor}{gray}{0.80}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
 \begin{document}
 \setcounter{section}{2}
 
@@ -114,8 +116,86 @@ $M\circ M^{-1}=1$より、
 \end{align*}
 と書き直せる。この2つの関係式が両立していることを示せ。
 \end{shaded}
+両立するためには
+\begin{align}
+-\frac{\partial}{\partial x_{2}}w_{1}-\frac{\partial}{\partial x_{1}}\left(-2w_{2}+w_{1}^{2}-\frac{\partial w_{2}}{\partial x_{1}}\right)=0
+\end{align}
+が成り立つことを確認すれば良い。(2.25),(2.26)より
+\begin{align*}
+w_{1}=-\frac{\partial \tau}{\partial x_{1}}/\tau,\quad
+w_{2}=\frac{1}{2}\left(\frac{\partial^{2}\tau}{\partial x_{1}^{2}}-\frac{\partial \tau}{\partial x_{2}}\right)/\tau
+\end{align*}
+を代入すると確かに成り立つことがわかる。
+
 \subsection{}
 \begin{shaded}
 (2.28)を導け。
 \end{shaded}
+$u$を(2.27)のように
+\begin{align}
+u=2\frac{\partial^{2}}{\partial x^{2}}\log\tau
+\end{align}
+で定めたときに、
+\begin{align}
+\frac{3}{4}\frac{\partial^{2}u}{\partial x_{2}^{2}}=
+\frac{\partial}{\partial x}\left(\frac{\partial u}{\partial x_{3}}-\frac{3}{2}u\frac{\partial u}{\partial x}-\frac{1}{4}\frac{\partial^{3}u}{\partial x^{3}}\right)
+\end{align}
+が成り立つことを確認する。
+
+
+\appendix
+\section{}
+2.3の証明の中に現れた
+\begin{align}
+\frac{\partial f(X)}{\partial x_{l}}=-\left[f(X),\left(X^{l}\right)_{+}\right]
+\end{align}
+について、
+\begin{align}
+f(X)=X^{j}
+\end{align}
+のかたちで表される場合について、$j$に関する数学的帰納法で示す。
+ただし、$j=2$のときについては、
+\begin{align}
+\frac{\partial X^{2}}{\partial x_{l}}=-\left[X^{2},\left(X^{l}\right)_{+}\right]
+\end{align}
+が成立する。
+\begin{itemize}
+\item $j=2$の場合はあきらか。
+\item ある$j$で成立するとき、適当な関数$h$に対して
+\begin{align*}
+&\frac{\partial}{\partial x_{l}}(X^{j+1}h)
+=\frac{\partial X^{j+1}}{\partial x_{l}}h
++X^{j+1}\frac{\partial h}{\partial x_{l}}\\
+=&\frac{\partial}{\partial x_{l}}\left[X^{j}(Xh)\right]
+=\frac{\partial X^{j}}{\partial x_{l}}Xh+X^{j}\frac{\partial}{\partial x_{l}}(Xh)
+=\frac{\partial X^{j}}{\partial x_{l}}Xh+X^{j}\frac{\partial X}{\partial x_{l}}h
++X^{j+1}\frac{\partial h}{\partial x_{l}}
+\end{align*}
+であるから、仮定から
+\begin{align*}
+&\frac{\partial X^{j+1}}{\partial x_{l}}
+=\frac{\partial X^{j}}{\partial x_{l}}X
++X^{j}\frac{\partial X}{\partial x_{l}}\\
+=&-\left[X^{j},\left(X^{l}\right)_{+}\right]X
+-X^{j}\left[X,\left(X^{l}\right)_{+}\right]\\
+=&-X^{j}\left(X^{l}\right)_{+}X+\left(X^{l}\right)_{+}X^{j+1}
+-X^{j+1}\left(X^{l}\right)_{+}+X^{j}\left(X^{l}\right)_{+}X\\
+=&-X^{j+1}\left(X^{l}\right)_{+}+\left(X^{l}\right)_{+}X^{j+1}
+=-\left[X^{j+1},\left(X^{l}\right)_{+}\right]
+\end{align*}
+となり、$j+1$のときも成立する。
+\end{itemize}
+以上より、$j\geq2$のとき、
+\begin{align}
+\frac{\partial X^{j}}{\partial x_{l}}=-\left[X^{j},\left(X^{l}\right)_{+}\right]
+\end{align}
+が示された。
+$j=1$のときには(2.13)を個別に示す。
+\begin{align*}
+\frac{\partial}{\partial x_{l}}K_{1}(u)
+=\frac{\partial^{2}u}{\partial x_{l}x_{1}}
+=\frac{\partial}{\partial x_{1}}\frac{\partial u}{\partial x_{l}}
+=\frac{\partial}{\partial x_{1}}K_{l}(u)
+\end{align*}
+となり、確認できる。
 \end{document}

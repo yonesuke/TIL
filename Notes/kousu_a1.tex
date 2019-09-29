@@ -1,0 +1,101 @@
+\documentclass{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage[T1]{fontenc}
+\usepackage{newpxtext, newpxmath}
+\usepackage{ascmac}
+\usepackage{fancybox}
+\usepackage[dvipdfmx]{graphicx,color}
+\usepackage{theorem}
+\newtheorem{theorem}{定理}
+\newtheorem{proof}{証明}
+\newtheorem{eg}{例}
+\def\qed{\hfill $\Box$}
+\def\diff{\textrm{d}}
+
+\begin{document}
+\title{工業数学A1}
+\author{米田亮介}
+\maketitle	
+
+\section*{\fbox{$6$}}
+$A(z)=(a_{jk}(z))_{1\leq j,k\leq N}$を$N$次正方行列、
+$D=\left\{z\in\mathbb{C}\mid |z|<1\right\}$を単位円板、
+$m$を正の整数とし、以下の(A),(B)を仮定する。
+\begin{enumerate}
+\item[(A)] 各$a_{jk}(z)$は$D$上の正則関数である。
+\item[(B)] $\det A(z)$は$z=0$に$m$位の零点をもつ。 
+\end{enumerate}
+このとき、十分に小さい正数$\varepsilon$に対して、次式が成り立つことを示せ。
+\begin{align}
+m=\mathrm{tr}\left(\frac{1}{2\pi i}\int_{C_{\varepsilon}}A(z)^{-1}\frac{\diff}{\diff z}A(z)~\diff z\right)
+\end{align}
+ここで積分路$C_{\varepsilon}$は円周$C_{\varepsilon}=\left\{z\in\mathbb{C}\mid |z|=\varepsilon\right\}$
+を正の向きに一周するものとし、$\mathrm{tr}(X)$は行列$X$のトレース(trace)を表す。
+
+\section*{こたえ}
+まず$N=2$の場合を考えてみる。
+\begin{align*}
+\begin{aligned}
+\mathrm{tr}\left(A(z)^{-1}\frac{\diff}{\diff z}A(z)\right)
+&=\mathrm{tr}\left(\frac{1}{a_{11}a_{22}-a_{12}a_{21}}
+\begin{pmatrix}
+    a_{22} & -a_{12} \\
+    -a_{21} & a_{11} \\
+\end{pmatrix}
+\begin{pmatrix}
+    a_{11}' & a_{12}' \\
+    a_{21}' & a_{22}' \\
+\end{pmatrix}
+\right)\\
+&=\frac{a_{11}'a_{22}+a_{11}a_{22}'-a_{12}'a_{21}-a_{12}a_{21}'}{a_{11}a_{22}-a_{12}a_{21}}\\
+&=\frac{\left(a_{11}a_{22}-a_{12}a_{21}\right)'}{a_{11}a_{22}-a_{12}a_{21}}
+=\frac{\left(\det A(z)\right)'}{\det A(z)}
+\end{aligned}
+\end{align*}
+ときれいにまとめることができる。$\det A(z)$は$a_{jk}(z)$の多項式で表されるので正則関数である。
+偏角の原理を使えば
+\begin{align}
+\frac{1}{2\pi i}\int_{C_{\varepsilon}}\mathrm{tr}\left(A(z)^{-1}\frac{\diff}{\diff z}A(z)\right)~\diff z=\frac{1}{2\pi i}\int_{C_{\varepsilon}}\frac{\left(\det A(z)\right)'}{\det A(z)}~\diff z=m
+\end{align}
+となることがわかる。
+
+一般の$N$についても
+\begin{align}
+\mathrm{tr}\left(A(z)^{-1}\frac{\diff}{\diff z}A(z)\right)=\frac{\left(\det A(z)\right)'}{\det A(z)}
+\end{align}
+が成り立つことが予想される。これを示す。
+
+行列$A$の逆行列$A^{-1}=(\tilde{a}_{ij})_{1\leq i,j\leq N}$の各要素は
+\begin{align}
+\tilde{a}_{ij}=\frac{\Delta_{ji}}{\det A}
+\end{align}
+で書けることを思い出そう。ここで$\Delta_{ji}$は$A$の$(j,i)$余因子である。
+このとき、
+\begin{align}
+\mathrm{tr}\left(A^{-1}(z)\frac{\diff}{\diff z}A(z)\right)
+=\sum_{i,j=1}^{N}\tilde{a}_{ij}a_{ji}'
+=\frac{1}{\det A(z)}\sum_{i,j=1}^{N}a_{ji}'\Delta_{ji}
+\end{align}
+となる。行列式の微分は
+\begin{align*}
+\begin{aligned}
+    \left(\det A(z)\right)'=&\left(\sum_{\sigma\in\mathfrak{S}_{N}}\mathrm{sgn}(\sigma)a_{1\sigma(1)}a_{2\sigma(2)}\cdots a_{N\sigma(N)}\right)'\\
+    =&\sum_{\sigma\in\mathfrak{S}_{N}}\mathrm{sgn}(\sigma)a_{1\sigma(1)}'a_{2\sigma(2)}\cdots a_{N\sigma(N)}\\
+    &+\sum_{\sigma\in\mathfrak{S}_{N}}\mathrm{sgn}(\sigma)a_{1\sigma(1)}a_{2\sigma(2)}'\cdots a_{N\sigma(N)}\\
+    &+\sum_{\sigma\in\mathfrak{S}_{N}}\mathrm{sgn}(\sigma)a_{1\sigma(1)}a_{2\sigma(2)}\cdots a_{N\sigma(N)}'\\
+    &=\sum_{i=1}^{N}(A\mathrm{の}i\mathrm{行目のみを微分した行列の行列式})\\
+    &=\sum_{i=1}^{N}\left(\sum_{j=1}^{N}a_{ij}'\Delta_{ij}\right)
+    =\sum_{i,j=1}^{N}a_{ij}'\Delta_{ij}
+\end{aligned}
+\end{align*}
+と書けるので、
+\begin{align}
+\mathrm{tr}\left(A^{-1}(z)\frac{\diff}{\diff z}A(z)\right)=\frac{\left(\det A(z)\right)'}{\det A(z)}
+\end{align}
+となることが示された。以上より、偏角の原理から
+\begin{align}
+    m=\mathrm{tr}\left(\frac{1}{2\pi i}\int_{C_{\varepsilon}}A(z)^{-1}\frac{\diff}{\diff z}A(z)~\diff z\right)
+\end{align}
+が示された。
+
+\end{document}

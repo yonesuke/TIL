@@ -1,0 +1,69 @@
+\documentclass{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{newpxtext, newpxmath}
+\usepackage{ascmac}
+\usepackage{fancybox}
+\usepackage[dvipdfmx]{graphicx,color,hyperref}
+\usepackage{pxjahyper}
+\hypersetup{% hyperrefオプションリスト
+setpagesize=false,
+ bookmarksnumbered=true,%
+ bookmarksopen=true,%
+ colorlinks=true,%
+ linkcolor=blue,
+ citecolor=red,
+}
+\usepackage{theorem}
+\newtheorem{theorem}{定理}
+\newtheorem{proof}{証明}
+\newtheorem{eg}{例}
+\def\qed{\hfill $\Box$}
+\def\diff{\textrm{d}}
+
+\begin{document}
+\title{微分形式と積分}
+\author{米田亮介}
+\maketitle
+\begin{abstract}
+タオの\href{https://www.math.ucla.edu/~tao/preprints/forms.pdf}{Differential forms and integration}の和訳。
+\end{abstract}
+
+積分の概念は1変数の微積分の授業で当たり前のように出てくるものです。
+ですが、実際にはその授業の中では\textbf{3種類}の積分が出てきます。
+\begin{itemize}
+    \item 不定積分\footnote{脚注: 英語では\textit{indefinite integral}、もしくは\textit{anti-derivative}と呼ばれるそうです。}~$\int f$
+    \item 符号なし定積分~$\int_{[a,b]}f(x)~\diff x$
+    \item 符号付き定積分~$\int_{a}^{b}f(x)~\diff x$
+\end{itemize}
+簡単のために以降では実軸上連続な関数$f:\mathbb{R}\to\mathbb{R}$について考えましょう\footnote{微分形式について考えるときも全領域で連続なもののみについて議論します。}。
+また、これらの積分の概念を厳密に定義するためには\underline{イプシロンデルタ論法}
+などを用いるべきなのですが、そういった議論を避けるために
+\underline{無限小}などといった用語をinformalに使うこともあります。
+
+もちろん、1変数の微積分だと上の3種類の積分は密接に関係しあっています。
+例えば符号付き定積分~$\int_{a}^{b}f(x)~\diff x$と不定積分の一つ~
+$F=\int f$は微積分学の基本定理によって次の公式のように関係しあっています。
+\begin{align}
+\int_{a}^{b}f(x)~\diff x=F(b)-F(a).
+\end{align}
+また、符号付き定積分と符号なし定積分の間も
+\begin{align}
+\int_{a}^{b}f(x)~\diff x=-\int_{b}^{a}f(x)~\diff x=\int_{[a,b]}f(x)~\diff x
+\end{align}
+のように簡単な関係式で結ばれます。ただし、ここで$a\leq b$とします。
+
+しかしながら、1変数の微積分から多変数の微積分にうつるとこれらの積分は全く異なった意味を持ち始めます。
+不定積分は\textbf{微分方程式の解}や、接続、ベクトル場、バンドルの\textbf{第1積分}
+へと拡張されます。
+符号なし定積分は\textbf{ルベーグ積分}や、より一般には\textbf{測度空間の上での積分}へと拡張されます。
+最後に、符号付き定積分は我々がここで考えたい\textbf{微分形式の積分}へと拡張されるのです。
+これら3種類の積分は確かに互いに関係はしあっているのですが、
+1変数の微積分のときほど簡単に相互に入れ替わるようなものではなくなってしまうのです。
+微分形式の積分は微分位相幾何学や幾何学、物理学で根幹をなす重要なものとなっており、
+\textbf{コホモロジー}、より正確に言えば\textbf{ドラームコホモロジー}の最も重要な例の
+1つになっています。
+ドラームコホモロジーは(大雑把に言うと)微分積分学の基本定理が高次元や一般の多様体に移行したときにどれほどずれるのかを正確に測るものになります。
+
+微分形式を考えるモチベーションとして、
+
+\end{document}

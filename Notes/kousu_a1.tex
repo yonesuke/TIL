@@ -11,6 +11,7 @@
 \newtheorem{eg}{例}
 \def\qed{\hfill $\Box$}
 \def\diff{\textrm{d}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
 
 \begin{document}
 \title{工業数学A1}
@@ -18,12 +19,51 @@
 \maketitle	
 
 \section*{\fbox{$17$}}
-領域$D$における複素関数$f:D\to\mathbb{C}$について、$D$内の任意の閉曲線$C$に対し
+領域$D$における\red{連続な}複素関数$f:D\to\mathbb{C}$について、$D$内の任意の閉曲線$C$に対し
 \begin{align*}
     \int_{C}f(z)\diff z=0
 \end{align*}
 が成り立つとする。
 このとき、$f(z)$は$D$で正則であることを示せ。
+
+\section*{こたえ}
+$z_{0}\in D$を固定し、関数$F(z)$を次で定める。
+\begin{align*}
+    F(z)=\int_{\gamma_{z_{0}\to z}}f(w)\diff w
+\end{align*}
+ここで$\gamma_{z_{0}\to z}$は$z_{0}$から$z$へと向かう区分的$C^{1}$級閉曲線である。$D$は領域なので必ずこのような閉曲線を取ることができることに注意する。
+$F$の定義には$\gamma_{z_{0}\to z}$のとり方の任意性があるので、
+この定義はwell-definedであることを確認する。
+
+$i=1,2$それぞれで$\gamma^{(i)}_{z_{0}\to z}$で定まる関数を$F^{(i)}(z)$とすると、
+\begin{align*}
+    F^{(1)}(z)-F^{(2)}(z)=\int_{\gamma^{(1)}_{z_{0}\to z}}f(w)\diff w-\int_{\gamma^{(2)}_{z_{0}\to z}}f(w)\diff w=\int_{\gamma^{(1)}_{z_{0}\to z}(\gamma^{(2)}_{z_{0}\to z})^{-1}}f(w)\diff w
+\end{align*}
+となる。ここで$\gamma^{(1)}_{z_{0}\to z}(\gamma^{(2)}_{z_{0}\to z})^{-1}$は
+$z_{0}$を始点とし、$\gamma^{(1)}_{z_{0}\to z}$を通って$z$に着いたあとに$\gamma^{(2)}_{z_{0}\to z}$の
+逆向きを経由して終点の$z_{0}$に戻る区分的$C^{1}$級閉曲線である。
+仮定より閉曲線に沿った$f$の積分は常に$0$であるから
+$F^{(1)}(z)=F^{(2)}(z)$がわかる。
+
+さて、上で定義した$F(z)$が実は$f(z)$の原始関数の一つになっていることを確認する。
+任意の$z\in D$と$z+h\in D$なる十分小さな$h$を取ると、
+\begin{align*}
+    F(z+h)-F(z)=&\int_{\gamma_{z_{0}\to z+h}}f(w)\diff w-\int_{\gamma_{z_{0}\to z}}f(w)\diff w\\
+    =&\int_{\gamma_{z\to z+h}}f(w)\diff w\\
+    =&hf(z)+\int_{\gamma_{z\to z+h}}(f(w)-f(z))\diff w
+\end{align*}
+と変形できる。$\gamma_{z\to z+h}$として$z$から$z+h$への線分を取ると($D$が開集合なので$h$を十分に小さくとればそのような線分は必ず$D$に含まれる)、
+\begin{align*}
+    \left|\frac{F(z+h)-F(z)}{h}-f(z)\right|\leq\frac{1}{|h|}\int_{\gamma_{z\to z+h}}|f(w)-f(z)|\diff w\leq\sup_{w\in\gamma_{z\to z+h}}|f(w)-f(z)|
+\end{align*}
+この上限は$h\to 0$の極限で$f$が連続であるから$0$に収束するので
+\begin{align*}
+    \lim_{h\to 0}\frac{F(z+h)-F(z)}{h}=f(z)
+\end{align*}
+が示された。これは$F(z)$が$f(z)$の原始関数の一つであることを表している。
+またこの式から任意の$z$で$F(z)$は微分可能であり、微分した式も連続であることがわかる。
+これより$F(z)$は$D$上の正則な関数である。
+$F(z)$が正則であるとき、無限回微分可能であるから1回微分して得られる$f(z)$も正則であることが示される。
 
 \section*{\fbox{$32$}}
 \begin{align*}
@@ -31,11 +71,95 @@
 \end{align*}
 を求めよ。
 
+\section*{こたえ}
+例2.15と同じ積分経路を考える。
+すなわち、$0<\varepsilon<1<R$とし、
+$C_{1}$を$\varepsilon$と$R$を結ぶ線分、
+$C_{2}$を原点を中心とする円の弧で、$R$から反時計周りに周り$R$に至るもの、
+$C_{3}$を$R$と$\varepsilon$を結ぶ線分、
+$C_{4}$を原点を中心とする半径$\varepsilon$の円とする。
+
+$z^{1/3}$の分岐は$C_{1}$で主値を取っておくとする。$z=re^{i\theta}$とすると、
+\begin{align*}
+    z^{1/3}=e^{(\log r+i\theta)/3}
+\end{align*}
+である。
+この曲線に囲まれる領域にある特異点は$\pm i$であり、留数はそれぞれ
+\begin{align*}
+    &\mathrm{Res}_{z=i}\frac{z^{1/3}}{1+z^{2}}=\frac{e^{i\pi/6}}{2i},\\
+    &\mathrm{Res}_{z=-i}\frac{z^{1/3}}{1+z^{2}}=-\frac{1}{2}
+\end{align*}
+である。
+$C_{3}$に沿った積分は別の分岐に移っていることに注意すると
+\begin{align*}
+    \int_{C_{3}}\frac{z^{1/3}}{1+z^{2}}\diff z=-e^{2i\pi/3}\int_{C_{1}}\frac{z^{1/3}}{1+z^{2}}\diff z
+\end{align*}
+となる。したがって
+\begin{align*}
+    \int_{C_{1}}\frac{z^{1/3}}{1+z^{2}}\diff z
+    +\int_{C_{2}}\frac{z^{1/3}}{1+z^{2}}\diff z
+    +\int_{C_{3}}\frac{z^{1/3}}{1+z^{2}}\diff z
+    +\int_{C_{4}}\frac{z^{1/3}}{1+z^{2}}\diff z
+    =2\pi i\left(\frac{e^{i\pi/6}}{2i}-\frac{1}{2}\right)
+\end{align*}
+において、$\varepsilon\to+0,R\to\infty$とすると
+\begin{align*}
+    (1-e^{2i\pi/3})\int_{0}^{\infty}\frac{x^{1/3}}{1+x^{2}}\diff x
+    =2\pi i\left(\frac{e^{i\pi/6}}{2i}-\frac{1}{2}\right)
+\end{align*}
+が得られる($C_{2},C_{4}$から積分が極限で$0$になることは例2.15と同じ)。
+故に
+\begin{align*}
+    \int_{0}^{\infty}\frac{x^{1/3}}{1+x^{2}}\diff x=\frac{\pi}{\sqrt{3}}
+\end{align*}
+となる。
+
+\section*{べつのこたえ}
+\begin{align*}
+    \int_{0}^{\infty}\frac{x^{1/3}}{1+x^{2}}\diff x
+    =&\frac{1}{4}\left[\log\frac{(x^{2/3}-\sqrt{3}x^{1/3}+1)(x^{2/3}+\sqrt{3}x^{1/3}+1)}{(x^{2/3}+1)^{2}}\right]_{0}^{\infty}\\
+    &-\frac{\sqrt{3}}{2}\left[\arctan(\sqrt{3}+2x^{1/3})+\arctan(\sqrt{3}-2x^{1/3})\right]_{0}^{\infty}\\
+    =&\sqrt{3}\arctan\sqrt{3}\\
+    =&\frac{\pi}{\sqrt{3}}
+\end{align*}
+
 \section*{\fbox{$35$}}
 $a,b>0$を実数、$n\geq 2$を整数とするとき、次の広義積分を求めよ:
 \begin{align*}
     I_{n}=\int_{-\infty}^{\infty}\frac{\exp(ia(x-ib))}{(x-ib)^{n}}\diff x.
 \end{align*}
+
+\section*{こたえ}
+$R>b$を実数とし、$C_{1}$を実軸における区間$[-R,R]$、
+$C_{2}$を原点を中心とする半径$R$の円の上半分とする。
+この曲線に囲まれる特異点は$ib$であり、被積分関数の$n$位の極であるから留数は
+\begin{align*}
+    \mathrm{Res}_{z=ib}\frac{\exp(ia(z-ib))}{(z-ib)^{n}}
+    =\frac{1}{(n-1)!}\lim_{z\to ib}\frac{\diff^{n-1}}{\diff z^{n-1}}\exp(ia(z-ib))=\frac{(ia)^{n-1}}{(n-1)!}
+\end{align*}
+である。したがって留数定理により
+\begin{align*}
+    \int_{C_{1}}\frac{\exp(ia(z-ib))}{(z-ib)^{n}}\diff z
+    +\int_{C_{2}}\frac{\exp(ia(z-ib))}{(z-ib)^{n}}\diff z
+    =2\pi i\frac{(ia)^{n-1}}{(n-1)!}
+\end{align*}
+となる。$R\to\infty$の極限で経路$C_{2}$からの寄与は$0$に収束するので
+\begin{align*}
+    I_{n}=2\pi i\frac{(ia)^{n-1}}{(n-1)!}
+\end{align*}
+がわかる。
+
+\section*{おまけ}
+$I_{n}$を$a$で微分すると、
+\begin{align*}
+    \frac{\diff I_{n}}{\diff a}=\frac{\diff}{\diff a}\int_{-\infty}^{\infty}\frac{\exp(ia(x-ib))}{(x-ib)^{n}}\diff x
+\end{align*}
+である。積分と微分が交換できるとすると、$n\geq 3$で
+\begin{align*}
+    \frac{\diff I_{n}}{\diff a}=i\int_{-\infty}^{\infty}\frac{\exp(ia(x-ib))}{(x-ib)^{n-1}}\diff x=iI_{n-1}
+\end{align*}
+となる。
+上で求めた解は確かにこの漸化式を満たす。
 
 \section*{\fbox{$38$}}
 $A(z)=(a_{jk}(z))_{1\leq j,k\leq N}$を$N$次正方行列、
@@ -46,9 +170,9 @@ $m$を正の整数とし、以下の(A),(B)を仮定する。
 \item[(B)] $\det A(z)$は$z=0$に$m$位の零点をもつ。 
 \end{enumerate}
 このとき、十分に小さい正数$\varepsilon$に対して、次式が成り立つことを示せ。
-\begin{align}
+\begin{align*}
 m=\mathrm{tr}\left(\frac{1}{2\pi i}\int_{C_{\varepsilon}}A(z)^{-1}\frac{\diff}{\diff z}A(z)~\diff z\right)
-\end{align}
+\end{align*}
 ここで積分路$C_{\varepsilon}$は円周$C_{\varepsilon}=\left\{z\in\mathbb{C}\mid |z|=\varepsilon\right\}$
 を正の向きに一周するものとし、$\mathrm{tr}(X)$は行列$X$のトレース(trace)を表す。
 
@@ -74,28 +198,28 @@ m=\mathrm{tr}\left(\frac{1}{2\pi i}\int_{C_{\varepsilon}}A(z)^{-1}\frac{\diff}{\
 \end{align*}
 ときれいにまとめることができる。$\det A(z)$は$a_{jk}(z)$の多項式で表されるので正則関数である。
 偏角の原理を使えば
-\begin{align}
+\begin{align*}
 \frac{1}{2\pi i}\int_{C_{\varepsilon}}\mathrm{tr}\left(A(z)^{-1}\frac{\diff}{\diff z}A(z)\right)~\diff z=\frac{1}{2\pi i}\int_{C_{\varepsilon}}\frac{\left(\det A(z)\right)'}{\det A(z)}~\diff z=m
-\end{align}
+\end{align*}
 となることがわかる。
 
 一般の$N$についても
-\begin{align}
+\begin{align*}
 \mathrm{tr}\left(A(z)^{-1}\frac{\diff}{\diff z}A(z)\right)=\frac{\left(\det A(z)\right)'}{\det A(z)}
-\end{align}
+\end{align*}
 が成り立つことが予想される。これを示す。
 
 行列$A$の逆行列$A^{-1}=(\tilde{a}_{ij})_{1\leq i,j\leq N}$の各要素は
-\begin{align}
+\begin{align*}
 \tilde{a}_{ij}=\frac{\Delta_{ji}}{\det A}
-\end{align}
+\end{align*}
 で書けることを思い出そう。ここで$\Delta_{ji}$は$A$の$(j,i)$-余因子である。
 このとき、
-\begin{align}
+\begin{align*}
 \mathrm{tr}\left(A^{-1}(z)\frac{\diff}{\diff z}A(z)\right)
 =\sum_{i,j=1}^{N}\tilde{a}_{ij}a_{ji}'
 =\frac{1}{\det A(z)}\sum_{i,j=1}^{N}a_{ji}'\Delta_{ji}
-\end{align}
+\end{align*}
 となる。行列式の微分は
 \begin{align*}
 \begin{aligned}
@@ -109,13 +233,13 @@ m=\mathrm{tr}\left(\frac{1}{2\pi i}\int_{C_{\varepsilon}}A(z)^{-1}\frac{\diff}{\
 \end{aligned}
 \end{align*}
 と書けるので、
-\begin{align}
+\begin{align*}
 \mathrm{tr}\left(A^{-1}(z)\frac{\diff}{\diff z}A(z)\right)=\frac{\left(\det A(z)\right)'}{\det A(z)}
-\end{align}
+\end{align*}
 となることが示された。以上より、偏角の原理から
-\begin{align}
+\begin{align*}
     m=\mathrm{tr}\left(\frac{1}{2\pi i}\int_{C_{\varepsilon}}A(z)^{-1}\frac{\diff}{\diff z}A(z)~\diff z\right)
-\end{align}
+\end{align*}
 が示された。
 
 \end{document}

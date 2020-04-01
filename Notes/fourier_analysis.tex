@@ -1,0 +1,164 @@
+\documentclass{jreport}
+\usepackage{amsmath,amssymb}
+\usepackage{ascmac}
+\usepackage{enumitem}
+\usepackage{fancybox}
+\usepackage[dvipdfmx]{graphicx,color}
+\usepackage{theorem}
+\newtheorem{theorem}{定理}
+\newtheorem{proof}{証明}
+\newtheorem{eg}{例}
+\def\qed{\hfill $\Box$}
+\def\diff{\textrm{d}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+\begin{document}
+\title{フーリエ解析入門}
+\author{米田亮介}
+\maketitle
+
+\chapter{フーリエ解析の起源}
+\section*{3. 練習}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+\item 複素数$z=x+iy,\ x,y\in\mathbb{R}$に対して、
+\begin{align}
+    |z|=(x^{2}+y^{2})^{1/2}
+\end{align}
+と定義し、これを$z$の\textbf{絶対値}という。
+\begin{enumerate}
+\item $|z|$の幾何的な意味は何か?
+\item $|z|=0$ならば$z=0$であることを示せ。
+\item $\lambda\in\mathbb{R}$であれば、$|\lambda z|=|\lambda||z|$を示せ。
+ただし、$|\lambda|$は実数に対する通常の絶対値を表す。
+\item $z_{1},z_{2}$を複素数とするとき
+\begin{align}
+    |z_{1}z_{2}|=|z_{1}||z_{2}|,\quad |z_{1}+z_{2}|\leq|z_{1}|+|z_{2}|
+\end{align}
+を証明せよ。
+\item $z\ne0$のとき$|1/z|=1/|z|$を示せ。
+\end{enumerate}
+\item $z=x+iy,\ x,y\in\mathbb{R}$が複素数のとき、$z$の\textbf{複素共役}を
+\begin{align}
+\bar{z}=x-iy
+\end{align}
+により定義する。
+\begin{enumerate}
+\item $\bar{z}$の幾何学的な意味は何か？
+\item $|z|^{2}=z\bar{z}$を示せ。
+\item $z$が単位円周上にあるとき、$1/z=\bar{z}$を証明せよ。
+\end{enumerate}
+\item 複素数列$\{w_{n}\}_{n=1}^{\infty}$が収束するとは、ある$w\in\mathbb{C}$が存在し、
+\begin{align}
+    \lim_{n\to\infty}|w_{n}-w|=0
+\end{align}
+をみたすことであり、$w$をこの数列の極限という。
+\begin{enumerate}
+\item 複素数列が収束するとき、その極限は一意的に定まることを示せ。
+
+複素数列$\{w_{n}\}_{n=1}^{\infty}$が\textbf{コーシー列}であるとは、
+任意の$\varepsilon>0$に対して、ある正の整数$N$で
+\begin{align}
+n,m>N\Rightarrow|w_{n}-w_{m}|<\varepsilon
+\end{align}
+を満たすようなものが存在することである。
+\item 複素数列が収束するのは、それがコーシー列のとき、かつそのときに限ることを証明せよ。
+
+複素数の級数$\sum_{n=1}^{\infty}z_{n}$が収束するとは、その部分和
+\begin{align}
+S_{N}=\sum_{n=1}^{N}z_{n}
+\end{align}
+が収束することである。$\{a_{n}\}_{n=1}^{\infty}$を非負の実数列で$\sum_{n=1}^{\infty}a_{n}$が収束するものとする。
+\item $\{z_{n}\}_{n=1}^{\infty}$が複素数列で、すべての$n$に対して$|z_{n}|\leq a_{n}$をみたしているとする。
+このとき$\{z_{n}\}_{n=1}^{\infty}$が収束することを示せ。
+\end{enumerate}
+\item $z\in\mathbb{C}$に対して、その\textbf{複素指数}を
+\begin{align}
+e^{z}=\sum_{n=0}^{\infty}\frac{z^{n}}{n!}
+\end{align}
+により定義する。
+\begin{enumerate}
+\item すべての複素数に対して、この級数が収束することを証明し、上記の定義が意味をもつことを確認せよ。
+さらに$\mathbb{C}$の任意の有界閉集合上で、この収束は一様収束であることを示せ。
+\item $z_{1},z_{2}$が複素数であるとき、$e^{z_{1}+z_{2}}=e^{z_{1}}e^{z_{2}}$であることを示せ。
+\item $z$が純虚数であるとき、すなわち$z=iy,\ y\in\mathbb{R}$であるとき、
+\begin{align}
+e^{iy}=\cos y+i\sin y
+\end{align}
+を示せ。これはオイラーの等式である。
+\item 一般に$x,y\in\mathbb{R}$に対して、
+\begin{align}
+    e^{x+iy}=e^{x}(\cos y+i\sin y)
+\end{align}
+である。
+\begin{align}
+|e^{x+iy}|=e^{x}
+\end{align}
+を示せ。
+\item $e^{z}=1$が成り立つのは、ある整数$k$に対して$z=2\pi ki$であるとき、かつそのときに限ることを証明せよ。
+\item 複素数$z=x+iy$が次の形に書けることを示せ。
+\begin{align}
+z=re^{i\theta}
+\end{align}
+ただし$0\leq r<\infty$であり、$\theta\in\mathbb{R}$は$2\pi$の整数倍の違いを除いて一意的に定まる。
+また、次の式が意味をもつとき、
+\begin{align}
+r=|z|,\quad\theta=\arctan(y/x)
+\end{align}
+であることを確認せよ。
+\item 特に$i=e^{i\pi/2}$である。複素数に$i$を掛けることの幾何的な意味は何か？
+また、$\theta\in\mathbb{R}$に対して$e^{i\theta}$を掛けることの幾何的な意味は何か？
+\item 与えられた$\theta\in\mathbb{R}$に対して
+\begin{align}
+\cos\theta=\frac{e^{i\theta}+e^{-i\theta}}{2},\quad\sin\theta=\frac{e^{i\theta}-e^{-i\theta}}{2i}
+\end{align}
+を示せ。これらもオイラーの等式と呼ばれている。
+\item 複素関数を用いて
+\begin{align}
+\cos(\theta+\vartheta)=\cos\theta\cos\vartheta-\sin\theta\sin\vartheta
+\end{align}
+などの三角関数に関する等式を示せ。それから
+\begin{align}
+2\sin\theta\sin\varphi=\cos(\theta-\varphi)-\cos(\theta+\varphi),\\
+2\sin\theta\cos\varphi=\sin(\theta+\varphi)+\sin(\theta-\varphi)
+\end{align}
+を示せ。この計算はダランベールによる進行波を用いた解と定常波の重ね合わせによる解を結びつけるものである。
+\end{enumerate}
+\end{enumerate}
+
+\section*{3.1. 練習答え}
+\begin{enumerate}[label=\textbf{\arabic*.}]
+\item
+\begin{enumerate}
+\item $|z|$は$z$を複素平面上での原点からの距離を表す。
+\item $|z|=0$のとき、$x^{2}+y^{2}=0$である。これを満たす実数$x,y$は$x=y=0$であり、これより$z=0$である。
+\item \begin{align*}
+|\lambda z|=&|\lambda x+i\lambda y|\\
+=&(\lambda^{2}x^{2}+\lambda^{2}y^{2})^{1/2}
+=|\lambda|(x^{2}+y^{2})^{1/2}=|\lambda||z|
+\end{align*}
+\item $z_{i}=x_{i}+iy_{i},\ x_{i},y_{i}\in\mathbb{R}\ (i=1,2)$とおく。
+\begin{align*}
+|z_{1}z_{2}|=&|(x_{1}x_{2}-y_{1}y_{2})+i(x_{1}y_{2}+x_{2}y_{1})|\\
+=&[(x_{1}x_{2}-y_{1}y_{2})^{2}+(x_{1}y_{2}+x_{2}y_{1})^{2}]^{1/2}\\
+=&(x_{1}^{2}x_{2}^{2}+y_{1}^{2}y_{2}^{2}+x_{1}^{2}y_{2}^{2}+x_{2}^{2}y_{1}^{2})^{1/2}
+=[(x_{1}^{2}+y_{1}^{2})(x_{2}^{2}+y_{2}^{2})]^{1/2}\\
+|z_{1}||z_{2}|=&(x_{1}^{2}+y_{1}^{2})^{1/2}(x_{2}^{2}+y_{2}^{2})^{1/2}\\
+\end{align*}
+より、$|z_{1}z_{2}|=|z_{1}||z_{2}|$である。
+\begin{align*}
+&(|z_{1}|+|z_{2}|)^{2}-|z_{1}+z_{2}|^{2}\\
+=&2[((x_{1}^{2}+y_{1}^{2})(x_{2}^{2}+y_{2}^{2}))^{1/2}-(x_{1}x_{2}+y_{1}y_{2})]\geq0
+\end{align*}
+であるから、$|z_{1}+z_{2}|\leq|z_{1}|+|z_{2}|$である。
+ここでコーシーシュワルツの不等式
+\footnote{コーシーシュワルツの不等式は$\mathbf{a}_{1},\mathbf{a}_{2}\in\mathbb{R}^{n}$に対して$|\mathbf{a}_{1}||\mathbf{a}_{2}|\geq|\mathbf{a}_{1}\cdot\mathbf{a}_{2}|$である。}
+を用いた。
+\item $z\ne0$のとき
+\begin{align*}
+|z||1/z|=|z\cdot 1/z|=1
+\end{align*}
+である。$|z|\ne0$であるから$|1/z|=1/|z|$である。
+\end{enumerate}
+\end{enumerate}
+\end{document}

@@ -1,0 +1,227 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm,ascmac}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage[dvipdfmx]{graphicx,color}
+\usepackage[utf8]{inputenc}
+\usepackage[title=default]{phfnote}
+\newcommand{\diff}{\mathrm{d}}
+\newtheorem{define}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{eg}{Example}[section]
+\newtheorem{ans}{答え}
+\newtheorem*{ans*}{答え}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\esssup}{\mathop{\rm ess~sup}\limits}
+\newcommand{\limltwo}{\mathop{\rm l.i.m.}\limits}
+\newcommand{\km}{\mathrm{km}}
+\newcommand{\supp}{\mathrm{supp}~}
+\newcommand{\jpyen}{\mathrm{(\mbox{円})}}
+\newcommand{\g}{\mathrm{(g)}}
+\newcommand{\tori}{\mathrm{(\mbox{通り})}}
+\newcommand*{\Perm}[2]{{}_{#1}\!P_{#2}}%
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 
+    \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+
+% 式番号をsectionごとに取る
+\makeatletter
+\@addtoreset{equation}{section}
+\def\theequation{\thesection.\arabic{equation}}% renewcommand でもOK
+\makeatother
+
+\title{GP and RKHS}
+\author{米田亮介}
+\date{\today}
+\begin{document}
+\maketitle
+
+\section{準備}
+\begin{define}[GP]
+$\{X(t)\mid 0\leq t\leq T\}$が確率過程のとき、
+$0\leq t\leq T$から任意に有限個$t_1,t_2,\dots t_n$を選んだときに、
+$(X(t_1),X(t_2),\dots,X(t_n))^\mathsf{T}$が$n$次元の正規分布に従うならば
+$\{X(t)\}$を\textbf{ガウス過程}(Gaussian process, GP)という。
+\end{define}
+
+$f$がGPのときに、各$x,x'$に対して
+\begin{align}
+    m(x)=\mathbb{E}[f(x)],\quad k(x,x')=\mathbb{E}[(f(x)-m(x))(f(x')-m(x'))]
+\end{align}
+で平均$m$と共分散$k$を定めて、
+\begin{align}
+    f\sim\mathcal{GP}(m,k)
+\end{align}
+と書くことにする。
+
+GPを用いた回帰を復習する。
+観測データ$\mathcal{D}=\{(x_{1},y_{1}),\dots,(x_{N},y_{N})\}$について
+$x$と$y$の間に$y=f(x)$の関係があり、
+GP$f\sim\mathcal{GP}(m,k)$から生成されているとする。
+このとき事後分布は
+\begin{align}
+    f\mid\mathcal{D}\sim\mathcal{GP}(\bar{m},\bar{k})
+\end{align}
+でガウス過程になる。ここで、$k_{XX} = \{k(x_{i},x_{j})\}_{i,j},k_{xX}=(k(x,x_{1}),\dots,k(x,x_{N})),k_{Xx'}=k_{x'X}^{\mathsf{T}}$とおいて
+\begin{align}
+    &\bar{m}(x)=m(x)+k_{xX}k_{XX}^{-1}(\bm{y}-m_{X}),\\
+    &\bar{k}(x,x')=k(x,x')-k_{xX}k_{XX}^{-1}k_{Xx'}
+\end{align}
+である。
+
+\begin{define}[RKHS]
+    集合$\mathcal{X}$上の\textbf{再生核ヒルベルト空間}(reproducing kernel Hilbert spcae, RKHS)とは、
+    $\mathcal{X}$上の関数からなるヒルベルト空間$\mathcal{H}$で、
+    任意の$x\in\mathcal{X}$に対して$k_{x}\in\mathcal{H}$があって
+    \begin{align}
+        \langle f,k_{x} \rangle_{\mathcal{H}} = f(x)
+    \end{align}
+    が任意の$f\in\mathcal{H}$に対して成り立つことである。
+    $k(y,x)=k_{x}(y)$により定まるカーネル$k$を$\mathcal{H}$の\textbf{再生核}と呼ぶ。
+\end{define}
+
+再生核が一意であることとMoore--Aronszajnの定理によりカーネルとRKHSが1対1に対応することがわかる。
+
+RKHSを導入することでGP回帰は非常に見通しがよくなる。
+
+\begin{lem}
+観測データ$\mathcal{D}=\{(x_{1},y_{1}),\dots,(x_{N},y_{N})\}$について
+$x$と$y$の間に$y=f(x)$の関係があり、
+$f$が平均$0$の$f\sim\mathcal{GP}(0,k)$から生成されているとする。
+このとき、カーネル$k$に対応するRKHSを$\mathcal{H}_{k}$とおくと
+\begin{align}
+    \overline{m} = \argmin_{f\in\mathcal{H}_{k}}\|f\|_{\mathcal{H}_{k}},
+    \textrm{ subject to } f(x_{i}) = y_{i},\quad i=1,\dots,N,
+\end{align}
+で表される。
+\end{lem}
+
+これは平均がRKHS$\mathcal{H}_{k}$に入ることを意味している。
+そのためデータにのる関数の性質を決める上でカーネルを選び方は非常に重要である。
+
+\section{RKHSの性質}
+shift invariantなカーネル、すなわち、$k(x,y)=\Psi(x-y)$なる関数$\Psi$がある状況においては、
+RKHSが定まる。
+
+\begin{theorem}
+    $k$を$\mathbb{R}^{d}$上のカーネルで、$k(x,y)=\Psi(x-y),\Psi\in C(\mathbb{R}^{d})\cap L^{1}(\mathbb{R}^{d})$であるとする。
+    このとき、カーネル$k$のRKHSは
+    \begin{align}
+        \mathcal{H}_{k}=\{f\in L^{2}(\mathbb{R}^{d}) \cap C(\mathbb{R}^{d}) \mid \|f\|_{\mathcal{H}_{k}}<\infty \}
+    \end{align}
+    であり、$f,g\in \mathcal{H}_{k}$に対して内積は
+    \begin{align}
+        \langle f,g \rangle_{\mathcal{H}_{k}} = \frac{1}{(2\pi)^{d/2}}\int_{\mathbb{R}^{d}}\frac{\mathcal{F}[f](\omega)\overline{\mathcal{F}[g](\omega)}}{\mathcal{F}[\Psi](\omega)}\diff\omega
+    \end{align}
+    である。
+\end{theorem}
+
+ここで関数$f$に対するFourier変換を
+\begin{align}
+    \mathcal{F}[f](\omega)=\frac{1}{(2\pi)^{d/2}}\int_{\mathbb{R}^{d}}f(x)e^{-ix^{\mathsf{T}}\omega}\diff x
+\end{align}
+で定めた。
+
+具体例を見ていこう。
+
+\begin{eg}[RBFカーネル]
+RBFカーネルは
+\begin{align}
+    k_{\gamma}(x,y)=\Psi(x-y)=\exp(-\|x-y\|^{2}/\gamma^{2})
+\end{align}
+で与えられる。
+ここでガウス関数のFourier変換はガウス関数であったことを思い出そう。すなわち、
+\begin{align}
+    \mathcal{F}[\Psi](\omega)=\frac{\gamma^{d}}{2^{d/2}}\exp(-\gamma^{2}\|\omega\|^{2}/4)
+\end{align}
+である。
+よってRBFカーネルのRKHSは
+\begin{align}
+    & \mathcal{H}_{k_{\gamma}}=\{f\in L^{2}(\mathbb{R}^{d})\cap C(\mathbb{R}^{d}) \mid \|f\|_{\mathcal{H}_{k_{\gamma}}} < \infty \},\\
+    & \|f\|^{2}_{\mathcal{H}_{k_{\gamma}}}=\frac{1}{\gamma^{d}\pi^{d/2}}\int_{\mathbb{R}^{d}}|\mathcal{F}[f](\omega)|^{2}\exp(\gamma^{2}\|\omega\|^{2}/4)\diff\omega
+\end{align}
+である。
+特に$\|f\|_{\mathcal{H}_{k_{\gamma}}}$が収束するとき、$\mathcal{F}[f](\omega)$は$\omega$は
+指数関数的に減衰することがわかる。
+よってPaley–Wienerの定理から$f\in\mathcal{H}_{k_{\gamma}}$は解析的であることがわかる。
+これがRBFカーネルから生成されるGPが$C^{\infty}$級である、と言われることの直感的な説明である。
+(より正確にはGPのサンプルパスは確率0で$\mathcal{H}_{k_{\gamma}}$に属することが示せてしまうので
+もう少し高度な数学を用いて議論する必要がある。)
+\end{eg}
+
+\begin{eg}[Laplaceカーネル]
+Laplaceカーネルは
+\begin{align}
+    k_{\alpha}(x,y)=\Psi(x-y)=\exp(-\alpha|x-y|)
+\end{align}
+で与えられる。Fourier変換を行えば
+\begin{align}
+    \mathcal{F}[\Psi](\omega)=\sqrt{\frac{2}{\pi}}\frac{\alpha}{\omega^{2}+\alpha^{2}}
+\end{align}
+であるから、RKHSは
+\begin{align}
+    & \mathcal{H}_{k_{\alpha}}=\{f\in L^{2}(\mathbb{R}^{d})\cap C(\mathbb{R}^{d}) \mid \|f\|_{\mathcal{H}_{k_{\alpha}}} < \infty \},\\
+    & \|f\|^{2}_{\mathcal{H}_{k_{\gamma}}}=\frac{1}{\pi}\int_{\mathbb{R}^{d}}|\mathcal{F}[f](\omega)|^{2}(\omega^{2}+\alpha^{2})\diff\omega
+\end{align}
+である。
+微分のFourier変換について$\mathcal{F}[f'](\omega)=-i\omega\mathcal{F}[f](\omega)$が成り立つこと思い出すと、
+\begin{align}
+    \|f\|_{\mathcal{H}_{k_{\alpha}}}<\infty
+    \Leftrightarrow \|f\|_{L^{2}}<\infty, \|Df\|_{L^{2}}<\infty
+\end{align}
+となるから$\mathcal{H}_{k_{\alpha}}$はSobolev空間$H^{1}(\mathbb{R})$である。
+\end{eg}
+
+\begin{eg}[Mat\'ernカーネル]
+詳しくは書かないが、Mat\'ernカーネル$k_{\alpha,h}$に対応するRKHSは
+Sobolev空間$W_{2}^{\alpha+d/2}(\mathcal{X})$に同型であることがわかる。
+\end{eg}
+
+\section{周期カーネル}
+周期カーネルは
+\begin{align}
+    k_{\theta}(x,y)=\Psi(x-y)=\theta_{0}\exp(\theta_{1}\cos(x-y))
+\end{align}
+で与えられる。これまでの違いは考える定義域が$\mathbb{R}$から$\mathbb{S}^{1}$に移ったことである。
+これに伴ってRKHS内のFourier変換はFourier級数として理解する必要がある。(ここの正確な証明があるのかは知らないです。)
+
+周期関数$f$のFourier級数展開の第$n$係数を
+\begin{align}
+    \hat{f}_{n}=\frac{1}{\sqrt{2\pi}}\int_{\mathbb{S}^{1}}f(x)e^{-inx}\diff x
+\end{align}
+で定める。すると周期カーネルのRKHSは
+\begin{align}
+    \mathcal{H}_{k_{\theta}}=\{f\in L^{2}(\mathbb{S}^{1}) \cap C(\mathbb{S}^{1}) \mid \|f\|_{\mathcal{H}_{k_{\theta}}}<\infty \}
+\end{align}
+であり、内積は
+\begin{align}
+    \langle f,g \rangle_{\mathcal{H}_{k_{\theta}}}
+    =\frac{1}{\sqrt{2\pi}}\sum_{n\in\mathbb{Z}}\frac{\hat{f}_{n}\overline{\hat{g}_{n}}}{\hat{\Psi}_{n}}
+\end{align}
+となるだろう。
+ノルムに着目してみよう。
+\begin{align}
+    \|f\|_{\mathcal{H}_{k_{\theta}}}=\frac{1}{\sqrt{2\pi}}\sum_{n\in\mathbb{Z}}\frac{|\hat{f}_{n}|^{2}}{\hat{\Psi}_{n}}<\infty
+\end{align}
+である。特に$\Psi$は解析的な関数であるからPaley–Wienerの定理によりある$C,\varepsilon>0$が存在して十分大きな$n$で
+\begin{align}
+|\hat{\Psi}_{n}|\leq Ce^{-\varepsilon|n|}
+\end{align}
+のようにFourier係数が指数関数的な減衰を見せる。
+これより$|\hat{f}_{n}|$も$n$によって指数関数的な減衰を見せることがわかる。
+またPaley–Wienerの定理を使えば$f\in\mathcal{H}_{k_{\theta}}$が解析的であることがわかる。
+(これは全くもって厳密な証明ではなく、直感的な説明を書いているだけです。)
+
+\begin{thebibliography}{99}
+    \bibitem{gp} M. Kanagawa, P. Hennig, D. Sejdinovic, and B. K. Sriperumbudur,
+    Gaussian Processes and Kernel Methods: A Review on Connections and Equivalences,
+    arXiv: 1807.02582.
+    \bibitem{kernel} カーネル法入門, 福水健次, 朝倉書店, 2010.
+  \end{thebibliography}
+
+\end{document}

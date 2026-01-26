@@ -33,6 +33,7 @@
 | 2024-10-20 | [Notebook](./20241020_notebook/) | 雑多なノートブック |
 | 2025-06-19 | [CartPole GRPO](./20250619_cartpole_grpo/) | CartPole環境でのGRPO実装 |
 | 2026-01-26 | [TSMixer](./20260126_tsmixer/) | TSMixerに関するノート |
+| 2026-01-26 | [Rax](./20260126_rax/) | Rax (Learning-to-Rank) に関するノート |
 
 ## カテゴリ別
 
@@ -63,6 +64,7 @@
 - [Asian Call Option](./20240708_asian_call_option/) - 金融工学
 - [CartPole GRPO](./20250619_cartpole_grpo/) - 強化学習
 - [TSMixer](./20260126_tsmixer/) - 時系列モデル
+- [Rax](./20260126_rax/) - Learning-to-Rank
 - [CSEB Parallel Computing](./20180925_cseb_parallel_computing/) - 並列計算
 
 ### その他

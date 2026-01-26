@@ -6,6 +6,7 @@
 #     "numpy",
 #     "matplotlib",
 #     "scipy",
+#     "requests",
 # ]
 # ///
 """
@@ -26,16 +27,63 @@ Usage:
     uv run 20260126_topix17_etf_turnover/20260126_topix17_etf_turnover.py
 """
 
+import os
 import warnings
+import zipfile
+from pathlib import Path
 from typing import Literal
 
+import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import requests
 import yfinance as yf
 from scipy import stats
 
 warnings.filterwarnings("ignore")
+
+
+# ============================================================================
+# Font Setup
+# ============================================================================
+
+
+def setup_japanese_font() -> None:
+    """
+    Download and configure Noto Sans JP font for matplotlib.
+    Downloads from Google Fonts if not already cached.
+    """
+    # Cache directory for fonts
+    cache_dir = Path.home() / ".cache" / "matplotlib_jp_fonts"
+    cache_dir.mkdir(parents=True, exist_ok=True)
+
+    font_path = cache_dir / "NotoSansJP-Regular.ttf"
+
+    if not font_path.exists():
+        print("Downloading Noto Sans JP font from Google Fonts...")
+        # Direct URL to Noto Sans JP from Google Fonts
+        url = "https://github.com/google/fonts/raw/main/ofl/notosansjp/NotoSansJP%5Bwght%5D.ttf"
+
+        try:
+            response = requests.get(url, timeout=30)
+            response.raise_for_status()
+            font_path.write_bytes(response.content)
+            print(f"Font saved to: {font_path}")
+        except requests.RequestException as e:
+            print(f"Failed to download font: {e}")
+            print("Falling back to default font...")
+            return
+
+    # Register the font with matplotlib
+    fm.fontManager.addfont(str(font_path))
+    font_prop = fm.FontProperties(fname=str(font_path))
+    font_name = font_prop.get_name()
+
+    # Set as default font
+    plt.rcParams["font.family"] = font_name
+    plt.rcParams["axes.unicode_minus"] = False  # Fix minus sign display
+    print(f"Japanese font configured: {font_name}")
 
 # ============================================================================
 # TOPIX-17 ETF Definitions
@@ -785,15 +833,13 @@ def run_full_analysis(save_figures: bool = True, output_dir: str = ".") -> dict:
 
 
 if __name__ == "__main__":
-    import os
-
     # Set output directory
     script_dir = os.path.dirname(os.path.abspath(__file__))
     output_dir = os.path.join(script_dir, "figures")
     os.makedirs(output_dir, exist_ok=True)
 
-    # Set matplotlib to use a font that supports Japanese
-    plt.rcParams["font.family"] = ["Noto Sans CJK JP", "IPAexGothic", "Hiragino Sans", "Yu Gothic", "sans-serif"]
+    # Setup Japanese font from Google Fonts
+    setup_japanese_font()
 
     # Run analysis
     results = run_full_analysis(save_figures=True, output_dir=output_dir)

@@ -38,6 +38,7 @@ AIエージェントや開発者向けのガイドラインは [AGENTS.md](./AGE
 | 2025-06-19 | [CartPole GRPO](./20250619_cartpole_grpo/) | CartPole環境でのGRPO実装 |
 | 2026-01-26 | [TSMixer](./20260126_tsmixer/) | TSMixerに関するノート |
 | 2026-01-26 | [Rax](./20260126_rax/) | Rax (Learning-to-Rank) に関するノート |
+| 2026-01-26 | [TOPIX-17 ETF Turnover](./20260126_topix17_etf_turnover/) | TOPIX-17業種別ETFのランキング回転率分析 |
 
 ## カテゴリ別
 
@@ -66,6 +67,7 @@ AIエージェントや開発者向けのガイドラインは [AGENTS.md](./AGE
 ### 機械学習・計算
 - [GP](./20210317_gp/) - ガウス過程
 - [Asian Call Option](./20240708_asian_call_option/) - 金融工学
+- [TOPIX-17 ETF Turnover](./20260126_topix17_etf_turnover/) - 金融工学・ETF分析
 - [CartPole GRPO](./20250619_cartpole_grpo/) - 強化学習
 - [TSMixer](./20260126_tsmixer/) - 時系列モデル
 - [Rax](./20260126_rax/) - Learning-to-Rank

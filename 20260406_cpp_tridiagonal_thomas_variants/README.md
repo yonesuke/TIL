@@ -89,6 +89,25 @@ benchmark.png         比較結果グラフ
 
 ### ビルドと実行
 
+[uv](https://docs.astral.sh/uv/) を使う場合:
+
+```bash
+# C++ 拡張をビルド
+uv run --with pybind11 --with setuptools python setup.py build_ext --inplace
+
+# ベンチマーク実行 (依存は自動インストール)
+uv run --with scipy --with matplotlib python benchmark.py
+```
+
+`benchmark.py` の先頭に `# /// script` ブロックがあるため、
+`uv run` は依存パッケージを自動で解決する:
+
+```bash
+uv run benchmark.py   # pybind11 / setuptools でビルドも自動化したい場合は上記の順で
+```
+
+pip を使う場合:
+
 ```bash
 pip install pybind11 setuptools scipy matplotlib numpy
 python setup.py build_ext --inplace

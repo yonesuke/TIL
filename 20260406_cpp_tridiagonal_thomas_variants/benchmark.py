@@ -1,3 +1,11 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#   "numpy",
+#   "scipy",
+#   "matplotlib",
+# ]
+# ///
 """Benchmark: C++ tridiagonal variants vs scipy.
 
 Variants

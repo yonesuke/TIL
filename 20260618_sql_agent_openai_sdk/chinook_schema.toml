@@ -1,0 +1,657 @@
+# Chinook Database — Schema Catalog
+#
+# This file is the single source of truth for table/column metadata used by
+# the SQL agent.  It is hand-curated with business descriptions that cannot be
+# derived from DDL alone.
+#
+# Format: TOML (readable by Python 3.11+ stdlib tomllib, zero extra deps)
+
+[Album]
+description = "Music albums. Each belongs to one Artist."
+row_count = 347
+
+[[Album.columns]]
+name = "AlbumId"
+type = "INTEGER"
+pk = true
+nullable = false
+description = "Primary key"
+
+[[Album.columns]]
+name = "Title"
+type = "NVARCHAR(160)"
+pk = false
+nullable = false
+description = "Album title"
+
+[[Album.columns]]
+name = "ArtistId"
+type = "INTEGER"
+pk = false
+nullable = false
+description = "FK to Artist"
+
+[[Album.foreign_keys]]
+from_col = "ArtistId"
+to_table = "Artist"
+to_col = "ArtistId"
+
+[Artist]
+description = "Music artists / bands."
+row_count = 275
+
+[[Artist.columns]]
+name = "ArtistId"
+type = "INTEGER"
+pk = true
+nullable = false
+description = "Primary key"
+
+[[Artist.columns]]
+name = "Name"
+type = "NVARCHAR(120)"
+pk = false
+nullable = true
+description = "Artist or band name"
+
+[Customer]
+description = "Store customers with contact and address info."
+row_count = 59
+
+[[Customer.columns]]
+name = "CustomerId"
+type = "INTEGER"
+pk = true
+nullable = false
+description = "Primary key"
+
+[[Customer.columns]]
+name = "FirstName"
+type = "NVARCHAR(40)"
+pk = false
+nullable = false
+description = "Customer first name"
+
+[[Customer.columns]]
+name = "LastName"
+type = "NVARCHAR(20)"
+pk = false
+nullable = false
+description = "Customer last name"
+
+[[Customer.columns]]
+name = "Company"
+type = "NVARCHAR(80)"
+pk = false
+nullable = true
+description = "Company name (optional)"
+
+[[Customer.columns]]
+name = "Address"
+type = "NVARCHAR(70)"
+pk = false
+nullable = true
+description = "Street address"
+
+[[Customer.columns]]
+name = "City"
+type = "NVARCHAR(40)"
+pk = false
+nullable = true
+description = "City"
+
+[[Customer.columns]]
+name = "State"
+type = "NVARCHAR(40)"
+pk = false
+nullable = true
+description = "State or province"
+
+[[Customer.columns]]
+name = "Country"
+type = "NVARCHAR(40)"
+pk = false
+nullable = true
+description = "Country"
+
+[[Customer.columns]]
+name = "PostalCode"
+type = "NVARCHAR(10)"
+pk = false
+nullable = true
+description = "Postal / ZIP code"
+
+[[Customer.columns]]
+name = "Phone"
+type = "NVARCHAR(24)"
+pk = false
+nullable = true
+description = "Phone number"
+
+[[Customer.columns]]
+name = "Fax"
+type = "NVARCHAR(24)"
+pk = false
+nullable = true
+description = "Fax number"
+
+[[Customer.columns]]
+name = "Email"
+type = "NVARCHAR(60)"
+pk = false
+nullable = false
+description = "Email address"
+
+[[Customer.columns]]
+name = "SupportRepId"
+type = "INTEGER"
+pk = false
+nullable = true
+description = "FK to Employee (support representative)"
+
+[[Customer.foreign_keys]]
+from_col = "SupportRepId"
+to_table = "Employee"
+to_col = "EmployeeId"
+
+[Employee]
+description = "Store employees. Self-referencing hierarchy via ReportsTo."
+row_count = 8
+
+[[Employee.columns]]
+name = "EmployeeId"
+type = "INTEGER"
+pk = true
+nullable = false
+description = "Primary key"
+
+[[Employee.columns]]
+name = "LastName"
+type = "NVARCHAR(20)"
+pk = false
+nullable = false
+description = "Last name"
+
+[[Employee.columns]]
+name = "FirstName"
+type = "NVARCHAR(20)"
+pk = false
+nullable = false
+description = "First name"
+
+[[Employee.columns]]
+name = "Title"
+type = "NVARCHAR(30)"
+pk = false
+nullable = true
+description = "Job title"
+
+[[Employee.columns]]
+name = "ReportsTo"
+type = "INTEGER"
+pk = false
+nullable = true
+description = "FK to Employee (manager, self-referencing)"
+
+[[Employee.columns]]
+name = "BirthDate"
+type = "DATETIME"
+pk = false
+nullable = true
+description = "Date of birth"
+
+[[Employee.columns]]
+name = "HireDate"
+type = "DATETIME"
+pk = false
+nullable = true
+description = "Date hired"
+
+[[Employee.columns]]
+name = "Address"
+type = "NVARCHAR(70)"
+pk = false
+nullable = true
+description = "Street address"
+
+[[Employee.columns]]
+name = "City"
+type = "NVARCHAR(40)"
+pk = false
+nullable = true
+description = "City"
+
+[[Employee.columns]]
+name = "State"
+type = "NVARCHAR(40)"
+pk = false
+nullable = true
+description = "State or province"
+
+[[Employee.columns]]
+name = "Country"
+type = "NVARCHAR(40)"
+pk = false
+nullable = true
+description = "Country"
+
+[[Employee.columns]]
+name = "PostalCode"
+type = "NVARCHAR(10)"
+pk = false
+nullable = true
+description = "Postal / ZIP code"
+
+[[Employee.columns]]
+name = "Phone"
+type = "NVARCHAR(24)"
+pk = false
+nullable = true
+description = "Phone number"
+
+[[Employee.columns]]
+name = "Fax"
+type = "NVARCHAR(24)"
+pk = false
+nullable = true
+description = "Fax number"
+
+[[Employee.columns]]
+name = "Email"
+type = "NVARCHAR(60)"
+pk = false
+nullable = true
+description = "Email address"
+
+[[Employee.foreign_keys]]
+from_col = "ReportsTo"
+to_table = "Employee"
+to_col = "EmployeeId"
+
+[Genre]
+description = "Music genres (Rock, Jazz, Metal, Sci Fi & Fantasy, etc.)."
+row_count = 25
+
+[[Genre.columns]]
+name = "GenreId"
+type = "INTEGER"
+pk = true
+nullable = false
+description = "Primary key"
+
+[[Genre.columns]]
+name = "Name"
+type = "NVARCHAR(120)"
+pk = false
+nullable = true
+description = "Genre name"
+
+[Invoice]
+description = "Sales invoices. Each belongs to one Customer."
+row_count = 412
+
+[[Invoice.columns]]
+name = "InvoiceId"
+type = "INTEGER"
+pk = true
+nullable = false
+description = "Primary key"
+
+[[Invoice.columns]]
+name = "CustomerId"
+type = "INTEGER"
+pk = false
+nullable = false
+description = "FK to Customer"
+
+[[Invoice.columns]]
+name = "InvoiceDate"
+type = "DATETIME"
+pk = false
+nullable = false
+description = "Date of invoice"
+
+[[Invoice.columns]]
+name = "BillingAddress"
+type = "NVARCHAR(70)"
+pk = false
+nullable = true
+description = "Billing street address"
+
+[[Invoice.columns]]
+name = "BillingCity"
+type = "NVARCHAR(40)"
+pk = false
+nullable = true
+description = "Billing city"
+
+[[Invoice.columns]]
+name = "BillingState"
+type = "NVARCHAR(40)"
+pk = false
+nullable = true
+description = "Billing state/province"
+
+[[Invoice.columns]]
+name = "BillingCountry"
+type = "NVARCHAR(40)"
+pk = false
+nullable = true
+description = "Billing country"
+
+[[Invoice.columns]]
+name = "BillingPostalCode"
+type = "NVARCHAR(10)"
+pk = false
+nullable = true
+description = "Billing postal code"
+
+[[Invoice.columns]]
+name = "Total"
+type = "NUMERIC(10, 2)"
+pk = false
+nullable = false
+description = "Invoice total amount in dollars"
+
+[[Invoice.foreign_keys]]
+from_col = "CustomerId"
+to_table = "Customer"
+to_col = "CustomerId"
+
+[InvoiceLine]
+description = "Individual line items on an invoice. Each references one Track."
+row_count = 2240
+
+[[InvoiceLine.columns]]
+name = "InvoiceLineId"
+type = "INTEGER"
+pk = true
+nullable = false
+description = "Primary key"
+
+[[InvoiceLine.columns]]
+name = "InvoiceId"
+type = "INTEGER"
+pk = false
+nullable = false
+description = "FK to Invoice"
+
+[[InvoiceLine.columns]]
+name = "TrackId"
+type = "INTEGER"
+pk = false
+nullable = false
+description = "FK to Track (the item purchased)"
+
+[[InvoiceLine.columns]]
+name = "UnitPrice"
+type = "NUMERIC(10, 2)"
+pk = false
+nullable = false
+description = "Price per unit in dollars"
+
+[[InvoiceLine.columns]]
+name = "Quantity"
+type = "INTEGER"
+pk = false
+nullable = false
+description = "Number of units purchased"
+
+[[InvoiceLine.foreign_keys]]
+from_col = "InvoiceId"
+to_table = "Invoice"
+to_col = "InvoiceId"
+
+[[InvoiceLine.foreign_keys]]
+from_col = "TrackId"
+to_table = "Track"
+to_col = "TrackId"
+
+[MediaType]
+description = "Audio format (MPEG audio, Protected AAC, etc.). Each Track has one MediaType."
+row_count = 5
+
+[[MediaType.columns]]
+name = "MediaTypeId"
+type = "INTEGER"
+pk = true
+nullable = false
+description = "Primary key"
+
+[[MediaType.columns]]
+name = "Name"
+type = "NVARCHAR(120)"
+pk = false
+nullable = true
+description = "Media type name (e.g. MPEG audio file)"
+
+[Playlist]
+description = "Named playlists."
+row_count = 18
+
+[[Playlist.columns]]
+name = "PlaylistId"
+type = "INTEGER"
+pk = true
+nullable = false
+description = "Primary key"
+
+[[Playlist.columns]]
+name = "Name"
+type = "NVARCHAR(120)"
+pk = false
+nullable = true
+description = "Playlist name"
+
+[PlaylistTrack]
+description = "Many-to-many join: which Tracks belong to which Playlist."
+row_count = 8715
+
+[[PlaylistTrack.columns]]
+name = "PlaylistId"
+type = "INTEGER"
+pk = true
+nullable = false
+description = "FK to Playlist (composite PK)"
+
+[[PlaylistTrack.columns]]
+name = "TrackId"
+type = "INTEGER"
+pk = true
+nullable = false
+description = "FK to Track (composite PK)"
+
+[[PlaylistTrack.foreign_keys]]
+from_col = "PlaylistId"
+to_table = "Playlist"
+to_col = "PlaylistId"
+
+[[PlaylistTrack.foreign_keys]]
+from_col = "TrackId"
+to_table = "Track"
+to_col = "TrackId"
+
+[Track]
+description = "Individual music tracks. Belongs to Album, Genre, MediaType."
+row_count = 3503
+
+[[Track.columns]]
+name = "TrackId"
+type = "INTEGER"
+pk = true
+nullable = false
+description = "Primary key"
+
+[[Track.columns]]
+name = "Name"
+type = "NVARCHAR(200)"
+pk = false
+nullable = false
+description = "Track name / title"
+
+[[Track.columns]]
+name = "AlbumId"
+type = "INTEGER"
+pk = false
+nullable = true
+description = "FK to Album"
+
+[[Track.columns]]
+name = "MediaTypeId"
+type = "INTEGER"
+pk = false
+nullable = false
+description = "FK to MediaType (audio format)"
+
+[[Track.columns]]
+name = "GenreId"
+type = "INTEGER"
+pk = false
+nullable = true
+description = "FK to Genre"
+
+[[Track.columns]]
+name = "Composer"
+type = "NVARCHAR(220)"
+pk = false
+nullable = true
+description = "Composer name(s)"
+
+[[Track.columns]]
+name = "Milliseconds"
+type = "INTEGER"
+pk = false
+nullable = false
+description = "Track duration in milliseconds"
+
+[[Track.columns]]
+name = "Bytes"
+type = "INTEGER"
+pk = false
+nullable = true
+description = "File size in bytes"
+
+[[Track.columns]]
+name = "UnitPrice"
+type = "NUMERIC(10, 2)"
+pk = false
+nullable = false
+description = "Track price in dollars"
+
+[[Track.foreign_keys]]
+from_col = "AlbumId"
+to_table = "Album"
+to_col = "AlbumId"
+
+[[Track.foreign_keys]]
+from_col = "MediaTypeId"
+to_table = "MediaType"
+to_col = "MediaTypeId"
+
+[[Track.foreign_keys]]
+from_col = "GenreId"
+to_table = "Genre"
+to_col = "GenreId"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Sample rows — random picks from the live DB for LLM context
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[[Album.sample_rows]]
+values = [173, 'No More Tears (Remastered)', 114]
+
+[[Album.sample_rows]]
+values = [6, 'Jagged Little Pill', 4]
+
+[[Album.sample_rows]]
+values = [88, 'Faceless', 87]
+
+[[Artist.sample_rows]]
+values = [204, 'Temple of the Dog']
+
+[[Artist.sample_rows]]
+values = [56, 'Gonzaguinha']
+
+[[Artist.sample_rows]]
+values = [143, 'The Tea Party']
+
+[[Customer.sample_rows]]
+values = [19, 'Tim', 'Goyer', 'Apple Inc.', '1 Infinite Loop', 'Cupertino', 'CA', 'USA', '95014', '+1 (408) 996-1010', '+1 (408) 996-1011', 'tgoyer@apple.com', 3]
+
+[[Customer.sample_rows]]
+values = [18, 'Michelle', 'Brooks', "", '627 Broadway', 'New York', 'NY', 'USA', '10012-2612', '+1 (212) 221-3546', '+1 (212) 221-4679', 'michelleb@aol.com', 3]
+
+[[Customer.sample_rows]]
+values = [33, 'Ellie', 'Sullivan', "", '5112 48 Street', 'Yellowknife', 'NT', 'Canada', 'X1A 1N6', '+1 (867) 920-2233', "", 'ellie.sullivan@shaw.ca', 3]
+
+[[Employee.sample_rows]]
+values = [4, 'Park', 'Margaret', 'Sales Support Agent', 2, '1947-09-19 00:00:00', '2003-05-03 00:00:00', '683 10 Street SW', 'Calgary', 'AB', 'Canada', 'T2P 5G3', '+1 (403) 263-4423', '+1 (403) 263-4289', 'margaret@chinookcorp.com']
+
+[[Employee.sample_rows]]
+values = [7, 'King', 'Robert', 'IT Staff', 6, '1970-05-29 00:00:00', '2004-01-02 00:00:00', '590 Columbia Boulevard West', 'Lethbridge', 'AB', 'Canada', 'T1K 5N8', '+1 (403) 456-9986', '+1 (403) 456-8485', 'robert@chinookcorp.com']
+
+[[Employee.sample_rows]]
+values = [5, 'Johnson', 'Steve', 'Sales Support Agent', 2, '1965-03-03 00:00:00', '2003-10-17 00:00:00', '7727B 41 Ave', 'Calgary', 'AB', 'Canada', 'T3B 1Y7', '+1 (780) 836-9987', '+1 (780) 836-9543', 'steve@chinookcorp.com']
+
+[[Genre.sample_rows]]
+values = [17, 'Hip Hop/Rap']
+
+[[Genre.sample_rows]]
+values = [13, 'Heavy Metal']
+
+[[Genre.sample_rows]]
+values = [15, 'Electronica/Dance']
+
+[[Invoice.sample_rows]]
+values = [310, 24, '2012-09-27 00:00:00', '162 E Superior Street', 'Chicago', 'IL', 'USA', '60611', 7.96]
+
+[[Invoice.sample_rows]]
+values = [277, 21, '2012-04-29 00:00:00', '801 W 4th Street', 'Reno', 'NV', 'USA', '89503', 8.91]
+
+[[Invoice.sample_rows]]
+values = [148, 33, '2010-10-14 00:00:00', '5112 48 Street', 'Yellowknife', 'NT', 'Canada', 'X1A 1N6', 1.98]
+
+[[InvoiceLine.sample_rows]]
+values = [817, 151, 1447, 0.99, 1]
+
+[[InvoiceLine.sample_rows]]
+values = [1394, 257, 1481, 0.99, 1]
+
+[[InvoiceLine.sample_rows]]
+values = [2008, 369, 1744, 0.99, 1]
+
+[[MediaType.sample_rows]]
+values = [2, 'Protected AAC audio file']
+
+[[MediaType.sample_rows]]
+values = [4, 'Purchased AAC audio file']
+
+[[MediaType.sample_rows]]
+values = [1, 'MPEG audio file']
+
+[[Playlist.sample_rows]]
+values = [2, 'Movies']
+
+[[Playlist.sample_rows]]
+values = [3, 'TV Shows']
+
+[[Playlist.sample_rows]]
+values = [6, 'Audiobooks']
+
+[[PlaylistTrack.sample_rows]]
+values = [1, 905]
+
+[[PlaylistTrack.sample_rows]]
+values = [8, 2934]
+
+[[PlaylistTrack.sample_rows]]
+values = [1, 3485]
+
+[[Track.sample_rows]]
+values = [2171, 'Unemployable', 179, 1, 4, 'Matt Cameron & Mike McCready', 184398, 6066542, 0.99]
+
+[[Track.sample_rows]]
+values = [2865, 'Tabula Rasa', 230, 3, 19, "", 2627105, 210526410, 1.99]
+
+[[Track.sample_rows]]
+values = [1374, 'The Evil That Men Do', 110, 1, 3, 'Adrian Smith; Bruce Dickinson; Steve Harris', 273998, 6578930, 0.99]

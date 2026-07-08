@@ -39,6 +39,7 @@ AIエージェントや開発者向けのガイドラインは [AGENTS.md](./AGE
 | 2026-01-26 | [TSMixer](./20260126_tsmixer/) | TSMixerに関するノート |
 | 2026-01-26 | [Rax](./20260126_rax/) | Rax (Learning-to-Rank) に関するノート |
 | 2026-01-26 | [TOPIX-17 ETF Turnover](./20260126_topix17_etf_turnover/) | TOPIX-17業種別ETFのランキング回転率分析 |
+| 2026-07-08 | [Tool-Calling Agents](./20260708_agents/) | OpenRouter APIを使ったtool-callingエージェント (Python / TypeScript) |
 
 ## カテゴリ別
 
@@ -71,6 +72,7 @@ AIエージェントや開発者向けのガイドラインは [AGENTS.md](./AGE
 - [CartPole GRPO](./20250619_cartpole_grpo/) - 強化学習
 - [TSMixer](./20260126_tsmixer/) - 時系列モデル
 - [Rax](./20260126_rax/) - Learning-to-Rank
+- [Tool-Calling Agents](./20260708_agents/) - OpenRouter tool-calling
 - [CSEB Parallel Computing](./20180925_cseb_parallel_computing/) - 並列計算
 
 ### その他

@@ -40,6 +40,7 @@ AIエージェントや開発者向けのガイドラインは [AGENTS.md](./AGE
 | 2026-01-26 | [Rax](./20260126_rax/) | Rax (Learning-to-Rank) に関するノート |
 | 2026-01-26 | [TOPIX-17 ETF Turnover](./20260126_topix17_etf_turnover/) | TOPIX-17業種別ETFのランキング回転率分析 |
 | 2026-07-08 | [Tool-Calling Agents](./20260708_agents/) | OpenRouter APIを使ったtool-callingエージェント (Python / TypeScript) |
+| 2026-08-16 | [Raw Tool-Calling Agent](./20260816_raw_tool_calling_agent/) | 素のOpenAI APIとJSON辞書ツール定義による自律型エージェント実装とプロトコル解説 |
 
 ## カテゴリ別
 
@@ -73,6 +74,7 @@ AIエージェントや開発者向けのガイドラインは [AGENTS.md](./AGE
 - [TSMixer](./20260126_tsmixer/) - 時系列モデル
 - [Rax](./20260126_rax/) - Learning-to-Rank
 - [Tool-Calling Agents](./20260708_agents/) - OpenRouter tool-calling
+- [Raw Tool-Calling Agent](./20260816_raw_tool_calling_agent/) - 素のOpenAI APIによるツール呼び出しエージェント
 - [CSEB Parallel Computing](./20180925_cseb_parallel_computing/) - 並列計算
 
 ### その他

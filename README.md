@@ -42,6 +42,7 @@ AIエージェントや開発者向けのガイドラインは [AGENTS.md](./AGE
 | 2026-07-08 | [Tool-Calling Agents](./20260708_agents/) | OpenRouter APIを使ったtool-callingエージェント (Python / TypeScript) |
 | 2026-08-16 | [Raw Tool-Calling Agent](./20260816_raw_tool_calling_agent/) | 素のOpenAI APIとJSON辞書ツール定義による自律型エージェント実装とプロトコル解説 |
 | 2026-08-16 | [AI Agent Architecture](./20260816_ai_agent_architecture/) | AIエージェントのアーキテクチャ・2重Whileループ・コーディングエージェント解説（Marpスライド） |
+| 2026-08-18 | [Mean-Variance Basis Hedging](./20260818_mean_variance_hedging/) | 汎用シグモイド基底と単体制約付き二次計画法（QP）によるヨーロピアン・オプションの最適ヘッジ |
 
 ## カテゴリ別
 
@@ -70,6 +71,7 @@ AIエージェントや開発者向けのガイドラインは [AGENTS.md](./AGE
 ### 機械学習・計算
 - [GP](./20210317_gp/) - ガウス過程
 - [Asian Call Option](./20240708_asian_call_option/) - 金融工学
+- [Mean-Variance Basis Hedging](./20260818_mean_variance_hedging/) - 金融工学・二次計画法
 - [TOPIX-17 ETF Turnover](./20260126_topix17_etf_turnover/) - 金融工学・ETF分析
 - [CartPole GRPO](./20250619_cartpole_grpo/) - 強化学習
 - [TSMixer](./20260126_tsmixer/) - 時系列モデル

@@ -40,6 +40,7 @@ AIエージェントや開発者向けのガイドラインは [AGENTS.md](./AGE
 | 2026-01-26 | [Rax](./20260126_rax/) | Rax (Learning-to-Rank) に関するノート |
 | 2026-01-26 | [TOPIX-17 ETF Turnover](./20260126_topix17_etf_turnover/) | TOPIX-17業種別ETFのランキング回転率分析 |
 | 2026-07-08 | [Tool-Calling Agents](./20260708_agents/) | OpenRouter APIを使ったtool-callingエージェント (Python / TypeScript) |
+| 2026-09-10 | [Distributional Deep Hedging](./20260910_distributional_deep_hedging/) | JAX/Flax NNXによるモデルフリーな分布型アクター・クリティック（Distributional TD）オプションヘッジ |
 
 ## カテゴリ別
 
@@ -74,6 +75,7 @@ AIエージェントや開発者向けのガイドラインは [AGENTS.md](./AGE
 - [Rax](./20260126_rax/) - Learning-to-Rank
 - [Tool-Calling Agents](./20260708_agents/) - OpenRouter tool-calling
 - [CSEB Parallel Computing](./20180925_cseb_parallel_computing/) - 並列計算
+- [Distributional Deep Hedging](./20260910_distributional_deep_hedging/) - 金融工学・強化学習
 
 ### その他
 - [pH Curve](./20180806_ph_curve/) - 化学

@@ -41,6 +41,7 @@ AIエージェントや開発者向けのガイドラインは [AGENTS.md](./AGE
 | 2026-01-26 | [TOPIX-17 ETF Turnover](./20260126_topix17_etf_turnover/) | TOPIX-17業種別ETFのランキング回転率分析 |
 | 2026-07-08 | [Tool-Calling Agents](./20260708_agents/) | OpenRouter APIを使ったtool-callingエージェント (Python / TypeScript) |
 | 2026-09-10 | [Distributional Deep Hedging](./20260910_distributional_deep_hedging/) | JAX/Flax NNXによるモデルフリーな分布型アクター・クリティック（Distributional TD）オプションヘッジ |
+| 2026-10-05 | [Discrete Adjoint Deep Hedging](./20261005_discrete_adjoint_deep_hedging/) | 離散ポントリャーギン随伴状態法（Custom VJP）によるDeep Hedgingおよび一般離散力学系の省メモリO(1)勾配計算 |
 
 ## カテゴリ別
 
@@ -76,6 +77,7 @@ AIエージェントや開発者向けのガイドラインは [AGENTS.md](./AGE
 - [Tool-Calling Agents](./20260708_agents/) - OpenRouter tool-calling
 - [CSEB Parallel Computing](./20180925_cseb_parallel_computing/) - 並列計算
 - [Distributional Deep Hedging](./20260910_distributional_deep_hedging/) - 金融工学・強化学習
+- [Discrete Adjoint Deep Hedging](./20261005_discrete_adjoint_deep_hedging/) - 最適制御・金融工学・JAX
 
 ### その他
 - [pH Curve](./20180806_ph_curve/) - 化学

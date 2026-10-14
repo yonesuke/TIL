@@ -3,6 +3,10 @@
 **日付**: 2026-10-05（改訂: 2026-10-14）  
 **キーワード**: Discrete Adjoint State Method, Pontryagin Maximum Principle, BPTT, Activation Checkpointing, Rematerialization, `jax.lax.scan`, `jax.checkpoint`, `prevent_cse`, Reverse-over-Reverse HVP, Flax NNX
 
+> [!NOTE]
+> **AI 生成に関する注記（免責事項）**:  
+> 本稿における数理的考察、JAX / XLA コンパイラ挙動の調査、ベンチマークコードおよび解説文章は、LLM（AI アシスタント）との対話・検証プロセスを通じて作成・整理されたものです。実験結果や数理導出の妥当性には細心の注意を払っておりますが、正確性・完全性を保証するものではありません。環境（OS, Python, JAX, XLA バックエンド）のバージョンによって挙動が異なる場合があります。
+
 ---
 
 ## 1. 概要と動機
@@ -212,3 +216,28 @@ uv run 20261005_discrete_adjoint_state_method/20261005_discrete_adjoint_state_me
    適応的ステップサイズ（Adaptive step-size）で時間刻み幅が変化し、連続随伴常微分方程式 $\dot{\lambda}(t) = -\lambda(t)^\top \frac{\partial f}{\partial x}$ を逆向きに積分する場合。
 
 通常の離散ステップ発展（陽解法）やリカレントモデルであれば、**`scan` + `jax.checkpoint(prevent_cse=False)` が最も簡潔で、最も速く、最も堅牢な選択肢**である。
+
+---
+
+## 8. 参考文献
+
+### 最適制御理論・ポントリャーギン最大原理
+- Pontryagin, L. S., Boltyanskii, V. G., Gamkrelidze, R. V., & Mishchenko, E. F. (1962). *The Mathematical Theory of Optimal Processes*. Interscience Publishers.
+- Bryson, A. E., & Ho, Y. C. (1975). *Applied Optimal Control: Optimization, Estimation, and Control*. Hemisphere Publishing.
+
+### BPTT (Backpropagation Through Time)・リカレント学習
+- Rumelhart, D. E., Hinton, G. E., & Williams, R. J. (1986). *Learning representations by back-propagating errors*. Nature, 323(6088), 533-536.
+- Werbos, P. J. (1990). *Backpropagation through time: what it does and how to do it*. Proceedings of the IEEE, 78(10), 1550-1560.
+
+### Activation Checkpointing (Rematerialization)
+- Griewank, A., & Walther, A. (2000). *Algorithm 799: Revolve: an implementation of checkpointing for the reverse or adjoint mode of computational differentiation*. ACM Transactions on Mathematical Software (TOMS), 26(1), 19-45.
+- Chen, T., Xu, B., Zhang, C., & Guestrin, C. (2016). *Training Deep Nets with Sublinear Memory Cost*. arXiv preprint arXiv:1604.06174.
+
+### JAX & XLA 最適化
+- Bradbury, J., Frostig, R., Hawkins, P., Johnson, M. J., Leary, C., Maclaurin, D., Necula, G., Paszke, A., VanderPlas, J., Wanderman-Milne, S., & Zhang, Q. (2018). *JAX: composable transformations of Python+NumPy programs*. [https://github.com/jax-ml/jax](https://github.com/jax-ml/jax)
+- JAX Documentation: *Saving memory with gradient checkpointing*. [https://jax.readthedocs.io/en/latest/notebooks/autodiff_remat.html](https://jax.readthedocs.io/en/latest/notebooks/autodiff_remat.html)
+
+### 順方向感応度伝播 (RTRL) および 陰関数モデル (DEQ)
+- Williams, R. J., & Zipser, D. (1989). *A learning algorithm for continually running fully recurrent neural networks*. Neural Computation, 1(2), 270-280.
+- Bai, S., Kolter, J. Z., & Koltun, V. (2019). *Deep Equilibrium Models*. Advances in Neural Information Processing Systems (NeurIPS 2019).
+- Chen, R. T. Q., Rubanova, Y., Bettencourt, J., & Duvenaud, D. (2018). *Neural Ordinary Differential Equations*. Advances in Neural Information Processing Systems (NeurIPS 2018).
